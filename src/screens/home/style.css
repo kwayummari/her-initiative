@@ -1,0 +1,479 @@
+.partnerLogo {
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+.cardImage {
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.aboutUs {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 220px;
+  width: 80vw !important;
+  background-color: #633e98;
+  z-index: 1;
+  margin-bottom: -50px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.textContainers {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: left;
+  height: 100%;
+  margin-left: 50px;
+}
+.textContainers p:first-child {
+  font-size: 25px;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0;
+}
+.textContainers p:nth-child(2) {
+  font-size: 60px;
+  font-weight: 800;
+  color: #f3ec1a;
+  margin: 0;
+}
+.biographyContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: left;
+  height: 100%;
+}
+.biographyContainer p:first-child {
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-right: 80px;
+}
+.approach {
+  margin-top: 150px;
+}
+.approachHeader p:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #646464;
+  margin: 0;
+}
+.approachHeader p:nth-child(2) {
+  font-size: 50px;
+  font-weight: 700;
+  color: #633e98;
+  margin: 0;
+}
+.approachBody {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.partners {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.partnersHeader p:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #646464;
+  margin: 0;
+}
+.partnersHeader p:nth-child(2) {
+  font-size: 50px;
+  font-weight: 700;
+  color: #633e98;
+  margin: 0;
+}
+.partnersBody {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.circleContainer {
+  margin: 0 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(195deg,#f3ec1a, #633e98, #633e98);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(360deg); 
+  }
+}
+
+.circle svg {
+  width: 80px;
+  height: 80px;
+  color: #fff;
+}
+
+.circleContainer p {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.impact {
+  margin-top: 100px;
+  margin-bottom: -380px;
+}
+.impactHeader p:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #646464;
+  margin: 0;
+}
+.impactHeader p:nth-child(2) {
+  font-size: 50px;
+  font-weight: 700;
+  color: #633e98;
+  margin: 0;
+}
+
+.impactContainer {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  justify-content: start;
+  margin-left: 200px;
+  margin-top: 50px;
+  text-align: left;
+  display: flex;
+}
+
+.topContainer {
+  width: 80vw;
+  height: 500px;
+  background-color: #633e98;
+  border-radius: 10px;
+}
+
+.bottomContainer {
+  height: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  bottom: 28vw;
+  left: 20%;
+  transform: translateX(10%);
+  width: 30vw !important;
+  background-color: #ffffff;
+  z-index: 1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.bottomContainerImage {
+  border-radius: 10px;
+  margin: 20px 0px 20px 20px;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.topContainerText p:first-child {
+  text-align: left;
+  font-size: 50px;
+  font-weight: 700;
+  color: #f3ec1a;
+  margin: 40px 0 0 40px;
+}
+.impactsList p {
+  /* text-transform: uppercase; */
+  text-align: left;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  width: 450px;
+  margin: 20px 40px 0px 20px;
+}
+.impactsList {
+  margin-top: 0px;
+  display: flex;
+  align-items: left;
+  width: 700px;
+  height: 90px;
+  justify-content: left;
+}
+.programParagraph1 {
+  text-align: left;
+  font-size: 30px;
+  font-weight: 600;
+  color: #000000;
+  margin: 20px 0 0 20px;
+}
+.programParagraph3 {
+  text-align: left;
+  font-size: 25px;
+  font-weight: 600;
+  color: #000000;
+  margin: 20px 0 0 20px;
+}
+.programParagraph2 {
+  text-align: left;
+  font-size: 18px;
+  color: #131313;
+  margin: 20px 0 0 0px;
+}
+.programButton {
+  background-color: #633e98 !important;
+  color: #ffffff !important;
+  height: 60px;
+  width: 200px;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #f3ec1a !important;
+    color: #633e98 !important;
+    transform: scale(1.05);
+  }
+}
+.containerDonation {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 220px;
+  width: 80vw !important;
+  background-color: #633e98;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.donationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  height: 100%;
+}
+.donationContainer p:first-child {
+  font-size: 30px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-right: 80px;
+  margin-left: 50px;
+}
+.donationButton {
+  background-color: #f3ec1a !important;
+  color: #633e98 !important;
+  height: 70px;
+  width: 300px;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #f3ec1a !important;
+    color: #633e98 !important;
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutUs {
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* transform: translateX(-50%); */
+    display: none;
+    /* height: 130px; */
+    /* width: 80vw !important; */
+    /* background-color: #633e98; */
+    /* z-index: 1; */
+    /* margin-bottom: -70px; */
+    /* padding-bottom: 20px; */
+    /* border-radius: 5px; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+  }
+  .textContainers {
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+  .textContainers p:first-child {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+  }
+  .textContainers p:nth-child(2) {
+    font-size: 20px;
+    font-weight: 800;
+    color: #f3ec1a;
+    margin: 0;
+  }
+  .biographyContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    /* height: 100%; */
+  }
+  .biographyContainer p:first-child {
+    /* white-space: nowrap; */
+    /* overflow: scroll;
+    text-overflow: ellipsis; */
+    /* max-width: 100%; */
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .approachBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .impact {
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .impactContainer {
+    /* width: 100vw; */
+    justify-content: center;
+    margin-top: 50px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-left: 0; */
+    /* padding-left: 20px; */
+    /* padding-right: 20px; */
+  }
+
+  .topContainer {
+    width: 95vw;
+    height: 100%;
+    background-color: #633e98;
+    border-radius: 10px;
+    padding-bottom: 20px;
+  }
+
+  .bottomContainer {
+    display: none;
+  }
+  .bottomContainerImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0px 0px 20px;
+    justify-content: center;
+  }
+  .topContainerText p:first-child {
+    text-align: left;
+    font-size: 50px;
+    font-weight: 700;
+    color: #f3ec1a;
+    margin: 40px 0 0 40px;
+  }
+  .impactsList p {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    width: 450px;
+    margin: 20px 40px 0px 20px;
+  }
+  .impactsList {
+    display: flex;
+    align-items: left;
+    width: 100vw;
+    padding-bottom: 20px;
+    /* height: 90px; */
+    justify-content: left;
+  }
+  .partners {
+    margin-top: 100px;
+  }
+  .partnersBody {
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .circleContainer {
+    margin: 30px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bottom {
+    width: 100vw;
+  }
+  .containerDonation {
+    height: 100vw;
+    background-color: #633e98;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .donationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100vw;
+  }
+  .donationContainer p:first-child {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  .donationButton {
+    background-color: #f3ec1a !important;
+    color: #633e98 !important;
+    height: 70px;
+    width: 90%;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+  }
+  .programButton {
+    background-color: #633e98 !important;
+    color: #ffffff !important;
+    height: 60px;
+    width: 200px;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    margin-bottom: 40px;
+  }
+}

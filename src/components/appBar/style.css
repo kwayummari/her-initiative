@@ -1,0 +1,182 @@
+.appBar {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.logoContainer {
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.openLogoContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 250px;
+    margin-right: 70px;
+}
+.openToolBar {
+    display: flex;
+    justify-content: center;
+}
+.box{
+    width: 1155px;
+    height: 70px;
+    margin-top: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    background-color: #ffffffa7;
+    color: #633e98;
+    font-weight: 700;
+}
+.box1{
+    width: 1225px;
+    height: 70px;
+    margin-top: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    color: #ffffff;
+    font-weight: 700;
+}
+.openBox {
+    width: 1150px;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    font-weight: 700;
+}
+.openLinks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    color: #633e98;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+}
+.links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+}
+.homeLink {
+    /* background-color: #f3ec1a;
+    height: 100%;
+    width: 150px; */
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+}
+.homeLink1 {
+    background-color: #f3ec1a;
+    height: 50px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+.socialIcons {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: #633e98;
+    color: #f3ec1a;
+    height: 100%;
+    width: 300px;
+    border-radius: 50px;
+}
+.socialIcons svg {
+    font-size: 30px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.socialIcons svg:first-child {
+    margin-left: 50px;
+}
+
+.closedIcon {
+    color: #ffffff !important;
+    font-size: 30px !important;
+    padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .appBar {
+        display: flex;
+        justify-content: space-between;
+        /* height: 60px; */
+        width: 100vw;
+        background-color: #633e9869;
+    }
+
+    .logoContainer {
+        align-items: center;
+        padding-left: 20px;
+        padding-bottom: 30px;
+    }
+    .openLogoContainer {
+        display: flex;
+        align-items: center;
+        margin-left: 250px;
+        margin-right: 70px;
+    }
+    .links {
+        border-bottom: 1px solid #f2f2f2;
+        height: 60px;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        color: #000000
+    }
+    .homeLink {
+        background-color: #f3ec1a;
+        height: 60px;
+        text-align: center;
+        width: 100%;
+        font-weight: 700;
+        text-decoration: none;
+        color: #000000;
+    }
+    .homeLink1 {
+        background-color: #f3ec1a;
+        height: 50px;
+        width: 100%;
+        font-weight: 700;
+        font-size: 15px;
+        display: flex;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+        margin-right: 50px;
+    }
+}

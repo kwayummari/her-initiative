@@ -1,0 +1,128 @@
+.footerContainer {
+  margin-top: 60px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  /* position: relative; */
+}
+.containerFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footerContainer1 {
+  justify-content: start;
+  text-align: left;
+  padding-left: 50px;
+  width: 25vw;
+}
+.footerContainer2 {
+  justify-content: start;
+  text-align: left;
+  padding-left: 80px;
+  padding-top: 50px;
+  width: 20vw;
+}
+.footerContainer2 p {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+.footerContainer3 {
+  justify-content: start;
+  text-align: left;
+  /* padding-left: 20px; */
+  width: 20vw;
+}
+.footerContainer4 {
+  padding-top: 50px;
+  justify-content: start;
+  text-align: left;
+  padding-left: 20px;
+  width: 20vw;
+}
+.bottomFooter {
+  background-color: #633e98;
+  color: #ffffff;
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+.line {
+  padding-left: 30px;
+}
+.socialIcons {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: #633e98;
+  color: #f3ec1a;
+  height: 100%;
+}
+.socialIcons svg {
+  font-size: 30px;
+  padding-right: 10px;
+}
+.socialIcons svg:first-child {
+  margin-left: 30px;
+}
+@media (max-width: 768px) {
+  .footerContainer2 p {
+    cursor: pointer;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footerContainer {
+    margin-top: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    /* position: relative; */
+  }
+  .containerFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footerContainer1 {
+    justify-content: center;
+    text-align: center;
+    padding-left: 0px;
+    width: 100vw;
+  }
+  .footerContainer2 {
+    justify-content: center;
+    text-align: center;
+    padding-left: 0px;
+    padding-top: 20px;
+    width: 100vw;
+  }
+  .footerContainer4 {
+    padding-top: 20px;
+    justify-content: center;
+    text-align: center;
+    padding-left: 0px;
+    width: 100vw;
+  }
+  .bottomFooter {
+    background-color: #633e98;
+    color: #ffffff;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+  }
+}
