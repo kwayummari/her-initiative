@@ -11,19 +11,13 @@ function ImageRows() {
     ];
     return (
         <div style={{marginTop: '100px'}}>
-            <div style={{paddingTop: '200px'}}>
+            <div style={{paddingTop: !isMobile && '200px'}}>
             <p className="storyParagraph2" style={{textAlign: 'left'}}>
-                Transitioning to university, Lydia
-                spearheaded entrepreneurship campaigns
-                like Panda events, fostering knowledge
-                on entrepreneurship and
-                facilitating connections with
-                successful industry leaders. The
-                formation of Her Initiative was a
-                natural progression, catalyzed by a
-                series of impactful events in colleges.
-                Standing for self-empowerment, the organization
-                aligns itself with the resilience of young
+                    The formation of Her Initiative was a natural progression,
+                    catalyzed by a series of impactful events in colleges.
+                    Standing for self-empowerment, the organization aligns
+                    itself with the resilience of young women and girls who
+                    navigate life's challenges with determination.
             </p>
             </div>
             <Grid container spacing={4} item xs={12} style={{paddingLeft: '20px', paddingRight: '20px'}}>
