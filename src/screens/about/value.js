@@ -28,9 +28,9 @@ function Values() {
                     }}>
                     {programData.map((programs, index) => (
                         <div className="valueCard">
-                            <img src={programs.image} width={'100px'} height={'100px'} alt="logo" />
+                            {/* {!isMobile && <img src={programs.image} width={'100px'} height={'100px'} alt="logo" />} */}
                             <div className="valueSubCard">
-                                <p className="valueHead">{programs.title}</p>
+                                <p className="valueHead"><img src={programs.image} width={'60px'} height={'60px'} alt="logo" /> {programs.title}</p>
                                 <p className="valueParagraph">{programs.paragraph}</p>
                             </div>
                         </div>

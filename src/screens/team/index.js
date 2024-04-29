@@ -51,7 +51,8 @@ function Team() {
         { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communication Officer", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '',  },
         { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring and Evaluation Officer", buttonText: '',  },
-        
+        { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', },
+        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilzation and Project Officer", buttonText: '',  },
     ];
     return (
         <div>

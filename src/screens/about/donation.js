@@ -17,7 +17,7 @@ function Donations() {
                     backgroundColor: '#633e98',
                     borderRadius: "50px", display: isMobile ? 'block' : 'flex',
                     justifyContent: isMobile && 'center',
-                    margin: isMobile && "0px 20px"
+                    margin: isMobile && "20px 20px"
                 }}>
                     <Grid xs={isMobile ? 12 : 6}>
                         <p style={{
@@ -29,10 +29,11 @@ function Donations() {
                         }}>
                             Join us in making a difference with your generosity
                             - every donation counts in fueling our mission forward!
+                            {isMobile && <Button variant="contained" className="donationButton">DONATE NOW</Button>}
                         </p>
                     </Grid>
                     <Grid xs={isMobile ? 12 : 6}>
-                    <Button variant="contained" className="donationButton">DONATE NOW</Button>
+                    {!isMobile && <Button variant="contained" className="donationButton">DONATE NOW</Button>}
                     </Grid>
                 </Grid>
             </Grid>

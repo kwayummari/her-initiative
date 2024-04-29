@@ -10,24 +10,26 @@ function ImageRows() {
         { image: "_YTE8636.jpg" }
     ];
     return (
-        <div>
-            <p className="storyParagraph3">
+        <div style={{marginTop: '100px'}}>
+            <div style={{paddingTop: '200px'}}>
+            <p className="storyParagraph2" style={{textAlign: 'left'}}>
                 Transitioning to university, Lydia
                 spearheaded entrepreneurship campaigns
-                like Panda events, fostering knowl-
-                edge on entrepreneurship and
+                like Panda events, fostering knowledge
+                on entrepreneurship and
                 facilitating connections with
                 successful industry leaders. The
-                formation of Her Ini- tiative was a
+                formation of Her Initiative was a
                 natural progression, catalyzed by a
                 series of impactful events in colleges.
-                Standing for self-empow- erment, the organization
+                Standing for self-empowerment, the organization
                 aligns itself with the resilience of young
             </p>
+            </div>
             <Grid container spacing={4} item xs={12} style={{paddingLeft: '20px', paddingRight: '20px'}}>
                 {programData.map((programs, index) => (
                     <Grid key={index} item xs={isMobile ? 12 : 4} >
-                        <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
+                        <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '90vw' }}>
                             <CardMedia
                                 component="img"
                                 alt="green iguana"

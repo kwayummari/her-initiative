@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useMediaQuery } from "@mui/material";
 
 function Partners() {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -44,9 +46,9 @@ function Partners() {
                 <p>Our Partners</p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <ChevronLeft onClick={goToPrevious} style={{color: '#633e98', fontSize: '70px', cursor: 'pointer'}} />
+                <ChevronLeft onClick={goToPrevious} style={{ display: isMobile && 'none',color: '#633e98', fontSize: '70px', cursor: 'pointer'}} />
                 <div className="partnersBody">{renderLogos(partnerLogos)}</div>
-                <ChevronRight onClick={goToNext} style={{color: '#633e98', fontSize: '70px', cursor: 'pointer'}} /> 
+                <ChevronRight onClick={goToNext} style={{display: isMobile && 'none',color: '#633e98', fontSize: '70px', cursor: 'pointer'}} /> 
             </div>
         </div>
     );

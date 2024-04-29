@@ -31,7 +31,7 @@ function Programs() {
         return <Grid container spacing={4} item xs={12}>
             {programData.map((programs, index) => (
                 <Grid key={index} item xs={isMobile ? 12 : 4}>
-                    <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
+                    <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '90vw' }}>
                         <CardMedia
                             component="img"
                             alt="green iguana"
@@ -80,11 +80,11 @@ function Programs() {
                         sx={{
                             position: 'absolute',
                             top: '50%',
-                            left: '50%',
+                            // left: '50%',
                             transform: 'translate(-50%, -50%)',
                             bgcolor: 'background.paper',
                             boxShadow: 24,
-                            p: 4,
+                            // p: 4,
                             borderRadius: '10px',
                             maxWidth: '80vw',
                             maxHeight: '80vh',

@@ -28,7 +28,7 @@ function ReportsData({ programData }) {
         return (
             <Grid container spacing={4} item xs={12} style={{marginBottom: '200px'}}>
                 {programData.map((programs, index) => (
-                    <Grid key={index} item xs={isMobile ? 12 : 4}>
+                    <Grid key={index} item xs={isMobile ? 12 : 4} style={{marginBottom: '30px'}}>
                         <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw', height: '100%' }}>
                             <div style={{height: '200px'}}>
                             <Document
