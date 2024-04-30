@@ -27,12 +27,12 @@ const steps = [
        was honoured with an award for championing justice
         advocacy using digital platforms at the Tanzania Digital Awards.`,
     },
-    {
-        label: '2024',
-        description: `Her Initiative is officially recognized
-         as the Laureate of the King Baudouin Foundation Africa
-          Prize 2023-2024, receiving a significant prize of 200,000 euros.`,
-    },
+    // {
+    //     label: '2024',
+    //     description: `Her Initiative is officially recognized
+    //      as the Laureate of the King Baudouin Foundation Africa
+    //       Prize 2023-2024, receiving a significant prize of 200,000 euros.`,
+    // },
 ];
 function RecognitionsPart() {
     const isMobile = useMediaQuery('(max-width:600px)');

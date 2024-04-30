@@ -11,7 +11,7 @@ function ImageRows() {
     ];
     return (
         <div style={{marginTop: '100px'}}>
-            <div style={{paddingTop: !isMobile && '200px'}}>
+            <div style={{paddingTop: !isMobile ? '400px' : '0'}}>
             <p className="storyParagraph2" style={{textAlign: 'left'}}>
                     The formation of Her Initiative was a natural progression,
                     catalyzed by a series of impactful events in colleges.
