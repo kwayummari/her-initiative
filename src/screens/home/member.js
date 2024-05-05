@@ -61,14 +61,14 @@ function Members({ programData, teamData }) {
         return (
             <Grid container spacing={4} item xs={12}>
                 {teamData.map((programs, index) => (
-                    <Grid key={index} item xs={isMobile ? 12 : 4}>
+                    <Grid key={index} item xs={isMobile ? 12 : 3}>
                         <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
                             <CardMedia
                                 component="img"
                                 alt="green iguana"
                                 image={`/photos/${programs.image}`}
                                 onClick={() => { navigation(programs) }}
-                                height={'500px'}
+                                height={isMobile? '400px' : '300px'}
                             />
                             <CardContent>
                                 <div style={{ display: 'flex' }}>

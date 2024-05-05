@@ -28,7 +28,7 @@ function Donations() {
                             paddingBottom: "25px"
                         }}>
                             Join us in making a difference with your generosity
-                            - every donation counts in fueling our mission forward!
+                            every donation counts in fueling our mission forward!
                             {isMobile && <Button variant="contained" className="donationButton">DONATE NOW</Button>}
                         </p>
                     </Grid>

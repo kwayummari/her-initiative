@@ -47,12 +47,14 @@ function Team() {
     ];
     const teamData = [
         { image: "Her-Initiative-Organization-Profile-Design-41.jpg", title: "Lydia Charles Moyo", subTitle: "Founder and Executive Director", buttonText: '', },
+        { image: "rajabu.jpg", title: "Rajabu Mohamed", subTitle: "Head Of Programs", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-42.jpg", title: "Amanda Moses", subTitle: "Finance Officer", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communication Officer", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '',  },
-        { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring and Evaluation Officer", buttonText: '',  },
+        { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring and Evaluation Officer", buttonText: '', },
+        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilzation and Project Officer", buttonText: '', },
+        { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Resource Mobilzation and Project Officer", buttonText: '',  },
         { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', },
-        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilzation and Project Officer", buttonText: '',  },
     ];
     return (
         <div>

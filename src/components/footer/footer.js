@@ -57,7 +57,7 @@ function BottomFooter() {
                     <div className="footerContainer1">
                         <img src="/logo192.png" alt="logo" width={'200px'} />
                         <p>
-                            Her Initiative, a young women-driven non-profit, aims to redefine
+                            Her Initiative, a young women driven non-profit, aims to redefine
                             societal norms in Tanzania, promoting financial resilience
                             among adolescent girls and young women by integrating economic
                             empowerment and technology.

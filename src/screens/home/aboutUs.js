@@ -23,7 +23,7 @@ function AboutUs() {
                     fostering financial resilience, and integrating technology for
                     economic empowerment.</p> :
                     <p>
-                        We are a young women-led non-profit organization
+                        We are a young women led non-profit organization
                         committed to reshaping the narrative surrounding the value
                         of girls through redefining societal norms that perpetuate
                         the cycle of poverty, and fostering financial resilience

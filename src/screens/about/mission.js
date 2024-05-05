@@ -16,9 +16,9 @@ function Missions({ home }) {
                         <div className="bottomCard">
                             <p className="bottomCardParagraph">
                                 To promote financial resilience and digital
-                                inclu- sion amongst girls and young women
+                                inclusion amongst girls and young women
                                 and enable them to challenge oppressive and
-                                dis- criminatory practices.
+                                discriminatory practices.
                             </p>
                         </div>
                     </Card>
@@ -31,8 +31,8 @@ function Missions({ home }) {
                         </div>
                         <div className="bottomCard">
                             <p className="bottomCardParagraph">
-                                We envision an inclusive society where adoles-
-                                cent girls and young women have the power to
+                                We envision an inclusive society where adolescent
+                                girls and young women have the power to
                                 choose and create opportunities for themselves
                                 and others.
                             </p>

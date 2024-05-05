@@ -27,7 +27,7 @@ function Part1({ heading2, heading3 }) {
                     </Grid>
                     <Grid item xs={isMobile ? 12 : 8} className="bContainers">
                         <p>
-                            Her Initiative is a young women-led non-profit organization
+                            Her Initiative is a young women led non-profit organization
                             committed to reshaping the narrative surrounding the value
                             of girls through redefining societal norms that perpetuate
                             the cycle of poverty, and fostering financial resilience
