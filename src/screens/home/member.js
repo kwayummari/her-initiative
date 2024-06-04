@@ -33,7 +33,7 @@ function Members({ programData, teamData }) {
                                 alt="green iguana"
                                 image={`/photos/${programs.image}`}
                                 onClick={() => { navigation(programs) }}
-                                height={isMobile? '400px' : '300px'}
+                                height={isMobile? '400px' : '400px'}
                             />
                             <CardContent>
                                 <div style={{ display: 'flex' }}>
@@ -68,7 +68,7 @@ function Members({ programData, teamData }) {
                                 alt="green iguana"
                                 image={`/photos/${programs.image}`}
                                 onClick={() => { navigation(programs) }}
-                                height={isMobile? '400px' : '300px'}
+                                height={isMobile? '400px' : '400px'}
                             />
                             <CardContent>
                                 <div style={{ display: 'flex' }}>
