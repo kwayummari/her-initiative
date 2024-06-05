@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Add } from "@mui/icons-material";
 import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography } from "@mui/material";
+import parse from 'html-react-parser';
 import './style.css'
 
 function Blogs() {
@@ -72,7 +73,26 @@ function Blogs() {
         return blocks.map((block, index) => {
             switch (block.type) {
                 case 'paragraph':
-                    return <p key={index}>{block.data.text}</p>;
+                    return <p key={index}>{parse(block.data.text)}</p>;
+                case 'header':
+                    const Tag = `h${block.data.level}`;
+                    return <Tag key={index}>{block.data.text}</Tag>;
+                case 'list':
+                    return (
+                        <ul key={index}>
+                            {block.data.items.map((item, itemIndex) => (
+                                <li key={itemIndex}>{parse(item)}</li>
+                            ))}
+                        </ul>
+                    );
+                case 'ordered-list':
+                    return (
+                        <ol key={index}>
+                            {block.data.items.map((item, itemIndex) => (
+                                <li key={itemIndex}>{parse(item)}</li>
+                            ))}
+                        </ol>
+                    );
                 case 'image':
                     return <img key={index} src={block.data.file.url} alt={block.data.caption} />;
                 case 'linkTool':

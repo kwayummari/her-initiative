@@ -53,7 +53,7 @@ function Team() {
         { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '',  },
         { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring and Evaluation Officer", buttonText: '', },
         { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilzation and Project Officer", buttonText: '', },
-        { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Resource Mobilzation and Project Officer", buttonText: '',  },
+        { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Project Lead and Monitoring and Evaluation Officer", buttonText: '',  },
         { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', },
     ];
     return (
