@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Add } from "@mui/icons-material";
 import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography } from "@mui/material";
-import './style.css'
+import parse from 'html-react-parser';
+import './style.css';
 
 function Stories() {
     const isMobile = useMediaQuery('(max-width:600px)');
@@ -35,6 +35,23 @@ function Stories() {
         }
     };
 
+    // const decodeHtml = (html) => {
+    //     const txt = document.createElement("textarea");
+    //     txt.innerHTML = html;
+    //     return txt.value;
+    // };
+    const decodeHtml = (str) => {
+        try {
+            const decoder = new TextDecoder('utf-8');
+            const bytes = new Uint8Array(str.split('').map(char => char.charCodeAt(0)));
+            return decoder.decode(bytes);
+        } catch (e) {
+            return str; // Fallback to original string if decoding fails
+        }
+    };
+    
+    
+
     const renderBoard = () => {
         return (
             <Grid container spacing={4} item xs={12}>
@@ -53,8 +70,8 @@ function Stories() {
                                     <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
                                         <Add sx={{ color: '#000000' }} />
                                     </Avatar>
-                                    <p onClick={() => { navigation(programs) }} className="programParagraph1">
-                                        {programs.title}
+                                    <p onClick={() => { navigation(programs) }} className="storyTitle">
+                                        {decodeHtml(programs.title)}
                                     </p>
                                 </div>
                                 <p onClick={() => { navigation(programs) }} className="programParagraph2">
@@ -72,7 +89,26 @@ function Stories() {
         return blocks.map((block, index) => {
             switch (block.type) {
                 case 'paragraph':
-                    return <p key={index}>{block.data.text}</p>;
+                    return <p key={index}>{parse(block.data.text)}</p>;
+                case 'header':
+                    const Tag = `h${block.data.level}`;
+                    return <Tag key={index}>{block.data.text}</Tag>;
+                case 'list':
+                    return (
+                        <ul key={index}>
+                            {block.data.items.map((item, itemIndex) => (
+                                <li key={itemIndex}>{parse(item)}</li>
+                            ))}
+                        </ul>
+                    );
+                case 'ordered-list':
+                    return (
+                        <ol key={index}>
+                            {block.data.items.map((item, itemIndex) => (
+                                <li key={itemIndex}>{parse(item)}</li>
+                            ))}
+                        </ol>
+                    );
                 case 'image':
                     return <img key={index} src={block.data.file.url} alt={block.data.caption} />;
                 case 'linkTool':

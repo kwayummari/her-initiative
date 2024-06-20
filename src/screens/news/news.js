@@ -35,6 +35,11 @@ function Blogs() {
             console.error('Error fetching program data:', error);
         }
     };
+    const decodeHtml = (html) => {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    };
 
     const renderBoard = () => {
         return (
@@ -54,8 +59,8 @@ function Blogs() {
                                     <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
                                         <Add sx={{ color: '#000000' }} />
                                     </Avatar>
-                                    <p onClick={() => { navigation(programs) }} className="programParagraph1">
-                                        {programs.title}
+                                    <p onClick={() => { navigation(programs) }} className="newsTitle">
+                                        {decodeHtml(programs.title)}
                                     </p>
                                 </div>
                                 <p onClick={() => { navigation(programs) }} className="programParagraph2">
@@ -94,7 +99,7 @@ function Blogs() {
                         </ol>
                     );
                 case 'image':
-                    return <img key={index} src={block.data.file.url} alt={block.data.caption} />;
+                    return <img key={index} src={block.data.file.url} alt={block.data.caption} width={'100%'} />;
                 case 'linkTool':
                     return (
                         <p key={index}>
