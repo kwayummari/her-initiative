@@ -35,10 +35,8 @@ function Blogs() {
             console.error('Error fetching program data:', error);
         }
     };
-    const decodeHtml = (html) => {
-        const txt = document.createElement("textarea");
-        txt.innerHTML = html;
-        return txt.value;
+    const filterSpecialCharacters = (str) => {
+        return str.replace(/[^\w\s]/gi, '');
     };
 
     const renderBoard = () => {
@@ -60,7 +58,7 @@ function Blogs() {
                                         <Add sx={{ color: '#000000' }} />
                                     </Avatar>
                                     <p onClick={() => { navigation(programs) }} className="newsTitle">
-                                        {decodeHtml(programs.title)}
+                                    {filterSpecialCharacters(programs.title)}
                                     </p>
                                 </div>
                                 <p onClick={() => { navigation(programs) }} className="programParagraph2">
@@ -143,7 +141,7 @@ function Blogs() {
                     }}
                 >
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {selectedProgram && selectedProgram.title}
+                        {selectedProgram && filterSpecialCharacters(selectedProgram.title)}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         {selectedProgram && renderBlocks(JSON.parse(selectedProgram.full_description).blocks)}
