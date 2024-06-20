@@ -18,7 +18,8 @@ function Partners() {
     const partnerLogos = [
         ["1.png", "2.png", "3.png", "10.png"],
         ["5.png", "6.png", "7.png", "8.png"],
-        ["9.png", "6.png","5.png", "4.png"]
+        ["9.png", "6.png", "5.png", "4.png"],
+        ["8.png", "11.png","12.png", "7.png"],
     ];
 
     const renderLogos = (logos) => {
