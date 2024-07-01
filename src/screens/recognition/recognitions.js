@@ -8,6 +8,15 @@ const steps = [
         label: '2024',
         description: (
             <div>
+                <h1>KBF Africa Prize Lauraute 2023-2024 🏆</h1>
+                <img src='/photos/africa.jpg' alt='Global Citizen Prize' className='responsiveImage' />
+            </div>
+        ),
+    },
+    {
+        label: '2024',
+        description: (
+            <div>
                 <h1>2024 Global Citizen Prize 🏆</h1>
                 <img src='/photos/global.jpeg' alt='Global Citizen Prize' className='responsiveImage' />
             </div>
