@@ -18,6 +18,7 @@ import ReportForm from './screens/admin/reports';
 import Youtube from './screens/youtube';
 import ReportsUser from './screens/reports';
 import SuccessStories from './screens/successStory';
+import NewBlogForm from './screens/admin/blog';
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="recognitions" element={<Recognition />} />
             <Route path="admins" element={<Admins />} />
+            <Route path="blogUpload" element={<NewBlogForm />} />
             <Route path="AdminReports" element={<ReportForm />} />
             <Route path="reports" element={<ReportsUser />} />
             <Route path="youtube" element={<Youtube />} />

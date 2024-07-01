@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Facebook, Instagram, LinkedIn } from '@mui/icons-material';
 import './style.css';
 
@@ -36,8 +37,10 @@ function BottomFooter() {
         addWidget();
     }, []);
 
-    const handleClick = (link) => {
-        window.location.href = link;
+    const navigate = useNavigate();
+
+    const handleClick = (path) => {
+        navigate(path);
     };
 
     const [socialUrls] = useState({
@@ -46,6 +49,7 @@ function BottomFooter() {
         facebook: 'https://www.facebook.com/teengirlstanzania/',
         linkedin: 'https://www.linkedin.com/'
     });
+
     const openSocialMedia = (url) => {
         window.open(url, '_blank');
     };
@@ -69,6 +73,7 @@ function BottomFooter() {
                         <p onClick={() => handleClick('/news')}><b>Blog</b></p>
                         <p onClick={() => handleClick('/what')}><b>Projects</b></p>
                         <p onClick={() => handleClick('/reports')}><b>Reports</b></p>
+                        <p onClick={() => handleClick('/admins')}><b>Admin</b></p>
                     </div>
                     <div className='footerContainer4'>
                         <h3>Get In Touch</h3>
@@ -80,13 +85,12 @@ function BottomFooter() {
                             <b>Web:</b> www.herinitiative.co.tz <br />
                         </p>
                     </div>
-
                 </div>
             </footer>
             <div className='bottomFooter'>
                 <h3 className='line'>© Copyright 2024 | Her Initiative | All Rights Reserved</h3>
                 <div className='socialIcons'>
-                <img src='/icons/twitter.png' alt='x' width={'20px'} style={{paddingRight: '20px', paddingLeft: '40px'}} onClick={() => openSocialMedia(socialUrls.twitter)} />
+                    <img src='/icons/twitter.png' alt='x' width={'20px'} style={{ paddingRight: '20px', paddingLeft: '40px' }} onClick={() => openSocialMedia(socialUrls.twitter)} />
                     <Instagram onClick={() => openSocialMedia(socialUrls.instagram)} />
                     <Facebook onClick={() => openSocialMedia(socialUrls.facebook)} />
                     <LinkedIn onClick={() => openSocialMedia(socialUrls.linkedin)} />

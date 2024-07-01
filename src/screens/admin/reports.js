@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Card, CardContent, Typography } from '@mui/material';
 import AboutCarousel from '../about/aboutCarousel';
 import Part1 from '../about/part1';
-import './style.css'
+import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 function ReportForm() {
     const [title, setTitle] = useState('');
@@ -12,6 +13,20 @@ function ReportForm() {
 
     const handlePdfFileChange = (event) => {
         setPdfFile(event.target.files[0]);
+    };
+
+    useEffect(() => {
+        const userId = localStorage.getItem('userId');
+        console.log('userId', userId)
+        if (userId != 1) {
+            handleClick('/admins')
+        }
+    }, []);
+
+    const navigate = useNavigate();
+
+    const handleClick = (path) => {
+        navigate(path);
     };
 
     const handleSubmit = async (event) => {
@@ -44,6 +59,7 @@ function ReportForm() {
             <div className="contents">
                 <Card variant="elevation" elevation={3} className="contactCard">
                     <p className="title">Create a New Report</p>
+                    <Button onClick={() => handleClick('/blogUpload')} variant="contained"  className="donationButton1">Blog</Button>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
                             <TextField
