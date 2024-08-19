@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Add } from "@mui/icons-material";
-import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography } from "@mui/material";
+import { Add, Share } from "@mui/icons-material";
+import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography, IconButton, Menu, MenuItem } from "@mui/material";
 import parse from 'html-react-parser';
-import './style.css'
+import './style.css';
 
 function Blogs() {
     const isMobile = useMediaQuery('(max-width:600px)');
     const [openModal, setOpenModal] = useState(false);
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [programData, setProgramData] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
 
     const navigation = (programs) => {
         setSelectedProgram(programs);
@@ -35,8 +36,48 @@ function Blogs() {
             console.error('Error fetching program data:', error);
         }
     };
+
     const filterSpecialCharacters = (str) => {
         return str.replace(/[^\w\s]/gi, '');
+    };
+
+    const handleShareClick = (event, programs) => {
+        setSelectedProgram(programs);
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleCloseShareMenu = () => {
+        setAnchorEl(null);
+    };
+
+    const shareOnPlatform = (platform) => {
+        if (!selectedProgram) return;
+
+        const url = `https://herinitiative.or.tz/news/`;
+        const text = encodeURIComponent(selectedProgram.title);
+        const imageUrl = `https://herinitiative.or.tz/her-api/api/blog/images/${selectedProgram.image}`;
+
+        let shareUrl = '';
+
+        switch (platform) {
+            case 'twitter':
+                shareUrl = `https://twitter.com/intent/tweet?text=${text}&image-src=${imageUrl}&url=${url}`;
+                break;
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                break;
+            case 'linkedin':
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                break;
+            case 'instagram':
+                alert('Instagram does not support direct URL sharing. You can copy the link and share it manually.');
+                break;
+            default:
+                return;
+        }
+
+        window.open(shareUrl, '_blank');
+        handleCloseShareMenu();
     };
 
     const renderBoard = () => {
@@ -53,13 +94,18 @@ function Blogs() {
                                 height={'500px'}
                             />
                             <CardContent>
-                                <div style={{ display: 'flex' }}>
-                                    <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
-                                        <Add sx={{ color: '#000000' }} />
-                                    </Avatar>
-                                    <p onClick={() => { navigation(programs) }} className="newsTitle">
-                                    {filterSpecialCharacters(programs.title)}
-                                    </p>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <div style={{ display: 'flex' }}>
+                                        <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
+                                            <Add sx={{ color: '#000000' }} />
+                                        </Avatar>
+                                        <p onClick={() => { navigation(programs) }} className="newsTitle">
+                                            {filterSpecialCharacters(programs.title)}
+                                        </p>
+                                    </div>
+                                    <IconButton onClick={(e) => handleShareClick(e, programs)}>
+                                        <Share />
+                                    </IconButton>
                                 </div>
                                 <p onClick={() => { navigation(programs) }} className="programParagraph2">
                                     {programs.description} <span style={{ color: '#633e98', fontWeight: 'bold', cursor: 'pointer' }}>View More</span>
@@ -136,7 +182,7 @@ function Blogs() {
                         p: 4,
                         borderRadius: '10px',
                         maxWidth: '80vw',
-                        maxHeight: '80vh',
+                        maxHeight: '60vh',
                         overflowY: 'auto',
                     }}
                 >
@@ -146,9 +192,24 @@ function Blogs() {
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         {selectedProgram && renderBlocks(JSON.parse(selectedProgram.full_description).blocks)}
                     </Typography>
-
                 </Box>
             </Modal>
+            <Menu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleCloseShareMenu}
+                PaperProps={{
+                    style: {
+                        maxHeight: 48 * 4.5,
+                        width: '20ch',
+                    },
+                }}
+            >
+                <MenuItem onClick={() => shareOnPlatform('twitter')}>Share on Twitter</MenuItem>
+                <MenuItem onClick={() => shareOnPlatform('facebook')}>Share on Facebook</MenuItem>
+                <MenuItem onClick={() => shareOnPlatform('linkedin')}>Share on LinkedIn</MenuItem>
+                <MenuItem onClick={() => shareOnPlatform('instagram')}>Share on Instagram</MenuItem>
+            </Menu>
         </div>
     );
 }
