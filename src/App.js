@@ -24,10 +24,22 @@ export default function App() {
   return (
     <div className="App">
       <Helmet>
+        <title>Her Initiative - Empowering Women and Girls</title>
+        <meta name="description" content="Her Initiative is committed to empowering girls and young women through economic independence, education, and community support. Join us in redefining the narrative and creating a new normal." />
+        <meta name="keywords" content="Her Initiative, women empowerment, economic independence, girls education, young women, community support, Lydia Charles Moyo" />
+        <meta name="author" content="Her Initiative" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta property="og:title" content="Her Initiative - Empowering Women and Girls" />
+        <meta property="og:description" content="Her Initiative is committed to empowering girls and young women through economic independence, education, and community support." />
+        <meta property="og:image" content="https://herinitiative.or.tz/logo192.png" />
+        <meta property="og:url" content="https://herinitiative.or.tz" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Her Initiative - Empowering Women and Girls" />
+        <meta name="twitter:description" content="Her Initiative is committed to empowering girls and young women through economic independence, education, and community support." />
+        <meta name="twitter:image" content="https://herinitiative.or.tz/logo192.png" />
       </Helmet>
       <HashRouter>
         <Routes>
@@ -50,9 +62,9 @@ export default function App() {
           </Route>
         </Routes>
       </HashRouter>
-      {/* <Home /> */}
     </div>
   );
 }
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

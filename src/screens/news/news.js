@@ -133,20 +133,22 @@ function Blogs() {
             </Grid>
         );
     };
-
+    const replaceSpecialCharacters = (text) => {
+        return text.replace(/â€œ/g, '').replace(/â€/g, '').replace(/â€™/g, `'`).replace(/â€“/g, `"`);;
+    };
     const renderBlocks = (blocks) => {
         return blocks.map((block, index) => {
             switch (block.type) {
                 case 'paragraph':
-                    return <p key={index}>{parse(block.data.text)}</p>;
+                    return <p key={index}>{parse(replaceSpecialCharacters(block.data.text))}</p>;
                 case 'header':
                     const Tag = `h${block.data.level}`;
-                    return <Tag key={index}>{block.data.text}</Tag>;
+                    return <Tag key={index}>{replaceSpecialCharacters(block.data.text)}</Tag>;
                 case 'list':
                     return (
                         <ul key={index}>
                             {block.data.items.map((item, itemIndex) => (
-                                <li key={itemIndex}>{parse(item)}</li>
+                                <li key={itemIndex}>{parse(replaceSpecialCharacters(item))}</li>
                             ))}
                         </ul>
                     );
@@ -154,7 +156,7 @@ function Blogs() {
                     return (
                         <ol key={index}>
                             {block.data.items.map((item, itemIndex) => (
-                                <li key={itemIndex}>{parse(item)}</li>
+                                <li key={itemIndex}>{parse(replaceSpecialCharacters(item))}</li>
                             ))}
                         </ol>
                     );
