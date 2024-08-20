@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; // Change this line
 import { Add, Share } from "@mui/icons-material";
 import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography, IconButton, Menu, MenuItem } from "@mui/material";
 import parse from 'html-react-parser';
@@ -12,18 +13,32 @@ function Blogs() {
     const [programData, setProgramData] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
 
+    const location = useLocation();
+    const navigate = useNavigate(); // Change this line
+
     const navigation = (programs) => {
         setSelectedProgram(programs);
         setOpenModal(true);
+        navigate(`/news?blogId=${programs.id}`); // Update URL with the blog ID
     };
 
     const handleCloseModal = () => {
         setOpenModal(false);
+        navigate(`/news`); // Remove the blog ID from the URL when closing the modal
     };
 
     useEffect(() => {
         fetchProgramData();
-    }, []);
+        const params = new URLSearchParams(location.search);
+        const blogId = params.get('blogId');
+        if (blogId && programData) {
+            const blog = programData.find(program => program.id === parseInt(blogId));
+            if (blog) {
+                setSelectedProgram(blog);
+                setOpenModal(true);
+            }
+        }
+    }, [location.search, programData]);
 
     const fetchProgramData = async () => {
         try {
@@ -53,7 +68,8 @@ function Blogs() {
     const shareOnPlatform = (platform) => {
         if (!selectedProgram) return;
 
-        const url = `https://herinitiative.or.tz/news/`;
+        const url = `https://herinitiative.or.tz/#/news?blogId=${selectedProgram.id}`;
+        const encodedUrl = encodeURIComponent(url);
         const text = encodeURIComponent(selectedProgram.title);
         const imageUrl = `https://herinitiative.or.tz/her-api/api/blog/images/${selectedProgram.image}`;
 
@@ -61,13 +77,13 @@ function Blogs() {
 
         switch (platform) {
             case 'twitter':
-                shareUrl = `https://twitter.com/intent/tweet?text=${text}&image-src=${imageUrl}&url=${url}`;
+                shareUrl = `https://twitter.com/intent/tweet?text=${text}&image-src=${imageUrl}&url=${encodedUrl}`;
                 break;
             case 'facebook':
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
                 break;
             case 'linkedin':
-                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
                 break;
             case 'instagram':
                 alert('Instagram does not support direct URL sharing. You can copy the link and share it manually.');
