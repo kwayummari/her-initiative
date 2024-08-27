@@ -16,6 +16,9 @@ function TopAppBar() {
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false);
     const [open4, setOpen4] = React.useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const handleMouseEnter = () => setIsHovered(true);
+    const handleMouseLeave = () => setIsHovered(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -177,7 +180,8 @@ function TopAppBar() {
                                                 title={
                                                     <div>
                                                         <Link className='homeLink1' onClick={handleTooltipClose4} to="/contact">Contacts</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate</Link><br />
+                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
+                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
                                                     </div>
                                                 }>
                                                 <Link className='openLinks' onClick={handleTooltipOpen4} to="#">Get Involved <ExpandMore /></Link>
@@ -224,7 +228,8 @@ function TopAppBar() {
                             <Tooltip title={
                                 <div>
                                     <Link className='homeLink1' to="/contact">Contacts</Link><br />
-                                    <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate</Link><br />
+                                    <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
+                                    <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
                                 </div>
                             }>
                                 <Link className='links' to="#">Get Involved <ExpandMore /></Link>
@@ -305,7 +310,12 @@ function TopAppBar() {
                 <Collapse in={openSubmenu4} timeout="auto" unmountOnExit>
                     <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">
                         <ListItem>
-                            <ListItemText primary="Donate" />
+                            <ListItemText primary="Donate Myriad USA" />
+                        </ListItem>
+                    </Link>
+                    <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">
+                        <ListItem>
+                            <ListItemText primary="Donate Myriad AUSTRALIA" />
                         </ListItem>
                     </Link>
                     <Link className='homeLink1' to="/contact">
@@ -318,5 +328,4 @@ function TopAppBar() {
         </>
     );
 }
-
 export default TopAppBar;
