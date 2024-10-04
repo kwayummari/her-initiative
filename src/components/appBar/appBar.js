@@ -182,6 +182,7 @@ function TopAppBar() {
                                                         <Link className='homeLink1' onClick={handleTooltipClose4} to="/contact">Contacts</Link><br />
                                                         <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
                                                         <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
+                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">Donate Myriad EUROPEAN</Link><br />
                                                     </div>
                                                 }>
                                                 <Link className='openLinks' onClick={handleTooltipOpen4} to="#">Get Involved <ExpandMore /></Link>
@@ -230,6 +231,7 @@ function TopAppBar() {
                                     <Link className='homeLink1' to="/contact">Contacts</Link><br />
                                     <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
                                     <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
+                                    <Link className='homeLink1' target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">Donate Myriad EUROPEAN</Link><br />
                                 </div>
                             }>
                                 <Link className='links' to="#">Get Involved <ExpandMore /></Link>
@@ -316,6 +318,11 @@ function TopAppBar() {
                     <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">
                         <ListItem>
                             <ListItemText primary="Donate Myriad AUSTRALIA" />
+                        </ListItem>
+                    </Link>
+                    <Link className='homeLink1' target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">
+                        <ListItem>
+                            <ListItemText primary="Donate Myriad EUROPEAN" />
                         </ListItem>
                     </Link>
                     <Link className='homeLink1' to="/contact">
