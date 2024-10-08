@@ -51,6 +51,29 @@ function BottomFooter() {
         window.open(url, '_blank');
     };
 
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const handleSubscription = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("email", email);
+        try {
+            const response = await fetch('https://herinitiative.or.tz/her-api/api/newsLetter/add_email.php', {
+                method: 'POST',
+                body: formData,
+            });
+            if (response.ok) {
+                setMessage('Thank you for subscribing!');
+                setEmail('');
+            } else {
+                setMessage('Subscription failed. Please try again.');
+            }
+        } catch (error) {
+            setMessage('An error occurred. Please try again later.');
+        }
+    };
+
     return (
         <div className='footer' style={{ backgroundColor: '#212121' }}>
             <footer className='footerContainer py-2'>
@@ -87,14 +110,24 @@ function BottomFooter() {
                         </div>
                         <div className="col-md-3 footerContainer4 mb-4">
                             <h3>Newsletter</h3>
-                            <form className="form-inline">
+                            <form className="form-inline" onSubmit={handleSubscription}>
                                 <div className="input-group">
-                                    <input type="email" className="form-control" placeholder="Enter your email" />
+                                    <input
+                                        type="email"
+                                        placeholder="Enter your email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="form-control rounded-0"
+                                    />
                                     <div className="input-group-append">
-                                        <button className="btn btn-primary" type="submit">Subscribe</button>
+                                        <button type="submit" className="btn btn-primary rounded-0">
+                                            Subscribe
+                                        </button>
                                     </div>
                                 </div>
                             </form>
+                            {message && <p>{message}</p>}
                             <div className='donation'></div>
                         </div>
                     </div>
