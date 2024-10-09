@@ -168,7 +168,7 @@
 
 .topContainer {
   width: 80vw;
-  height: 500px;
+  height: 600px !important;
   background-color: #633e98;
   border-radius: 10px;
 }
@@ -178,7 +178,7 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  bottom: 28vw;
+  bottom: 32vw !important;
   left: 20%;
   transform: translateX(10%);
   width: 30vw !important;
@@ -190,7 +190,7 @@
 }
 .bottomContainerImage {
   border-radius: 10px;
-  margin: 20px 0px 20px 20px;
+  margin: 20px 0px 20px 20px !important;
   justify-content: center;
   transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   &:hover {
@@ -210,8 +210,8 @@
   font-size: 18px;
   font-weight: 500;
   color: #ffffff;
-  width: 450px;
-  margin: 20px 40px 0px 20px;
+  width: 470px !important;
+  margin: 10px 20px 0px 20px !important;
 }
 .impactsList {
   margin-top: 0px;
