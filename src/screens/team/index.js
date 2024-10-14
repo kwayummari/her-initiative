@@ -1,12 +1,10 @@
 import React from "react";
 import AboutCarousel from "../about/aboutCarousel";
 import Part1 from "../about/part1";
-import { useMediaQuery } from "@mui/material";
 import Members from "../home/member";
 import Donations from "../about/donation";
 
 function Team() {
-    // const isMobile = useMediaQuery('(max-width:600px)');
     const programData = [
         { image: "vanessa.jpeg", title: "Vanessa Anyoti", subTitle: "Board Chair", buttonText: '', description: "Vanessa Anyoti who currently serves as the CEO of the Jakaya Mrisho Kikwete Foundation, is a seasoned ...", fullDescription: `Vanessa Anyoti who currently serves as the CEO of the Jakaya Mrisho Kikwete Foundation, is a seasoned professional holding a Master's degree in Epidemiology and Biostatistics. With a remarkable 8-year career spanning development, program management, and youth leadership, Vanessa showcases versatility and unwavering commitment in her field. Her global perspective is evident through significant roles in both national and international civil society organizations, reflecting her ability to navigate diverse cultural contexts.
 

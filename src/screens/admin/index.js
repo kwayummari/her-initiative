@@ -26,7 +26,7 @@ function Authentication() {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            if (data == 1) {
+            if (data === 1) {
                 setUploadStatus('Login successful');
                 localStorage.setItem('userId', data );
                 handleClick('/blogUpload')

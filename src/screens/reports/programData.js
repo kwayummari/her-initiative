@@ -8,8 +8,6 @@ function ReportsData({ programData }) {
     const isMobile = useMediaQuery('(max-width:600px)');
     const [openModal, setOpenModal] = useState(false);
     const [selectedProgram, setSelectedProgram] = useState(null);
-
-    // Set PDF.js worker script URL
     pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
     const navigation = (programs) => {

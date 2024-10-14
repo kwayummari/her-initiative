@@ -2,7 +2,6 @@ import { React, useEffect } from "react";
 import AboutCarousel from "./aboutCarousel";
 import Part1 from "./part1";
 import Story2 from "./story2";
-import { useMediaQuery } from "@mui/material";
 import ImageRows from "./imageRows";
 import Missions from "./mission";
 import Values from "./value";

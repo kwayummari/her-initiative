@@ -18,7 +18,7 @@ function ReportForm() {
     useEffect(() => {
         const userId = localStorage.getItem('userId');
         console.log('userId', userId)
-        if (userId != 1) {
+        if (userId !== 1) {
             handleClick('/admins')
         }
     }, []);

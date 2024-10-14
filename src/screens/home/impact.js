@@ -6,12 +6,12 @@ import { useEffect, useState } from 'react';
 function Impact() {
 
     const [counters, setCounters] = useState([
-        { count: 0, targetCount: 19044, label: "young women were directly reached, with an additional 25,000,000 young women indirectly reached." },
-        { count: 0, targetCount: 3330, label: "young women entrepreneurs adopted digital operations, with 210 starting new businesses." },
-        { count: 0, targetCount: 8385, label: "young women accessed skills and opportunities through the Panda Digital website and SMS services" },
-        { count: 0, targetCount: 38, label: "youth-led organizations received support, empowering 145 youth with employability skills." },
-        { count: 0, targetCount: 250, label: "adolescent girls from 5 Mshiko clubs in 5 Secondary schools gained financial literacy, entrepreneurial, and life skills through tailored training sessions" },
-        { count: 0, targetCount: 108, label: "out-of-school girls gained economic independence, confidence in addressing GBV, and leadership skills." }
+        { count: 0, targetCount: 19044, label: "Young women were directly reached, with an additional 25,000,000 young women indirectly reached." },
+        { count: 0, targetCount: 3330, label: "Young women entrepreneurs adopted digital operations, with 210 starting new businesses." },
+        { count: 0, targetCount: 8385, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
+        { count: 0, targetCount: 38, label: "Youth-led organizations received support, empowering 145 youth with employability skills." },
+        { count: 0, targetCount: 250, label: "Adolescent girls from 5 Mshiko clubs in 5 Secondary schools gained entrepreneurial, and life skills through tailored training" },
+        { count: 0, targetCount: 108, label: "Out-of-school girls gained economic independence, confidence in addressing GBV, and leadership skills." }
     ]);
 
     useEffect(() => {

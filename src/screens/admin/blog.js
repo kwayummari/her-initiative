@@ -26,19 +26,17 @@ function NewBlogForm() {
         }
         console.log(category)
     };
+    const handleClick = (path) => {
+        navigate(path);
+    };
     useEffect(() => {
         const userId = localStorage.getItem('userId');
-        console.log('userId', userId)
-        if (userId != 1) {
+        if (userId !== 1) {
             handleClick('/admins')
         }
     }, []);
 
     const navigate = useNavigate();
-
-    const handleClick = (path) => {
-        navigate(path);
-    };
 
     useEffect(() => {
         const initializeEditor = () => {

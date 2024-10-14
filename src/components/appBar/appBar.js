@@ -16,9 +16,6 @@ function TopAppBar() {
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false);
     const [open4, setOpen4] = React.useState(false);
-    const [isHovered, setIsHovered] = useState(false);
-    const handleMouseEnter = () => setIsHovered(true);
-    const handleMouseLeave = () => setIsHovered(false);
 
     useEffect(() => {
         const handleScroll = () => {

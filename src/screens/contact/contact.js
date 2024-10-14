@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import './style.css';
-import { useMediaQuery, Card, CardActions, CardContent, Button, TextField } from "@mui/material";
+import { Card, CardActions, CardContent, Button, TextField } from "@mui/material";
 import MarkEmailUnreadIcon from '@mui/icons-material/MarkEmailUnread';
 
 function Contacts() {
-    // const isMobile = useMediaQuery('(max-width:600px)');
-
     const [formData, setFormData] = useState({
         fullName: '',
         address: '',
@@ -19,11 +17,6 @@ function Contacts() {
             [name]: value
         }));
     };
-
-    // const handleUpload = () => {
-    //     // You can implement the upload functionality here
-    //     console.log(formData); // Just for testing, you can replace it with your upload logic
-    // };
 
     return (
         <div>

@@ -377,7 +377,7 @@
 
   .topContainer {
     width: 95vw;
-    height: 100%;
+    height: 700px !important;
     background-color: #633e98;
     border-radius: 10px;
     padding-bottom: 20px;
