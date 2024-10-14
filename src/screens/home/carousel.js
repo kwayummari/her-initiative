@@ -59,7 +59,8 @@ function Carousel() {
                                 zIndex: 1 
                             }}>
                                 <p><a style={{color: '#ffffff'}} href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate/card" target="_blank" rel="noopener noreferrer">Donate via Myriad USA</a></p>
-                                <p><a style={{color: '#ffffff'}} href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate via Myriad Australia</a></p>
+                                <p><a style={{ color: '#ffffff' }} href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate via Myriad Australia</a></p>
+                                <p><a style={{ color: '#ffffff' }} href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a></p>
                             </div>
                         )}
                     </div>
