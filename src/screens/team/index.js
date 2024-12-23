@@ -45,7 +45,7 @@ function Team() {
     ];
     const teamData = [
         { image: "Her-Initiative-Organization-Profile-Design-41.jpg", title: "Lydia Charles Moyo", subTitle: "Founder and Executive Director", buttonText: '', },
-        { image: "rajabu.jpg", title: "Rajabu Mohamed", subTitle: "Head Of Programs", buttonText: '', },
+        // { image: "rajabu.jpg", title: "Rajabu Mohamed", subTitle: "Head Of Programs", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-42.jpg", title: "Amanda Moses", subTitle: "Finance Officer", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communication Officer", buttonText: '', },
         { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '',  },
