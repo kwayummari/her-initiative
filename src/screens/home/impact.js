@@ -44,8 +44,8 @@ const Impact = () => {
         {/* Header Section */}
         <div className="row mb-5 text-center">
           <div className="col-12">
-            <h6 className="text-secondary fw-bold">MAKING A DIFFERENCE</h6>
-            <h2 className="display-4 fw-bold" style={{ color: '#633e98' }}>Our Impact</h2>
+            <h6 className="text-secondary">MAKING A DIFFERENCE</h6>
+            <h2 className="display-4" style={{ color: '#633e98' }}>Our Impact</h2>
           </div>
         </div>
 

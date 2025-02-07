@@ -1,117 +1,143 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Add } from "@mui/icons-material";
-import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
+// Members.js
+import React, { useState } from 'react';
+import { Box, Modal, Typography } from "@mui/material";
 
 function Members({ programData, teamData }) {
-    const isMobile = useMediaQuery('(max-width:600px)');
+    const [selectedMember, setSelectedMember] = useState(null);
     const [openModal, setOpenModal] = useState(false);
     const [selectedProgram, setSelectedProgram] = useState(null);
 
-    const navigation = (programs) => {
-        setSelectedProgram(programs);
+    const handleMemberClick = (member) => {
+        setSelectedProgram(member);
         setOpenModal(true);
     };
-
     const handleCloseModal = () => {
         setOpenModal(false);
     };
 
-    // const handleClick = () => {
-    //     window.location.href = '/what';
-    // };
+    const renderSection = (data, title) => (
+        <div className="container mb-5">
+            <div className="text-center mb-5">
+                <h2 className="display-4 text-purple">{title}</h2>
+                <div className="mx-auto bg-warning" style={{ height: "3px", width: "100px" }}></div>
+            </div>
 
-    const renderBoard = () => {
-        return (
-            <Grid container spacing={4} item xs={12}>
-                {programData.map((programs, index) => (
-                    <Grid key={index} item xs={isMobile ? 12 : 3}>
-                        <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
-                            <CardMedia
-                                component="img"
-                                alt="green iguana"
-                                image={`/photos/${programs.image}`}
-                                onClick={() => { navigation(programs) }}
-                                height={isMobile? '400px' : '400px'}
+            <div className="row g-4">
+                {data.map((member, index) => (
+                    <div key={index} className="col-md-6 col-lg-3">
+                        <div className="card h-100 border-0 shadow-sm member-card">
+                            <img
+                                src={`/photos/${member.image}`}
+                                className="card-img-top object-fit-cover"
+                                alt={member.title}
+                                style={{ height: "400px" }}
+                                onClick={() => handleMemberClick(member)}
                             />
-                            <CardContent>
-                                <div style={{ display: 'flex' }}>
-                                    <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
-                                        <Add sx={{ color: '#000000' }} />
-                                    </Avatar>
-                                    <p onClick={() => { navigation(programs) }} className="programParagraph3">
-                                        {programs.title}
-                                    </p>
+                            <div className="card-body">
+                                <div className="d-flex align-items-start">
+                                    <div className="rounded-circle bg-warning p-2 me-2 mt-3">
+                                        <i className="bi bi-plus text-dark"></i>
+                                    </div>
+                                    <div>
+                                        <h5 className="card-title fw-bold mb-2">{member.title}</h5>
+                                        <p className="text-muted fw-bold mb-2">{member.subTitle}</p>
+                                        {member.description && (
+                                            <p className="card-text">
+                                                {member.description}
+                                                <span
+                                                    className="text-purple fw-bold ms-1 cursor-pointer"
+                                                    onClick={() => handleMemberClick(member)}
+                                                >
+                                                    Read More
+                                                </span>
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
-                                <p style={{ textAlign: 'left', fontWeight: '700', fontSize: '18px' }}>{programs.subTitle}</p>
-                                <p onClick={() => { navigation(programs) }} className="programParagraph2">
-                                    {programs.description}
-                                    <span style={{ color: '#633e98', fontWeight: 'bold', cursor: 'pointer' }}>Read More</span>
-                                </p>
-                            </CardContent>
-                        </Card>
-                    </Grid>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </Grid>
-        );
-    };
-
-    const renderTeam = () => {
-        return (
-            <Grid container spacing={4} item xs={12}>
-                {teamData.map((programs, index) => (
-                    <Grid key={index} item xs={isMobile ? 12 : 3}>
-                        <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
-                            <CardMedia
-                                component="img"
-                                alt="green iguana"
-                                image={`/photos/${programs.image}`}
-                                onClick={() => { navigation(programs) }}
-                                height={isMobile? '400px' : '400px'}
-                            />
-                            <CardContent>
-                                <div style={{ display: 'flex' }}>
-                                    <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
-                                        <Add sx={{ color: '#000000' }} />
-                                    </Avatar>
-                                    <p onClick={() => { navigation(programs) }} className="programParagraph1">
-                                        {programs.title}
-                                    </p>
-                                </div>
-                                <p style={{ textAlign: 'left', fontWeight: '500', fontSize: '20px' }}>{programs.subTitle}</p>
-                                {/* <p onClick={() => { navigation(programs) }} className="programParagraph2">
-                                    {programs.description} <span style={{ color: '#633e98', fontWeight: 'bold', cursor: 'pointer' }}>View More</span>
-                                </p> */}
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))}
-            </Grid>
-        );
-    };
+            </div>
+        </div>
+    );
 
     return (
-        <div className="approach">
-            <div className="approachHeader">
-                <p></p>
-                <p>Our Board</p>
-            </div>
-            <Box sx={{ marginLeft: !isMobile && "150px", marginRight: !isMobile && "150px", marginTop: "50px", marginBottom: '40px' }}>
-                {renderBoard()}
-            </Box>
-            <div className="approachHeader">
-                <p></p>
-                <p>Our Team</p>
-            </div>
-            <Box sx={{ marginLeft: !isMobile && "150px", marginRight: !isMobile && "150px", marginTop: "50px", marginBottom: '40px' }}>
-                {renderTeam()}
+        <div className="py-5">
+            {renderSection(programData, "Our Board")}
+            {renderSection(teamData, "Our Team")}
 
-                {/* <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button variant="contained" onClick={handleClick} className="programButton">View More</Button>
-                </Grid> */}
-            </Box>
-            {/* Modal for Full Description */}
+            {/* Modal */}
+            <div
+                className="modal fade"
+                id="memberModal"
+                tabIndex="-1"
+                show={!!selectedMember}
+                onHide={() => setSelectedMember(null)}
+            >
+                <div className="modal-dialog modal-dialog-centered modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header border-0">
+                            <h5 className="modal-title fw-bold">{selectedMember?.title}</h5>
+                            <button
+                                type="button"
+                                className="btn-close"
+                                onClick={() => setSelectedMember(null)}
+                            ></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>{selectedMember?.fullDescription}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                {`
+                .text-purple {
+    color: #633e98;
+}
+
+.member-card {
+    transition: transform 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+}
+
+.member-card img {
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover img {
+    transform: scale(1.05);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.modal-dialog {
+    max-height: 90vh;
+}
+
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+}`}
+            </style>
             <Modal
                 open={openModal}
                 onClose={handleCloseModal}

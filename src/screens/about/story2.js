@@ -13,7 +13,7 @@ const Story2 = () => {
           />
           <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
           <div className="position-absolute top-50 start-50 translate-middle text-center text-white">
-            <h1 className="display-3 fw-bold">Our Story, Our Evolution</h1>
+            <h1 className="display-3 ">Our Story, Our Evolution</h1>
             <div className="mx-auto mt-3 bg-warning" style={{height: "3px", width: "100px"}}></div>
           </div>
         </div>

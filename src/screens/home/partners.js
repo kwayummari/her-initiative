@@ -42,8 +42,8 @@ const Partners = () => {
       <div className="container">
         {/* Header */}
         <div className="text-center mb-5">
-          <h6 className="text-uppercase text-secondary fw-bold mb-2">Partnerships</h6>
-          <h2 className="display-5 fw-bold text-primary">Our Partners</h2>
+          <h6 className="text-uppercase text-secondary mb-2">Partnerships</h6>
+          <h2 className="display-5 text-primary">Our Partners</h2>
         </div>
 
         {/* Partners Carousel */}

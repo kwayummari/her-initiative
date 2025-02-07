@@ -29,7 +29,7 @@ const Approach = () => {
       <div className="container">
         {/* Header Section */}
         <div className="text-center mb-5">
-          <h2 className="display-4 fw-bold" style={{ color: '#633e98' }}>Our Approach</h2>
+          <h2 className="display-4" style={{ color: '#633e98' }}>Our Approach</h2>
           <div className="row justify-content-center">
             <div className="col-md-8">
               <p className="lead mb-5">

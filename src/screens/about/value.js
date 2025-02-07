@@ -33,7 +33,7 @@ const Values = () => {
   return (
     <div className="container py-5">
       <div className="text-center mb-5">
-        <h2 className="display-4 text-purple fw-bold">Our Values</h2>
+        <h2 className="display-4 text-purple">Our Values</h2>
         <div className="mx-auto bg-warning" style={{ height: "3px", width: "100px" }}></div>
       </div>
 
