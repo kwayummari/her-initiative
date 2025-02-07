@@ -1,335 +1,415 @@
+import { Facebook, Instagram, LinkedIn } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
-import './style.css';
-import { Facebook, Instagram, LinkedIn, Menu, ExpandMore } from '@mui/icons-material';
-import { AppBar, Box, Toolbar, Drawer, List, ListItem, ListItemText, Tooltip, Collapse, ClickAwayListener } from '@mui/material';
 import { Link } from "react-router-dom";
 
-function TopAppBar() {
+const TopAppBar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const [openSubmenu, setOpenSubmenu] = useState(false);
-    const [openSubmenu2, setOpenSubmenu2] = useState(false);
-    const [openSubmenu3, setOpenSubmenu3] = useState(false);
-    const [openSubmenu4, setOpenSubmenu4] = useState(false);
-    const [open, setOpen] = React.useState(false);
-    const [open2, setOpen2] = React.useState(false);
-    const [open3, setOpen3] = React.useState(false);
-    const [open4, setOpen4] = React.useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
+    const [dropdownStates, setDropdownStates] = useState({
+        about: false,
+        whatWeDo: false,
+        resource: false,
+        getInvolved: false
+    });
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 0) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const handleResize = () => {
-        const isMobileWidth = window.innerWidth <= 900;
-        setIsMobile(isMobileWidth);
-    };
-
-    const [socialUrls] = useState({
+    const socialUrls = {
         twitter: 'https://twitter.com/herinitiative?lang=en',
         instagram: 'https://www.instagram.com/herinitiative/?hl=en',
         facebook: 'https://www.facebook.com/teengirlstanzania/',
         linkedin: 'https://www.linkedin.com/'
-    });
-    const toggleSubmenu = () => {
-        setOpenSubmenu(!openSubmenu);
     };
-    const toggleSubmenu2 = () => {
-        setOpenSubmenu2(!openSubmenu2);
-    };
-    const toggleSubmenu3 = () => {
-        setOpenSubmenu3(!openSubmenu3);
-    };
-    const toggleSubmenu4 = () => {
-        setOpenSubmenu4(!openSubmenu4);
-    };
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const openSocialMedia = (url) => {
         window.open(url, '_blank');
     };
-    const toggleDrawer = () => {
-        setDrawerOpen(!drawerOpen);
+
+    const toggleDropdown = (key) => {
+        setDropdownStates(prev => ({
+            ...prev,
+            [key]: !prev[key]
+        }));
     };
-    const handleTooltipClose = () => {
-        setOpen(false);
+
+    const closeDropdowns = () => {
+        setDropdownStates({
+            about: false,
+            whatWeDo: false,
+            resource: false,
+            getInvolved: false
+        });
     };
-    const handleTooltipOpen = () => {
-        setOpen(true);
+
+    const handleMouseEnter = (key) => {
+        setActiveDropdown(key);
     };
-    const handleTooltipClose2 = () => {
-        setOpen2(false);
+
+    const handleMouseLeave = () => {
+        setActiveDropdown(null);
     };
-    const handleTooltipOpen2 = () => {
-        setOpen2(true);
-    };
-    const handleTooltipClose3 = () => {
-        setOpen3(false);
-    };
-    const handleTooltipOpen3 = () => {
-        setOpen3(true);
-    };
-    const handleTooltipClose4 = () => {
-        setOpen4(false);
-    };
-    const handleTooltipOpen4 = () => {
-        setOpen4(true);
-    };
+
     return (
         <>
-            {!isMobile ? (
-                scrolled ? (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <AppBar position="fixed" style={{ zIndex: 9999, backgroundColor: scrolled ? '#ffffffea' : 'transparent', justifyContent: 'center' }}>
-                            <Toolbar className='openToolBar'>
-                                <div className="openLogoContainer">
-                                    <img src="/logo192.png" alt="logo" width={isMobile ? '50px' : '150px'} />
+            {/* Main Navbar */}
+            <nav className={`main-nav fixed-top ${scrolled ? 'scrolled' : ''}`}>
+                <div className="nav-container">
+                    <Link className="nav-brand" to="/">
+                        <img src="/logo192.png" alt="logo" className="nav-logo" />
+                    </Link>
+
+                    {/* Desktop Menu */}
+                    <div className="nav-menu d-none d-lg-flex">
+                        <Link className="nav-link" to="/">Home</Link>
+
+                        <div className="nav-item-dropdown"
+                            onMouseEnter={() => handleMouseEnter('about')}
+                            onMouseLeave={handleMouseLeave}>
+                            <span className="nav-link">About Us</span>
+                            {activeDropdown === 'about' && (
+                                <div className="dropdown-content">
+                                    <Link className="dropdown-link" to="/about">Our Story</Link>
+                                    <Link className="dropdown-link" to="/team">Our Team</Link>
                                 </div>
-                                {isMobile ? (
-                                    <Menu color='#ffffff' onClick={toggleDrawer} />
-                                ) : (
-                                    <div className="openBox" >
-                                        <Link className='openLinks' to="/">Home</Link>
-                                        <ClickAwayListener onClickAway={handleTooltipClose3}>
-                                            <Tooltip
-                                                PopperProps={{
-                                                    disablePortal: true,
-                                                }}
-                                                onClose={handleTooltipClose3}
-                                                open={open3}
-                                                disableFocusListener
-                                                disableHoverListener
-                                                disableTouchListener
-                                                title={
-                                                    <div>
-                                                        <Link className='homeLink1' onClick={handleTooltipClose3} to="/about">Our Story</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose3} to="/team">Our Team</Link><br />
-                                                    </div>
-                                                }>
-                                                <Link className='openLinks' onClick={handleTooltipOpen3} to="#">About Us <ExpandMore /></Link>
-                                            </Tooltip>
-                                        </ClickAwayListener>
-                                        <ClickAwayListener onClickAway={handleTooltipClose2}>
-                                            <Tooltip
-                                                PopperProps={{
-                                                    disablePortal: true,
-                                                }}
-                                                onClose={handleTooltipClose2}
-                                                open={open2}
-                                                disableFocusListener
-                                                disableHoverListener
-                                                disableTouchListener
-                                                title={
-                                                    <div>
-                                                        <Link className='homeLink1' onClick={handleTooltipClose2} to="/what">Our Programs</Link><br />
-                                                    </div>
-                                                }>
-                                                <Link className='openLinks' onClick={handleTooltipOpen2} to="#">What We Do <ExpandMore /></Link>
-                                            </Tooltip>
-                                        </ClickAwayListener>
-                                        <ClickAwayListener onClickAway={handleTooltipClose}>
-                                            <Tooltip
-                                                PopperProps={{
-                                                    disablePortal: true,
-                                                }}
-                                                onClose={handleTooltipClose}
-                                                open={open}
-                                                disableFocusListener
-                                                disableHoverListener
-                                                disableTouchListener
-                                                title={
-                                                    <div>
-                                                        <Link className='homeLink1' onClick={handleTooltipClose} to="/news">News</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose} to="/youtube">YouTube</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose} to="/reports">Reports</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose} to="/recognitions">Recognitions</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose} to="/success-stories">Success Stories</Link><br />
-                                                    </div>
-                                                }>
-                                                <Link className='openLinks' onClick={handleTooltipOpen} to="#">Resource Centre <ExpandMore /></Link>
-                                            </Tooltip>
-                                        </ClickAwayListener>
-                                        <ClickAwayListener onClickAway={handleTooltipClose4}>
-                                            <Tooltip
-                                                PopperProps={{
-                                                    disablePortal: true,
-                                                }}
-                                                onClose={handleTooltipClose4}
-                                                open={open4}
-                                                disableFocusListener
-                                                disableHoverListener
-                                                disableTouchListener
-                                                title={
-                                                    <div>
-                                                        <Link className='homeLink1' onClick={handleTooltipClose4} to="/contact">Contacts</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
-                                                        <Link className='homeLink1' onClick={handleTooltipClose4} target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">Donate Myriad EUROPEAN</Link><br />
-                                                    </div>
-                                                }>
-                                                <Link className='openLinks' onClick={handleTooltipOpen4} to="#">Get Involved <ExpandMore /></Link>
-                                            </Tooltip>
-                                        </ClickAwayListener>
-                                    </div>
-                                )}
-                            </Toolbar>
-                        </AppBar>
-                    </Box>
-                ) : (
-                    <div className="appBar">
-                        <div className="logoContainer">
-                            <img src="/logo192.png" alt="logo" width={isMobile ? '150px' : '250px'} />
-                        </div>
-                        <div className="box1" >
-                            <Link className='homeLink' to="/">Home</Link>
-                            <Tooltip title={
-                                <div>
-                                    <Link className='homeLink1' to="/about">Our Story</Link><br />
-                                    <Link className='homeLink1' to="/team">Our Team</Link><br />
-                                </div>
-                            }>
-                                <Link className='links' >About Us <ExpandMore /></Link>
-                            </Tooltip>
-                            <Tooltip title={
-                                <div>
-                                    <Link className='homeLink1' to="/what">Our Programs</Link><br />
-                                </div>
-                            }>
-                                <Link className='links' to="#">What We Do <ExpandMore /></Link>
-                            </Tooltip>
-                            <Tooltip title={
-                                <div>
-                                    <Link className='homeLink1' to="/news">News</Link><br />
-                                    <Link className='homeLink1' to="/youtube">YouTube</Link><br />
-                                    <Link className='homeLink1' to="/reports">Reports</Link><br />
-                                    <Link className='homeLink1' to="/recognitions">Recognitions</Link><br />
-                                    <Link className='homeLink1' to="/success-stories">Success Stories</Link><br />
-                                </div>
-                            }>
-                                <Link className='links' to="#">Resource Centre <ExpandMore /></Link>
-                            </Tooltip>
-                            <Tooltip title={
-                                <div>
-                                    <Link className='homeLink1' to="/contact">Contacts</Link><br />
-                                    <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">Donate Myriad USA</Link><br />
-                                    <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">Donate Myriad AUSTRALIA</Link><br />
-                                    <Link className='homeLink1' target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">Donate Myriad EUROPEAN</Link><br />
-                                </div>
-                            }>
-                                <Link className='links' to="#">Get Involved <ExpandMore /></Link>
-                            </Tooltip>
-                            <div className='socialIcons'>
-                                <img src='/icons/twitter.png' alt='x' width={'20px'} style={{ paddingRight: '20px', paddingLeft: '40px' }} onClick={() => openSocialMedia(socialUrls.twitter)} />
-                                <Instagram onClick={() => openSocialMedia(socialUrls.instagram)} />
-                                <Facebook onClick={() => openSocialMedia(socialUrls.facebook)} />
-                                <LinkedIn onClick={() => openSocialMedia(socialUrls.linkedin)} />
-                            </div>
+                            )}
                         </div>
 
-                    </div>
-                )
+                        <div className="nav-item-dropdown"
+                            onMouseEnter={() => handleMouseEnter('whatWeDo')}
+                            onMouseLeave={handleMouseLeave}>
+                            <span className="nav-link">What We Do</span>
+                            {activeDropdown === 'whatWeDo' && (
+                                <div className="dropdown-content">
+                                    <Link className="dropdown-link" to="/what">Our Programs</Link>
+                                </div>
+                            )}
+                        </div>
 
-            ) : (
-                <div className="appBar">
-                    <div className="logoContainer">
-                        <img src="/logo192.png" alt="logo" width={isMobile ? '150px' : '200px'} />
+                        <div className="nav-item-dropdown"
+                            onMouseEnter={() => handleMouseEnter('resource')}
+                            onMouseLeave={handleMouseLeave}>
+                            <span className="nav-link">Resource Centre</span>
+                            {activeDropdown === 'resource' && (
+                                <div className="dropdown-content">
+                                    <Link className="dropdown-link" to="/news">News</Link>
+                                    <Link className="dropdown-link" to="/youtube">YouTube</Link>
+                                    <Link className="dropdown-link" to="/reports">Reports</Link>
+                                    <Link className="dropdown-link" to="/recognitions">Recognitions</Link>
+                                    <Link className="dropdown-link" to="/success-stories">Success Stories</Link>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="nav-item-dropdown"
+                            onMouseEnter={() => handleMouseEnter('getInvolved')}
+                            onMouseLeave={handleMouseLeave}>
+                            <span className="nav-link">Get Involved</span>
+                            {activeDropdown === 'getInvolved' && (
+                                <div className="dropdown-content">
+                                    <Link className="dropdown-link" to="/contact">Contact</Link>
+                                    <a className="dropdown-link" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
+                                    <a className="dropdown-link" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
+                                    <a className="dropdown-link" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="social-icons">
+                            <img src="/icons/twitter.png" alt="Twitter" onClick={() => openSocialMedia(socialUrls.twitter)} />
+                            <Instagram style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.instagram)} />
+                            <Facebook style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.facebook)} />
+                            <LinkedIn style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.linkedin)} />
+                        </div>
                     </div>
-                    <Menu className='closedIcon' onClick={toggleDrawer} />
+
+                    {/* Mobile Menu Button */}
+                    <button className="mobile-menu-btn d-lg-none" onClick={() => setDrawerOpen(true)}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
+            </nav>
+
+            {/* Mobile Drawer */}
+            <div className={`mobile-drawer ${drawerOpen ? 'open' : ''}`}>
+                <div className="drawer-header">
+                    <button className="close-drawer" onClick={() => setDrawerOpen(false)}>×</button>
+                </div>
+                <div className="drawer-content">
+                    <Link className="drawer-link" to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
+
+                    <div className="drawer-dropdown">
+                        <div className="drawer-link" onClick={() => toggleDropdown('about')}>
+                            About Us <span className="dropdown-arrow">▼</span>
+                        </div>
+                        {dropdownStates.about && (
+                            <div className="drawer-dropdown-content">
+                                <Link className="drawer-sublink" to="/about" onClick={() => setDrawerOpen(false)}>Our Story</Link>
+                                <Link className="drawer-sublink" to="/team" onClick={() => setDrawerOpen(false)}>Our Team</Link>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="drawer-dropdown">
+                        <div className="drawer-link" onClick={() => toggleDropdown('whatWeDo')}>
+                            What We Do <span className="dropdown-arrow">▼</span>
+                        </div>
+                        {dropdownStates.whatWeDo && (
+                            <div className="drawer-dropdown-content">
+                                <Link className="drawer-sublink" to="/what" onClick={() => setDrawerOpen(false)}>Our Programs</Link>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="drawer-dropdown">
+                        <div className="drawer-link" onClick={() => toggleDropdown('resource')}>
+                            Resource Centre <span className="dropdown-arrow">▼</span>
+                        </div>
+                        {dropdownStates.resource && (
+                            <div className="drawer-dropdown-content">
+                                <Link className="drawer-sublink" to="/news" onClick={() => setDrawerOpen(false)}>News</Link>
+                                <Link className="drawer-sublink" to="/youtube" onClick={() => setDrawerOpen(false)}>YouTube</Link>
+                                <Link className="drawer-sublink" to="/reports" onClick={() => setDrawerOpen(false)}>Reports</Link>
+                                <Link className="drawer-sublink" to="/recognitions" onClick={() => setDrawerOpen(false)}>Recognitions</Link>
+                                <Link className="drawer-sublink" to="/success-stories" onClick={() => setDrawerOpen(false)}>Success Stories</Link>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="drawer-dropdown">
+                        <div className="drawer-link" onClick={() => toggleDropdown('getInvolved')}>
+                            Get Involved <span className="dropdown-arrow">▼</span>
+                        </div>
+                        {dropdownStates.getInvolved && (
+                            <div className="drawer-dropdown-content">
+                                <Link className="drawer-sublink" to="/contact" onClick={() => setDrawerOpen(false)}>Contact</Link>
+                                <a className="drawer-sublink" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
+                                <a className="drawer-sublink" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
+                                <a className="drawer-sublink" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Overlay for mobile drawer */}
+            {drawerOpen && (
+                <div className="drawer-overlay" onClick={() => setDrawerOpen(false)}></div>
             )}
-            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
-                <Link className='homeLink' to="/">Home</Link>
-                <Link onClick={toggleSubmenu} to='' className='links'>About Us  <ExpandMore /></Link>
-                <Collapse in={openSubmenu} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        <Link className='homeLink1' to="/about">
-                            <ListItem>
-                                <ListItemText primary="Our Story" />
-                            </ListItem>
-                        </Link>
-                        <Link className='homeLink1' to="/team">
-                            <ListItem>
-                                <ListItemText primary="Our Team" />
-                            </ListItem>
-                        </Link>
-                    </List>
-                </Collapse>
-                <Link onClick={toggleSubmenu2} to='' className='links'>What We Do  <ExpandMore /></Link>
-                <Collapse in={openSubmenu2} timeout="auto" unmountOnExit>
-                    <Link className='homeLink1' to="/what">
-                        <ListItem>
-                            <ListItemText primary="Our Programs" />
-                        </ListItem>
-                    </Link>
-                </Collapse>
-                <Link onClick={toggleSubmenu3} to='' className='links'>Resource Centre <ExpandMore /></Link>
-                <Collapse in={openSubmenu3} timeout="auto" unmountOnExit>
-                    <Link className='homeLink1' to="/news">
-                        <ListItem>
-                            <ListItemText primary="News" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' to="/youtube">
-                        <ListItem>
-                            <ListItemText primary="YouTube" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' to="/reports">
-                        <ListItem>
-                            <ListItemText primary="Reports" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' to="/recognitions">
-                        <ListItem>
-                            <ListItemText primary="Recognitions" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' to="/success-stories">
-                        <ListItem>
-                            <ListItemText primary="Success Stories" />
-                        </ListItem>
-                    </Link>
-                </Collapse>
-                <Link onClick={toggleSubmenu4} to='' className='links'>Get Involved <ExpandMore /></Link>
-                <Collapse in={openSubmenu4} timeout="auto" unmountOnExit>
-                    <Link className='homeLink1' target="_blank" to="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate">
-                        <ListItem>
-                            <ListItemText primary="Donate Myriad USA" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' target="_blank" to="https://myriadaustralia.org/services/donate/her-initiative/">
-                        <ListItem>
-                            <ListItemText primary="Donate Myriad AUSTRALIA" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' target="_blank" to="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN">
-                        <ListItem>
-                            <ListItemText primary="Donate Myriad EUROPEAN" />
-                        </ListItem>
-                    </Link>
-                    <Link className='homeLink1' to="/contact">
-                        <ListItem>
-                            <ListItemText primary="Contacts" />
-                        </ListItem>
-                    </Link>
-                </Collapse>
-            </Drawer>
+
+            <style>{`
+        .main-nav {
+          padding: 1rem 0;
+          transition: all 0.3s ease;
+          z-index: 1000;
+        }
+
+        .main-nav:not(.scrolled) {
+          background: transparent;
+        }
+
+        .main-nav.scrolled {
+          background: rgba(255, 255, 255, 0.95);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        .nav-logo {
+          width: ${scrolled ? '120px' : '150px'};
+          height: auto;
+          transition: width 0.3s ease;
+        }
+
+        .nav-menu {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .nav-link {
+          color: ${scrolled ? '#633e98' : '#ffffff'};
+          font-weight: 700;
+          font-size: 1.1rem;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .nav-item-dropdown {
+          position: relative;
+        }
+
+        .dropdown-content {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: white;
+          min-width: 200px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          padding: 0.5rem 0;
+          z-index: 1000;
+        }
+
+        .dropdown-link {
+          display: block;
+          padding: 0.75rem 1.5rem;
+          color: #633e98;
+          text-decoration: none;
+          font-weight: 600;
+          transition: background-color 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+          background-color: #f3ec1a;
+        }
+
+        .social-icons {
+          background-color: #633e98;
+          padding: 0.5rem 2rem;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          margin-left: 2rem;
+        }
+
+        .social-icons img,
+        .social-icons icon {
+          width: 24px;
+          height: 24px;
+          color: #f3ec1a;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover,
+        .social-icons i:hover {
+          transform: scale(1.2);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+          display: none;
+          flex-direction: column;
+          gap: 6px;
+          background: none;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+          display: block;
+          width: 25px;
+          height: 2px;
+          background-color: ${scrolled ? '#633e98' : '#ffffff'};
+          transition: all 0.3s ease;
+        }
+
+        /* Mobile Drawer */
+        .mobile-drawer {
+          position: fixed;
+          top: 0;
+          right: -300px;
+          width: 300px;
+          height: 100vh;
+          background-color: #ffffff;
+          z-index: 2000;
+          transition: right 0.3s ease;
+          overflow-y: auto;
+        }
+
+        .mobile-drawer.open {
+          right: 0;
+        }
+
+        .drawer-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 1999;
+        }
+
+        .drawer-header {
+          padding: 1rem;
+          border-bottom: 1px solid #eee;
+        }
+
+        .close-drawer {
+          background: none;
+          border: none;
+          font-size: 2rem;
+          cursor: pointer;
+          float: right;
+        }
+
+        .drawer-content {
+          padding: 1rem 0;
+        }
+
+        .drawer-link {
+          display: block;
+          padding: 1rem;
+          color: #633e98;
+          text-decoration: none;
+          font-weight: 600;
+          border-bottom: 1px solid #eee;
+          cursor: pointer;
+        }
+
+        .drawer-sublink {
+          display: block;
+          padding: 0.75rem 2rem;
+          color: #633e98;
+          text-decoration: none;
+          background-color: #f9f9f9;
+        }
+
+        .dropdown-arrow {
+          float: right;
+          font-size: 0.8rem;
+        }
+
+        @media (max-width: 991px) {
+          .mobile-menu-btn {
+            display: flex;
+          }
+
+          .nav-menu {
+            display: none;
+          }
+
+          .main-nav {
+            background: rgba(99, 62, 152, 0.95);
+          }
+
+          .nav-logo {
+            width: 100px;
+          }
+        }
+      `}</style>
         </>
     );
-}
-export default TopAppBar;
+};
+
+export default TopAppBar
