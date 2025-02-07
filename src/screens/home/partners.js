@@ -1,58 +1,209 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useMediaQuery } from "@mui/material";
+import React, { useEffect, useState } from 'react';
 
-function Partners() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const isMobile = useMediaQuery('(max-width:600px)');
+const Partners = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            const nextIndex = (currentIndex + 1) % partnerLogos.length;
-            setCurrentIndex(nextIndex);
-        }, 5000);
-        return () => clearTimeout(timer);
-    }, [currentIndex]);
+  const partnerLogos = [
+    ["1.png", "2.png", "3.png", "10.png"],
+    ["5.png", "6.png", "7.png", "8.png"],
+    ["9.png", "6.png", "5.png", "4.png"],
+    ["8.png", "11.png", "12.png", "7.png"],
+  ];
 
-    const partnerLogos = [
-        ["1.png", "2.png", "3.png", "10.png"],
-        ["5.png", "6.png", "7.png", "8.png"],
-        ["9.png", "6.png", "5.png", "4.png"],
-        ["8.png", "11.png","12.png", "7.png"],
-    ];
-
-    const renderLogos = (logos) => {
-        return logos[currentIndex].map((logo, index) => (
-            <div key={index} className="circleContainer">
-                <img src={`/partners/${logo}`} alt="logo" className="partnerLogo" width={'200px'} height={'100px'} />
-            </div>
-        ));
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    const goToPrevious = () => {
-        const previousIndex = (currentIndex - 1 + partnerLogos.length) % partnerLogos.length;
-        setCurrentIndex(previousIndex);
-    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
 
-    const goToNext = () => {
-        const nextIndex = (currentIndex + 1) % partnerLogos.length;
-        setCurrentIndex(nextIndex);
-    };
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % partnerLogos.length);
+    }, 5000);
 
-    return (
-        <div className="partners">
-            <div className="partnersHeader">
-                <p></p>
-                <p>Our Partners</p>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <ChevronLeft onClick={goToPrevious} style={{ display: isMobile && 'none',color: '#633e98', fontSize: '70px', cursor: 'pointer'}} />
-                <div className="partnersBody">{renderLogos(partnerLogos)}</div>
-                <ChevronRight onClick={goToNext} style={{display: isMobile && 'none',color: '#633e98', fontSize: '70px', cursor: 'pointer'}} /> 
-            </div>
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + partnerLogos.length) % partnerLogos.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % partnerLogos.length);
+  };
+
+  return (
+    <section className="partners-section py-5">
+      <div className="container">
+        {/* Header */}
+        <div className="text-center mb-5">
+          <h6 className="text-uppercase text-secondary fw-bold mb-2">Partnerships</h6>
+          <h2 className="display-5 fw-bold text-primary">Our Partners</h2>
         </div>
-    );
-}
+
+        {/* Partners Carousel */}
+        <div className="partners-carousel position-relative">
+          {!isMobile && (
+            <button 
+              className="carousel-control prev" 
+              onClick={goToPrevious}
+              aria-label="Previous"
+            >
+              <i className="bi bi-chevron-left"></i>
+            </button>
+          )}
+
+          <div className="partners-grid">
+            {partnerLogos[currentIndex].map((logo, index) => (
+              <div key={index} className="partner-item">
+                <img
+                  src={`/partners/${logo}`}
+                  alt={`Partner ${index + 1}`}
+                  className="partner-logo"
+                />
+              </div>
+            ))}
+          </div>
+
+          {!isMobile && (
+            <button 
+              className="carousel-control next" 
+              onClick={goToNext}
+              aria-label="Next"
+            >
+              <i className="bi bi-chevron-right"></i>
+            </button>
+          )}
+        </div>
+
+        {/* Mobile Indicators */}
+        {isMobile && (
+          <div className="carousel-indicators">
+            {partnerLogos.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${currentIndex === index ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              ></button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <style>{`
+        .partners-section {
+          background-color: #fff;
+        }
+
+        .text-primary {
+          color: #633e98 !important;
+        }
+
+        .partners-carousel {
+          padding: 0 50px;
+        }
+
+        .partners-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 2rem;
+          align-items: center;
+        }
+
+        .partner-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1rem;
+        }
+
+        .partner-logo {
+          width: 200px;
+          height: 100px;
+          object-fit: contain;
+          transition: transform 0.3s ease;
+        }
+
+        .partner-logo:hover {
+          transform: scale(1.5);
+        }
+
+        .carousel-control {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          font-size: 2.5rem;
+          color: #633e98;
+          cursor: pointer;
+          padding: 1rem;
+          transition: opacity 0.3s ease;
+        }
+
+        .carousel-control:hover {
+          opacity: 0.7;
+        }
+
+        .carousel-control.prev {
+          left: -20px;
+        }
+
+        .carousel-control.next {
+          right: -20px;
+        }
+
+        .carousel-indicators {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 2rem;
+        }
+
+        .indicator {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #ddd;
+          border: none;
+          padding: 0;
+          transition: background-color 0.3s ease;
+        }
+
+        .indicator.active {
+          background-color: #633e98;
+        }
+
+        @media (max-width: 768px) {
+          .partners-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+
+          .partner-logo {
+            width: 150px;
+            height: 75px;
+          }
+
+          .partners-carousel {
+            padding: 0 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .partners-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+    </section>
+  );
+};
 
 export default Partners;
