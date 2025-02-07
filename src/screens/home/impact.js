@@ -1,66 +1,109 @@
-import { Add } from "@mui/icons-material";
-import { Avatar } from "@mui/material";
-import * as React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Impact() {
+const Impact = () => {
+  const [counters, setCounters] = useState([
+    { count: 0, targetCount: 210, label: "Young women launched new businesses in sectors such as beauty, agriculture, and baking." },
+    { count: 0, targetCount: 7289, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
+    { count: 0, targetCount: 222, label: "Youth business owners trained with digital business skills" },
+    { count: 0, targetCount: 5, label: "Established clubs across public secondary schools in Ubungo Municipal Council" },
+    { count: 0, targetCount: 500, label: "Adolescent girls engaged in financial literacy and entrepreneurship training" },
+    { count: 0, targetCount: 500, label: "Parents, teachers, and officials engaged to support girl's education" },
+    { count: 0, targetCount: 245, label: "Youth graduates improved job search techniques" },
+    { count: 0, targetCount: 103, label: "AGYW living with HIV received economic empowerment training" },
+    { count: 0, targetCount: 38, label: "Youth-led organizations strengthened" },
+    { count: 0, targetCount: 108, label: "School drop-out girls empowered to address gender-based violence" },
+    { count: 0, targetCount: 90, label: "School drop-out girls established new businesses" }
+  ]);
 
-    const [counters, setCounters] = useState([
-        { count: 0, targetCount: 19044, label: "Young women were directly reached, with an additional 25,000,000 young women indirectly reached." },
-        { count: 0, targetCount: 3330, label: "Young women entrepreneurs adopted digital operations, with 210 starting new businesses." },
-        { count: 0, targetCount: 8385, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
-        { count: 0, targetCount: 38, label: "Youth-led organizations received support, empowering 145 youth with employability skills." },
-        { count: 0, targetCount: 250, label: "Adolescent girls from 5 Mshiko clubs in 5 Secondary schools gained entrepreneurial, and life skills through tailored training" },
-        { count: 0, targetCount: 108, label: "Out-of-school girls gained economic independence, confidence in addressing GBV, and leadership skills." }
-    ]);
-
-    useEffect(() => {
-        const animateCounters = () => {
-            counters.forEach((counter, index) => {
-                const interval = setInterval(() => {
-                    if (counter.count < counter.targetCount) {
-                        setCounters(prevCounters => {
-                            const newCounters = [...prevCounters];
-                            newCounters[index].count += Math.ceil((counter.targetCount - counter.count) / 100);
-                            return newCounters;
-                        });
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 30);
+  useEffect(() => {
+    const animateCounters = () => {
+      counters.forEach((counter, index) => {
+        const interval = setInterval(() => {
+          if (counter.count < counter.targetCount) {
+            setCounters(prevCounters => {
+              const newCounters = [...prevCounters];
+              newCounters[index].count += Math.ceil((counter.targetCount - counter.count) / 100);
+              if (newCounters[index].count > counter.targetCount) {
+                newCounters[index].count = counter.targetCount;
+              }
+              return newCounters;
             });
-        };
+          } else {
+            clearInterval(interval);
+          }
+        }, 30);
+      });
+    };
 
-        animateCounters();
-    }, []);
+    animateCounters();
+  }, []);
 
-    return (
-        <div className='impact'>
-            <div className="impactHeader">
-                <p></p>
-                <p>Our Impact</p>
-            </div>
-            <div className="impactContainer">
-                <div className="topContainer">
-                    <div className="topContainerText">
-                        <p></p>
-                        {counters.map((impact, index) => (
-                            <div key={index} className="impactsList">
-                                <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '30px', marginTop: '20px' }}>
-                                    <Add sx={{ color: '#000000' }} />
-                                </Avatar>
-                                <p><span style={{ color: '#f3ec1a', fontWeight: '700', fontSize: '15px' }}>{impact.count}</span> {impact.label}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-            <div className="bottomContainer">
-                <img src="/photos/impact1.jpg" alt="logo" className="bottomContainerImage" />
-            </div>
+  return (
+    <div className="container-fluid bg-light py-5">
+      <div className="container">
+        {/* Header Section */}
+        <div className="row mb-5 text-center">
+          <div className="col-12">
+            <h6 className="text-secondary fw-bold">MAKING A DIFFERENCE</h6>
+            <h2 className="display-4 fw-bold" style={{ color: '#633e98' }}>Our Impact</h2>
+          </div>
         </div>
 
-    );
-}
+        {/* Impact Cards Grid */}
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {counters.map((impact, index) => (
+            <div key={index} className="col">
+              <div className="card h-100 border-0 shadow-sm hover-scale">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-center mb-3">
+                    <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#633e98' }}>
+                      <div className="text-warning fw-bold fs-7">+</div>
+                    </div>
+                    <h3 className="display-6 fw-bold mb-0" style={{ color: '#633e98' }}>
+                      {impact.count.toLocaleString()}
+                    </h3>
+                  </div>
+                  <p className="text-muted fw-bold mb-0">{impact.label}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Image Section */}
+        <div className="row mt-5">
+          <div className="col-12 col-md-8 mx-auto">
+            <div className="card border-0 shadow overflow-hidden">
+              <img 
+                src="/photos/impact1.jpg" 
+                alt="Impact" 
+                className="card-img-top img-hover"
+                style={{
+                  height: '400px',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .hover-scale {
+          transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+          transform: translateY(-5px);
+        }
+        .img-hover {
+          transition: transform 0.3s ease;
+        }
+        .img-hover:hover {
+          transform: scale(1.05);
+        }
+      `}</style>
+    </div>
+  );
+};
 
 export default Impact;
