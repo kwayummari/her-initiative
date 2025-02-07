@@ -15,6 +15,12 @@ function Members({ programData, teamData }) {
         setOpenModal(false);
     };
 
+    const decodeHTML = (html) => {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
+
     const renderSection = (data, title, subtitle) => (
         <div className="container mb-5">
             <div className="text-center mb-5">
@@ -68,30 +74,6 @@ function Members({ programData, teamData }) {
             {renderSection(programData, "Our Board")}
             {renderSection(teamData, "Our Team", "At the heart of our mission, we are a dynamic team of young women leaders who intimately understand and resonate with the challenges faced by our peers. Our identity is rooted in being girl-centric, where the needs and aspirations of young women and girls are at the forefront of every endeavor we undertake. As torchbearers of positive change, we confront the challenges of Tanzania's economy with resolved tenacity through bold, young women and youth-led initiatives. ")}
 
-            {/* Modal */}
-            <div
-                className="modal fade"
-                id="memberModal"
-                tabIndex="-1"
-                show={!!selectedMember}
-                onHide={() => setSelectedMember(null)}
-            >
-                <div className="modal-dialog modal-dialog-centered modal-lg">
-                    <div className="modal-content">
-                        <div className="modal-header border-0">
-                            <h5 className="modal-title fw-bold">{selectedMember?.title}</h5>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                onClick={() => setSelectedMember(null)}
-                            ></button>
-                        </div>
-                        <div className="modal-body">
-                            <p>{selectedMember?.fullDescription}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <style>
                 {`
                 .text-purple {
@@ -139,6 +121,7 @@ function Members({ programData, teamData }) {
     }
 }`}
             </style>
+            
             <Modal
                 open={openModal}
                 onClose={handleCloseModal}
@@ -163,9 +146,13 @@ function Members({ programData, teamData }) {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {selectedProgram && selectedProgram.title}
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        {selectedProgram && selectedProgram.fullDescription}
-                    </Typography>
+                    {selectedProgram && (
+  <div 
+    className="text-break"
+    style={{ whiteSpace: 'pre-line' }}
+    dangerouslySetInnerHTML={{ __html: selectedProgram.fullDescription }}
+  />
+)}
                 </Box>
             </Modal>
         </div>
