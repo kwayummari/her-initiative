@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import React, { useEffect } from "react";
 import AboutCarousel from "./aboutCarousel";
 import Part1 from "./part1";
 import Story2 from "./story2";
@@ -39,14 +39,20 @@ function OurStory() {
      campaigns like Panda events, fostering knowledge on entrepreneurship
       and facilitating connections with successful industry leaders.
        `;
-    return (
+       return (
         <div>
             <AboutCarousel />
             <Part1 heading2={'About Us'} heading3={'Home/About Us'} />
-            <Story2 smallTitle={'The Story'} bigTitle={'Her Initiative Organization'} moreParagraph={moreParagraph} isAbout={true} Paragraph={paragraph} buttonText={"More About Us"} imageUrl={"/photos/old.jpg"} imageUrl2={"/photos/f.jpg"} />
-            {/* {!isMobile ? (<img src="/photos/values.png" style={{ marginTop: '100px', width: '80vw', marginBottom: '200px' }} />)
-                : (<img src="/photos/values2.png" style={{ marginTop: '100px', width: '90vw' }} />)}
-            <Donation /> */}
+            <Story2 
+                smallTitle={'The Story'} 
+                bigTitle={'Her Initiative Organization'} 
+                moreParagraph={moreParagraph} 
+                isAbout={true} 
+                Paragraph={paragraph} 
+                buttonText={"More About Us"} 
+                imageUrl={"/photos/old.jpg"} 
+                imageUrl2={"/photos/f.jpg"} 
+            />
             <ImageRows />
             <Missions />
             <Values />
@@ -55,4 +61,5 @@ function OurStory() {
         </div>
     );
 }
+
 export default OurStory;

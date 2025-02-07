@@ -1,45 +1,39 @@
 import React from "react";
-import './styles.css'
-import { Grid, useMediaQuery } from "@mui/material";
 
-function Story2({ smallTitle, bigTitle, Paragraph, moreParagraph, buttonText, imageUrl, seeButton, isAbout, imageUrl2 }) {
-    const isMobile = useMediaQuery('(max-width:600px)');
+function Story2({ smallTitle, bigTitle, Paragraph, moreParagraph, imageUrl, isAbout, imageUrl2 }) {
     return (
-        <div className="StoryContainer">
-            <Grid container className="story" >
-                <Grid container className="firstPart">
-                    <Grid item xs={isMobile ? 12 : 6} className="storyContainers">
-                        <p className="storyHeader1">{smallTitle}</p>
-                        <p className="storyHeader2">{bigTitle}</p>
-                        <p className="storyParagraph2">
-                            {Paragraph}
-                        </p>
-                        {isMobile && (
-                            <img src={imageUrl} alt="logo" className="storyImage1" />
-                        )}
-                    </Grid>
-                    <Grid item xs={isMobile ? 12 : 6} className="ImageContainers">
-                        <img src={imageUrl} alt="logo" className="storyImage1" />
-                    </Grid>
-                </Grid>
-                <div className="connectingLine"></div>
+        <div className="container-fluid mb-5">
+            <div className="row">
+                <div className="border-bottom border-start border-dark ms-md-5">
+                    <div className="row">
+                        <div className="col-12 col-md-6">
+                            <p className="text-secondary fw-bold">{smallTitle}</p>
+                            <h2 className="text-purple display-4">{bigTitle}</h2>
+                            <p className="fs-5">{Paragraph}</p>
+                            <img src={imageUrl} alt="story" className="img-fluid rounded d-md-none mb-3" />
+                        </div>
+                        <div className="col-md-4 d-none d-md-block">
+                            <img src={imageUrl} alt="story" className="img-fluid rounded" />
+                        </div>
+                    </div>
+                </div>
+
                 {isAbout && (
-                    <Grid container className="secondPart">
-                        <Grid item xs={isMobile ? 12 : 6} className="storyContainers">
-                            <p className="storyParagraph2">
-                                {moreParagraph}
-                            </p>
-                            {isMobile && (
-                            <img src={imageUrl2} alt="logo" className="storyImage1" />
-                        )}
-                        </Grid>
-                        <Grid item xs={isMobile ? 12 : 6} className="ImageContainers">
-                            <img src={imageUrl2} alt="logo" className="storyImage1" />
-                        </Grid>
-                    </Grid>
+                    <div className="border-bottom border-start border-dark ms-md-5 mt-5">
+                        <div className="row">
+                            <div className="col-12 col-md-6">
+                                <p className="fs-5">{moreParagraph}</p>
+                                <img src={imageUrl2} alt="story" className="img-fluid rounded d-md-none mb-3" />
+                            </div>
+                            <div className="col-md-4 d-none d-md-block">
+                                <img src={imageUrl2} alt="story" className="img-fluid rounded" />
+                            </div>
+                        </div>
+                    </div>
                 )}
-            </Grid>
+            </div>
         </div>
-    )
+    );
 }
+
 export default Story2;
