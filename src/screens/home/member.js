@@ -15,10 +15,11 @@ function Members({ programData, teamData }) {
         setOpenModal(false);
     };
 
-    const renderSection = (data, title) => (
+    const renderSection = (data, title, subtitle) => (
         <div className="container mb-5">
             <div className="text-center mb-5">
                 <h2 className="display-4 text-purple">{title}</h2>
+                <p>{subtitle}</p>
                 <div className="mx-auto bg-warning" style={{ height: "3px", width: "100px" }}></div>
             </div>
 
@@ -65,7 +66,7 @@ function Members({ programData, teamData }) {
     return (
         <div className="py-5">
             {renderSection(programData, "Our Board")}
-            {renderSection(teamData, "Our Team")}
+            {renderSection(teamData, "Our Team", "At the heart of our mission, we are a dynamic team of young women leaders who intimately understand and resonate with the challenges faced by our peers. Our identity is rooted in being girl-centric, where the needs and aspirations of young women and girls are at the forefront of every endeavor we undertake. As torchbearers of positive change, we confront the challenges of Tanzania's economy with resolved tenacity through bold, young women and youth-led initiatives. ")}
 
             {/* Modal */}
             <div
