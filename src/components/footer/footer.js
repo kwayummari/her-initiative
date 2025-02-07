@@ -138,7 +138,7 @@ const Footer = () => {
                 <div className="container">
                     <div className="row py-3">
                         <div className="col-md-6 text-center text-md-start">
-                            <p className="mb-0">© Copyright 2024 | Her Initiative | All Rights Reserved</p>
+                            <p className="mb-0">© Copyright 2024 | Her Initiative | Designed & Developed by Serengeti Bytes</p>
                         </div>
                         <div className="col-md-6 text-center text-md-end">
                             <div className="social-icons">
