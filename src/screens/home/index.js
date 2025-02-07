@@ -11,7 +11,6 @@ import Objectives from "./objectives";
 // import Donations from "../about/donation";
 
 function Home() {
-    const isMobile = useMediaQuery('(max-width:600px)');
     return (
         <div>
             <Carousel />
