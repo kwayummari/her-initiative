@@ -19,9 +19,6 @@ function Home() {
             <Approach />
             <Impact />
             <Objectives />
-            {/* {!isMobile ? (<img src="/photos/mission.png" style={{ marginTop: '10px', width: '100vw' }} />)
-                : (<img src="/photos/mission1.png" style={{ marginTop: '400px', width: '100vw' }} />)} */}
-            {isMobile && <div style={{ marginTop: '400px' }}></div>}
             <Missions home={true} />
             <Programs />
             <Partners />
