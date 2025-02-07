@@ -57,7 +57,7 @@ const Impact = () => {
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-3">
                     <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#633e98' }}>
-                      <div className="text-warning fw-bold fs-7">+</div>
+                      <div className="text-warning fw-bold fs-7">✓✓</div>
                     </div>
                     <h3 className="display-6 fw-bold mb-0" style={{ color: '#633e98' }}>
                       {impact.count.toLocaleString()}

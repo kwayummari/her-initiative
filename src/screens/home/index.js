@@ -7,6 +7,7 @@ import Impact from "./impact";
 import Programs from "./programs";
 import { useMediaQuery } from "@mui/material";
 import Missions from "../about/mission";
+import Objectives from "./objectives";
 // import Donations from "../about/donation";
 
 function Home() {
@@ -17,6 +18,7 @@ function Home() {
             <AboutUs />
             <Approach />
             <Impact />
+            <Objectives />
             {/* {!isMobile ? (<img src="/photos/mission.png" style={{ marginTop: '10px', width: '100vw' }} />)
                 : (<img src="/photos/mission1.png" style={{ marginTop: '400px', width: '100vw' }} />)} */}
             {isMobile && <div style={{ marginTop: '400px' }}></div>}
