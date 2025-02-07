@@ -45,8 +45,8 @@ const Approach = () => {
             <div className="central-circle">
               <div className="inner-content">
                 <div className="money-icon mb-2" style={{ fontSize: '2rem' }}>💰</div>
-                <h3 className="mb-0">Economic Empowerment</h3>
-                <p className="small mb-0">Economic Rights and Justice</p>
+                <h3 className="mb-0">Economic Rights and Justice</h3>
+                {/* <p className="small mb-0">Economic Rights and Justice</p> */}
               </div>
             </div>
           </div>

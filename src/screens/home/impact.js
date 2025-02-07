@@ -56,7 +56,7 @@ const Impact = () => {
               <div className="card h-100 border-0 shadow-sm hover-scale">
                 <div className="card-body p-4">
                   <div className="d-flex align-items-center mb-3">
-                    <div className="rounded-circle p-3 me-3" style={{ backgroundColor: '#633e98' }}>
+                    <div className="approach-icon p-3 me-3" style={{ backgroundColor: '#633e98' }}>
                       <div className="text-warning fw-bold fs-7">✓✓</div>
                     </div>
                     <h3 className="display-6 fw-bold mb-0" style={{ color: '#633e98' }}>
@@ -100,6 +100,16 @@ const Impact = () => {
         }
         .img-hover:hover {
           transform: scale(1.05);
+        }
+          .approach-icon {
+          width: 60px;
+          height: 60px;
+          background-color: #633e98;
+          border-radius: 50%;
+          align-items: start;
+          justify-content: start;
+          margin: 0;
+          color: white;
         }
       `}</style>
     </div>
