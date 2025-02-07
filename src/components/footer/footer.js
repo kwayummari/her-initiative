@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Facebook, Instagram, LinkedIn } from '@mui/icons-material';
-import './style.css';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function BottomFooter() {
+const Footer = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
+    const socialUrls = {
+        twitter: 'https://twitter.com/herinitiative?lang=en',
+        instagram: 'https://www.instagram.com/herinitiative/?hl=en',
+        facebook: 'https://www.facebook.com/teengirlstanzania/',
+        linkedin: 'https://www.linkedin.com/'
+    };
+
     useEffect(() => {
         const addWidget = () => {
             const existingWidget = document.getElementById('ngos-ed-on-file-widget-script-17336c1f-917d-492b-bc53-225c95e103da');
@@ -15,7 +25,7 @@ function BottomFooter() {
             widgetImg.src = '/photos/ngo.png';
             widgetImg.alt = 'NGOsource Equivalency Determination on File';
             widgetImg.style.marginTop = '20px';
-            // widgetImg.style.marginRight = '10px';
+            widgetImg.style.width = '100%';
 
             const widgetLink = document.createElement("a");
             const theUrl = 'http://www.ngosource.org/about-equivalency-determination-on-file-badge';
@@ -34,25 +44,9 @@ function BottomFooter() {
         addWidget();
     }, []);
 
-    const navigate = useNavigate();
-
-    const handleClick = (path) => {
-        navigate(path);
-    };
-
-    const [socialUrls] = useState({
-        twitter: 'https://twitter.com/herinitiative?lang=en',
-        instagram: 'https://www.instagram.com/herinitiative/?hl=en',
-        facebook: 'https://www.facebook.com/teengirlstanzania/',
-        linkedin: 'https://www.linkedin.com/'
-    });
-
     const openSocialMedia = (url) => {
         window.open(url, '_blank');
-    };
-
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+      };
 
     const handleSubscription = async (e) => {
         e.preventDefault();
@@ -75,75 +69,178 @@ function BottomFooter() {
     };
 
     return (
-        <div className='footer' style={{ backgroundColor: '#212121' }}>
-            <footer className='footerContainer py-2'>
+        <footer className="footer bg-dark text-white pt-5">
+            <div className="container">
+                <div className="row">
+                    {/* Logo and Description */}
+                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <img src="/logo192.png" alt="logo" className="footer-logo mb-3" />
+                        <p className="text-white-50">
+                            Her Initiative, a young women driven non-profit, aims to redefine
+                            societal norms in Tanzania, promoting financial resilience
+                            among adolescent girls and young women by integrating economic
+                            empowerment and technology.
+                        </p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 className="text-uppercase mb-4">Quick Links</h5>
+                        <ul className="list-unstyled quick-links">
+                            <li><span onClick={() => navigate('/about')}>About Us</span></li>
+                            <li><span onClick={() => navigate('/news')}>Blog</span></li>
+                            <li><span onClick={() => navigate('/what')}>Projects</span></li>
+                            <li><span onClick={() => navigate('/reports')}>Reports</span></li>
+                            <li><span onClick={() => navigate('/admins')}>Admin</span></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 className="text-uppercase mb-4">Get In Touch</h5>
+                        <p className="contact-info">
+                            <strong>Physical Address:</strong><br />
+                            Asmara Street, Mikocheni,<br />
+                            Dar es Salaam, Tanzania<br />
+                            <strong>Postal Address:</strong> P.O.Box 66<br />
+                            <strong>Tel:</strong> +255 (0) 734283347<br />
+                            <strong>Email:</strong> info@herinitiative.or.tz<br />
+                            <strong>Web:</strong> www.herinitiative.co.tz
+                        </p>
+                    </div>
+
+                    {/* Newsletter */}
+                    <div className="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                        <h5 className="text-uppercase mb-4">Newsletter</h5>
+                        <form onSubmit={handleSubscription}>
+                            <div className="input-group mb-3">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Enter your email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                                <button className="btn btn-primary" type="submit">
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                        {message && <p className="text-warning">{message}</p>}
+                        <div className="donation mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Footer */}
+            <div className="bottom-footer mt-5">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-3 footerContainer1 mb-4">
-                            <img src="/logo192.png" alt="logo" width="200px" />
-                            <p>
-                                Her Initiative, a young women driven non-profit, aims to redefine
-                                societal norms in Tanzania, promoting financial resilience
-                                among adolescent girls and young women by integrating economic
-                                empowerment and technology.
-                            </p>
+                    <div className="row py-3">
+                        <div className="col-md-6 text-center text-md-start">
+                            <p className="mb-0">© Copyright 2024 | Her Initiative | All Rights Reserved</p>
                         </div>
-                        <div className='col-md-3 footerContainer2 mb-4'>
-                            <h3><b>Quick Links</b></h3>
-                            <ul className="list-unstyled">
-                                <li onClick={() => handleClick('/about')}><b>About Us</b></li>
-                                <li onClick={() => handleClick('/news')}><b>Blog</b></li>
-                                <li onClick={() => handleClick('/what')}><b>Projects</b></li>
-                                <li onClick={() => handleClick('/reports')}><b>Reports</b></li>
-                                <li onClick={() => handleClick('/admins')}><b>Admin</b></li>
-                            </ul>
-                        </div>
-                        <div className='col-md-3 footerContainer4 mb-4'>
-                            <h3>Get In Touch</h3>
-                            <p>
-                                <b>Physical Address:</b> Asmara Street, Mikocheni,<br /> Dar es Salaam, Tanzania<br />
-                                <b>Postal Address:</b> P.O.Box 66, <br />
-                                <b>Tel:</b> +255 (0) 734283347. <br />
-                                <b>Email:</b> info@herinitiative.or.tz <br />
-                                <b>Web:</b> www.herinitiative.co.tz <br />
-                            </p>
-                        </div>
-                        <div className="col-md-3 footerContainer4 mb-4">
-                            <h3>Newsletter</h3>
-                            <form className="form-inline" onSubmit={handleSubscription}>
-                                <div className="input-group">
-                                    <input
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                        className="form-control rounded-0"
-                                    />
-                                    <div className="input-group-append">
-                                        <button type="submit" className="btn btn-primary rounded-0">
-                                            Subscribe
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            {message && <p>{message}</p>}
-                            <div className='donation'></div>
+                        <div className="col-md-6 text-center text-md-end">
+                            <div className="social-icons">
+                                <img
+                                    src="/icons/twitter.png"
+                                    alt="Twitter"
+                                    onClick={() => window.open(socialUrls.twitter, '_blank')}
+                                />
+                                <Instagram style={{color: '#f3ec1a'}} className="mx-2" onClick={() => openSocialMedia(socialUrls.instagram)} />
+                                <Facebook style={{color: '#f3ec1a'}} className="mx-2" onClick={() => openSocialMedia(socialUrls.facebook)} />
+                                <LinkedIn style={{color: '#f3ec1a'}} className="mx-2" onClick={() => openSocialMedia(socialUrls.linkedin)} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-            <div className='bottomFooter text-center pt-2 mt-5'>
-                <h3 className='line'>© Copyright 2024 | Her Initiative | All Rights Reserved</h3>
-                <div className='socialIcons d-inline-flex'>
-                    <img src='/icons/twitter.png' alt='x' width='20px' className="mx-2" onClick={() => openSocialMedia(socialUrls.twitter)} />
-                    <Instagram className="mx-2" onClick={() => openSocialMedia(socialUrls.instagram)} />
-                    <Facebook className="mx-2" onClick={() => openSocialMedia(socialUrls.facebook)} />
-                    <LinkedIn className="mx-2" onClick={() => openSocialMedia(socialUrls.linkedin)} />
-                </div>
             </div>
-        </div>
-    );
-}
 
-export default BottomFooter;
+            <style>{`
+        .footer {
+          background-color: #212121;
+        }
+
+        .footer-logo {
+          width: 200px;
+          height: auto;
+        }
+
+        .quick-links li {
+          margin-bottom: 0.5rem;
+        }
+
+        .quick-links li span {
+          cursor: pointer;
+          transition: color 0.3s ease;
+        }
+
+        .quick-links li span:hover {
+          color: #f3ec1a;
+        }
+
+        .contact-info {
+          font-size: 0.9rem;
+          line-height: 1.6;
+        }
+
+        .bottom-footer {
+          background-color: #633e98;
+        }
+
+        .social-icons {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 1rem;
+        }
+
+        .social-icons img,
+        .social-icons i {
+          width: 24px;
+          height: 24px;
+          color: #f3ec1a;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover,
+        .social-icons i:hover {
+          transform: scale(1.2);
+        }
+
+        .btn-primary {
+          background-color: #633e98;
+          border-color: #633e98;
+        }
+
+        .btn-primary:hover {
+          background-color: #f3ec1a;
+          border-color: #f3ec1a;
+          color: #633e98;
+        }
+
+        @media (max-width: 768px) {
+          .footer {
+            text-align: center;
+          }
+
+          .social-icons {
+            justify-content: center;
+            margin-top: 1rem;
+          }
+
+          .quick-links {
+            margin-bottom: 2rem;
+          }
+
+          .contact-info {
+            margin-bottom: 2rem;
+          }
+        }
+      `}</style>
+        </footer>
+    );
+};
+
+export default Footer;

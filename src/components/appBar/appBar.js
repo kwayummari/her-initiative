@@ -3,210 +3,210 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 const TopAppBar = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [drawerOpen, setDrawerOpen] = useState(false);
-    const [activeDropdown, setActiveDropdown] = useState(null);
-    const [dropdownStates, setDropdownStates] = useState({
-        about: false,
-        whatWeDo: false,
-        resource: false,
-        getInvolved: false
+  const [scrolled, setScrolled] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [dropdownStates, setDropdownStates] = useState({
+    about: false,
+    whatWeDo: false,
+    resource: false,
+    getInvolved: false
+  });
+
+  const socialUrls = {
+    twitter: 'https://twitter.com/herinitiative?lang=en',
+    instagram: 'https://www.instagram.com/herinitiative/?hl=en',
+    facebook: 'https://www.facebook.com/teengirlstanzania/',
+    linkedin: 'https://www.linkedin.com/'
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const openSocialMedia = (url) => {
+    window.open(url, '_blank');
+  };
+
+  const toggleDropdown = (key) => {
+    setDropdownStates(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
+
+  const closeDropdowns = () => {
+    setDropdownStates({
+      about: false,
+      whatWeDo: false,
+      resource: false,
+      getInvolved: false
     });
+  };
 
-    const socialUrls = {
-        twitter: 'https://twitter.com/herinitiative?lang=en',
-        instagram: 'https://www.instagram.com/herinitiative/?hl=en',
-        facebook: 'https://www.facebook.com/teengirlstanzania/',
-        linkedin: 'https://www.linkedin.com/'
-    };
+  const handleMouseEnter = (key) => {
+    setActiveDropdown(key);
+  };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 0);
-        };
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+  };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  return (
+    <>
+      {/* Main Navbar */}
+      <nav className={`main-nav fixed-top ${scrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
+          <Link className="nav-brand" to="/">
+            <img src="/logo192.png" alt="logo" className="nav-logo" />
+          </Link>
 
-    const openSocialMedia = (url) => {
-        window.open(url, '_blank');
-    };
+          {/* Desktop Menu */}
+          <div className="nav-menu d-none d-lg-flex">
+            <Link className="nav-link" to="/">Home</Link>
 
-    const toggleDropdown = (key) => {
-        setDropdownStates(prev => ({
-            ...prev,
-            [key]: !prev[key]
-        }));
-    };
-
-    const closeDropdowns = () => {
-        setDropdownStates({
-            about: false,
-            whatWeDo: false,
-            resource: false,
-            getInvolved: false
-        });
-    };
-
-    const handleMouseEnter = (key) => {
-        setActiveDropdown(key);
-    };
-
-    const handleMouseLeave = () => {
-        setActiveDropdown(null);
-    };
-
-    return (
-        <>
-            {/* Main Navbar */}
-            <nav className={`main-nav fixed-top ${scrolled ? 'scrolled' : ''}`}>
-                <div className="nav-container">
-                    <Link className="nav-brand" to="/">
-                        <img src="/logo192.png" alt="logo" className="nav-logo" />
-                    </Link>
-
-                    {/* Desktop Menu */}
-                    <div className="nav-menu d-none d-lg-flex">
-                        <Link className="nav-link" to="/">Home</Link>
-
-                        <div className="nav-item-dropdown"
-                            onMouseEnter={() => handleMouseEnter('about')}
-                            onMouseLeave={handleMouseLeave}>
-                            <span className="nav-link">About Us</span>
-                            {activeDropdown === 'about' && (
-                                <div className="dropdown-content">
-                                    <Link className="dropdown-link" to="/about">Our Story</Link>
-                                    <Link className="dropdown-link" to="/team">Our Team</Link>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="nav-item-dropdown"
-                            onMouseEnter={() => handleMouseEnter('whatWeDo')}
-                            onMouseLeave={handleMouseLeave}>
-                            <span className="nav-link">What We Do</span>
-                            {activeDropdown === 'whatWeDo' && (
-                                <div className="dropdown-content">
-                                    <Link className="dropdown-link" to="/what">Our Programs</Link>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="nav-item-dropdown"
-                            onMouseEnter={() => handleMouseEnter('resource')}
-                            onMouseLeave={handleMouseLeave}>
-                            <span className="nav-link">Resource Centre</span>
-                            {activeDropdown === 'resource' && (
-                                <div className="dropdown-content">
-                                    <Link className="dropdown-link" to="/news">News</Link>
-                                    <Link className="dropdown-link" to="/youtube">YouTube</Link>
-                                    <Link className="dropdown-link" to="/reports">Reports</Link>
-                                    <Link className="dropdown-link" to="/recognitions">Recognitions</Link>
-                                    <Link className="dropdown-link" to="/success-stories">Success Stories</Link>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="nav-item-dropdown"
-                            onMouseEnter={() => handleMouseEnter('getInvolved')}
-                            onMouseLeave={handleMouseLeave}>
-                            <span className="nav-link">Get Involved</span>
-                            {activeDropdown === 'getInvolved' && (
-                                <div className="dropdown-content">
-                                    <Link className="dropdown-link" to="/contact">Contact</Link>
-                                    <a className="dropdown-link" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
-                                    <a className="dropdown-link" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
-                                    <a className="dropdown-link" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="social-icons">
-                            <img src="/icons/twitter.png" alt="Twitter" onClick={() => openSocialMedia(socialUrls.twitter)} />
-                            <Instagram style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.instagram)} />
-                            <Facebook style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.facebook)} />
-                            <LinkedIn style={{color: '#f3ec1a'}} onClick={() => openSocialMedia(socialUrls.linkedin)} />
-                        </div>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button className="mobile-menu-btn d-lg-none" onClick={() => setDrawerOpen(true)}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
+            <div className="nav-item-dropdown"
+              onMouseEnter={() => handleMouseEnter('about')}
+              onMouseLeave={handleMouseLeave}>
+              <span className="nav-link">About Us</span>
+              {activeDropdown === 'about' && (
+                <div className="dropdown-content">
+                  <Link className="dropdown-link" to="/about">Our Story</Link>
+                  <Link className="dropdown-link" to="/team">Our Team</Link>
                 </div>
-            </nav>
-
-            {/* Mobile Drawer */}
-            <div className={`mobile-drawer ${drawerOpen ? 'open' : ''}`}>
-                <div className="drawer-header">
-                    <button className="close-drawer" onClick={() => setDrawerOpen(false)}>×</button>
-                </div>
-                <div className="drawer-content">
-                    <Link className="drawer-link" to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
-
-                    <div className="drawer-dropdown">
-                        <div className="drawer-link" onClick={() => toggleDropdown('about')}>
-                            About Us <span className="dropdown-arrow">▼</span>
-                        </div>
-                        {dropdownStates.about && (
-                            <div className="drawer-dropdown-content">
-                                <Link className="drawer-sublink" to="/about" onClick={() => setDrawerOpen(false)}>Our Story</Link>
-                                <Link className="drawer-sublink" to="/team" onClick={() => setDrawerOpen(false)}>Our Team</Link>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="drawer-dropdown">
-                        <div className="drawer-link" onClick={() => toggleDropdown('whatWeDo')}>
-                            What We Do <span className="dropdown-arrow">▼</span>
-                        </div>
-                        {dropdownStates.whatWeDo && (
-                            <div className="drawer-dropdown-content">
-                                <Link className="drawer-sublink" to="/what" onClick={() => setDrawerOpen(false)}>Our Programs</Link>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="drawer-dropdown">
-                        <div className="drawer-link" onClick={() => toggleDropdown('resource')}>
-                            Resource Centre <span className="dropdown-arrow">▼</span>
-                        </div>
-                        {dropdownStates.resource && (
-                            <div className="drawer-dropdown-content">
-                                <Link className="drawer-sublink" to="/news" onClick={() => setDrawerOpen(false)}>News</Link>
-                                <Link className="drawer-sublink" to="/youtube" onClick={() => setDrawerOpen(false)}>YouTube</Link>
-                                <Link className="drawer-sublink" to="/reports" onClick={() => setDrawerOpen(false)}>Reports</Link>
-                                <Link className="drawer-sublink" to="/recognitions" onClick={() => setDrawerOpen(false)}>Recognitions</Link>
-                                <Link className="drawer-sublink" to="/success-stories" onClick={() => setDrawerOpen(false)}>Success Stories</Link>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="drawer-dropdown">
-                        <div className="drawer-link" onClick={() => toggleDropdown('getInvolved')}>
-                            Get Involved <span className="dropdown-arrow">▼</span>
-                        </div>
-                        {dropdownStates.getInvolved && (
-                            <div className="drawer-dropdown-content">
-                                <Link className="drawer-sublink" to="/contact" onClick={() => setDrawerOpen(false)}>Contact</Link>
-                                <a className="drawer-sublink" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
-                                <a className="drawer-sublink" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
-                                <a className="drawer-sublink" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
-                            </div>
-                        )}
-                    </div>
-                </div>
+              )}
             </div>
 
-            {/* Overlay for mobile drawer */}
-            {drawerOpen && (
-                <div className="drawer-overlay" onClick={() => setDrawerOpen(false)}></div>
-            )}
+            <div className="nav-item-dropdown"
+              onMouseEnter={() => handleMouseEnter('whatWeDo')}
+              onMouseLeave={handleMouseLeave}>
+              <span className="nav-link">What We Do</span>
+              {activeDropdown === 'whatWeDo' && (
+                <div className="dropdown-content">
+                  <Link className="dropdown-link" to="/what">Our Programs</Link>
+                </div>
+              )}
+            </div>
 
-            <style>{`
+            <div className="nav-item-dropdown"
+              onMouseEnter={() => handleMouseEnter('resource')}
+              onMouseLeave={handleMouseLeave}>
+              <span className="nav-link">Resource Centre</span>
+              {activeDropdown === 'resource' && (
+                <div className="dropdown-content">
+                  <Link className="dropdown-link" to="/news">News</Link>
+                  <Link className="dropdown-link" to="/youtube">YouTube</Link>
+                  <Link className="dropdown-link" to="/reports">Reports</Link>
+                  <Link className="dropdown-link" to="/recognitions">Recognitions</Link>
+                  <Link className="dropdown-link" to="/success-stories">Success Stories</Link>
+                </div>
+              )}
+            </div>
+
+            <div className="nav-item-dropdown"
+              onMouseEnter={() => handleMouseEnter('getInvolved')}
+              onMouseLeave={handleMouseLeave}>
+              <span className="nav-link">Get Involved</span>
+              {activeDropdown === 'getInvolved' && (
+                <div className="dropdown-content">
+                  <Link className="dropdown-link" to="/contact">Contact</Link>
+                  <a className="dropdown-link" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
+                  <a className="dropdown-link" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
+                  <a className="dropdown-link" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
+                </div>
+              )}
+            </div>
+
+            <div className="social-icons">
+              <img src="/icons/twitter.png" alt="Twitter" onClick={() => openSocialMedia(socialUrls.twitter)} />
+              <Instagram style={{ color: '#f3ec1a' }} onClick={() => openSocialMedia(socialUrls.instagram)} />
+              <Facebook style={{ color: '#f3ec1a' }} onClick={() => openSocialMedia(socialUrls.facebook)} />
+              <LinkedIn style={{ color: '#f3ec1a' }} onClick={() => openSocialMedia(socialUrls.linkedin)} />
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button className="mobile-menu-btn d-lg-none" onClick={() => setDrawerOpen(true)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Drawer */}
+      <div className={`mobile-drawer ${drawerOpen ? 'open' : ''}`}>
+        <div className="drawer-header">
+          <button className="close-drawer" onClick={() => setDrawerOpen(false)}>×</button>
+        </div>
+        <div className="drawer-content">
+          <Link className="drawer-link" to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
+
+          <div className="drawer-dropdown">
+            <div className="drawer-link" onClick={() => toggleDropdown('about')}>
+              About Us <span className="dropdown-arrow">▼</span>
+            </div>
+            {dropdownStates.about && (
+              <div className="drawer-dropdown-content">
+                <Link className="drawer-sublink" to="/about" onClick={() => setDrawerOpen(false)}>Our Story</Link>
+                <Link className="drawer-sublink" to="/team" onClick={() => setDrawerOpen(false)}>Our Team</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="drawer-dropdown">
+            <div className="drawer-link" onClick={() => toggleDropdown('whatWeDo')}>
+              What We Do <span className="dropdown-arrow">▼</span>
+            </div>
+            {dropdownStates.whatWeDo && (
+              <div className="drawer-dropdown-content">
+                <Link className="drawer-sublink" to="/what" onClick={() => setDrawerOpen(false)}>Our Programs</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="drawer-dropdown">
+            <div className="drawer-link" onClick={() => toggleDropdown('resource')}>
+              Resource Centre <span className="dropdown-arrow">▼</span>
+            </div>
+            {dropdownStates.resource && (
+              <div className="drawer-dropdown-content">
+                <Link className="drawer-sublink" to="/news" onClick={() => setDrawerOpen(false)}>News</Link>
+                <Link className="drawer-sublink" to="/youtube" onClick={() => setDrawerOpen(false)}>YouTube</Link>
+                <Link className="drawer-sublink" to="/reports" onClick={() => setDrawerOpen(false)}>Reports</Link>
+                <Link className="drawer-sublink" to="/recognitions" onClick={() => setDrawerOpen(false)}>Recognitions</Link>
+                <Link className="drawer-sublink" to="/success-stories" onClick={() => setDrawerOpen(false)}>Success Stories</Link>
+              </div>
+            )}
+          </div>
+
+          <div className="drawer-dropdown">
+            <div className="drawer-link" onClick={() => toggleDropdown('getInvolved')}>
+              Get Involved <span className="dropdown-arrow">▼</span>
+            </div>
+            {dropdownStates.getInvolved && (
+              <div className="drawer-dropdown-content">
+                <Link className="drawer-sublink" to="/contact" onClick={() => setDrawerOpen(false)}>Contact</Link>
+                <a className="drawer-sublink" href="https://www.every.org/her-initiative?utm_campaign=donate-link#/donate" target="_blank" rel="noopener noreferrer">Donate Myriad USA</a>
+                <a className="drawer-sublink" href="https://myriadaustralia.org/services/donate/her-initiative/" target="_blank" rel="noopener noreferrer">Donate Myriad AUSTRALIA</a>
+                <a className="drawer-sublink" href="https://donate.transnationalgiving.eu/landing/Herinitiative?lang=en_EN" target="_blank" rel="noopener noreferrer">Donate Myriad EUROPEAN</a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Overlay for mobile drawer */}
+      {drawerOpen && (
+        <div className="drawer-overlay" onClick={() => setDrawerOpen(false)}></div>
+      )}
+
+      <style>{`
         .main-nav {
           padding: 1rem 0;
           transition: all 0.3s ease;
@@ -408,8 +408,8 @@ const TopAppBar = () => {
           }
         }
       `}</style>
-        </>
-    );
+    </>
+  );
 };
 
 export default TopAppBar
