@@ -76,7 +76,6 @@ const Story2 = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
