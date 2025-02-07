@@ -2,16 +2,20 @@ import { React } from "react";
 import './styles.css'
 import { Grid, useMediaQuery } from "@mui/material";
 
+// Where.js
 function Where() {
-    const isMobile = useMediaQuery('(max-width:600px)');
     return (
-        <div>
-            <p className="valuesTitle">Where we work</p>
-            <Grid container spacing={4} item xs={12} style={{paddingLeft: '20px', paddingRight: '20px', justifyContent: "center"}}>
-                <Grid item xs={isMobile ? 12 : 8}>
-                    <img src="/photos/tanzania.png" alt="logo" width={"100%"} style={{borderRadius: '50px'}}  />
-                </Grid>
-            </Grid>
+        <div className="container">
+            <h2 className="display-4 m-4" style={{fontWeight: "bold"}}>Where we work</h2>
+            <div className="row justify-content-center">
+                <div className="col-12 col-md-8">
+                    <img 
+                        src="/photos/tanzania.png" 
+                        alt="Tanzania map" 
+                        className="img-fluid rounded-5"
+                    />
+                </div>
+            </div>
         </div>
     );
 }
