@@ -1,106 +1,146 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Add } from "@mui/icons-material";
-import { Avatar, Grid, CardMedia, CardContent, Card, Box, useMediaQuery, Modal, Typography } from "@mui/material";
+import React, { useState, useEffect } from 'react';
+import { Modal, Box, Typography } from '@mui/material';
 
-const programData = [
-    { image: "panda.jpg", title: "Panda on the Ground", subTitle: "Panda Digital", buttonText: '', description: "This is a project that aims at enabling young women to achieve financial freedom...", fullDescription: 'This is a project that aims at enabling young women to achieve financial freedom through income generation and job creation. This program targets women aged 18-35, both with and without existing businesses, providing theoretical and practical training and mentorship in entrepreneurial skills and mentorship on business development, mentorship and creating linkages to financial resources. Through an eight-week training program, young women without businesses learn the production of goods and services in sectors like agriculture, health, fashion, and beauty. Those with existing businesses benefit from one-on-one coaching to facilitate growth with a focus on facilitating business growth through one-on-one guidance on business development, financing and markets. Until today we have impacted 210 young women who by chance have managed to establish their businesses.' },
-    { image: "planB.jpg", title: "Plan B Project", subTitle: "Plan B", buttonText: '', description: "Plan B Project provides education to out-of-school adolescent girls to fight gender...", fullDescription: 'Plan B Project provides education to out-of-school adolescent girls to fight gender-based violence whilst building their financial resilience through entrepreneurship training. The combination of these two interventions has proven to be effective in reducing gender-based violence, as it equips young women and girls with the information, skills, finances, and other tools to mitigate the risk of experiencing it, whilst helping survivors to recover.' },
-    { image: "mshiko.jpg", title: "Mshiko Clubs", subTitle: "Mshiko Clubs", buttonText: '', description: "A project that aims at keeping girls in school by using a hybrid model of economic...", fullDescription: "A project that aims at keeping girls in school by using a hybrid model of economic empowerment and girls' agency empowerment to increase their interest to stay and enjoy school. Through this program, girls learn how to save money and are rewarded for successfully adopting saving habits. Specific activities in this project include financial literacy training on key concepts such as savings, the establishment of clubs, skills building on extracurricular income-generating activities and girls' agency empowerment to promote girls' self-esteem and self-efficacy to help girls stay and enjoy school as they embrace their journey to financial freedom." },
-    { image: "digimali.jpg", title: "Digimali Clubs", description: "Digimali is a project is a project that focuses on enhancing the adaptation of digital business...", fullDescription: `Digimali is a project is a project that focuses on enhancing the adaptation of digital business operations among youth entrepreneurs to drive self-employment opportunities and maximize the target group’s eligibility for scaling up by improving their overall access to finance and expanding market reach. The program focuses on online business, digital business ecosystems, business finance literacy, and business management to drive self-employment opportunities and maximize the target group's eligibility to scale up their businesses. We've reached a total of 2265 youth across more than 26 regions in Tanzania, unlocking the potential for scaling up their businesses.` },
-    { image: "panda1.jpg", title: "Panda Digital", description: "Panda Digital is the first Swahili hybrid e-learning platform that uses a website and...", fullDescription: `Panda Digital is the first Swahili hybrid e-learning platform that uses a website and AI SMS technology to enable access to skills, opportunities, personalized business support, and social justice for young women so that they can start and run smart businesses. Panda Digital exists to address the challenge of young women’s unemployment by providing an alternative learning curriculum that encourages self-employment using digital technologies to generate jobs and achieve financial freedom. To date, we have reached more than 5000 young women.` },
-    { image: "fika.jpg", title: "Fikia + Project", description: "FIKIA+ is a program that aims at supporting comprehensive implementation of HIV...", fullDescription: `FIKIA+ is a program that aims at supporting comprehensive implementation of HIV prevention, testing, care and treatment, lab, and VMMC interventions at the community and facility level in Mwanza region in Tanzania. Her Initiative implemented this project in partnership with ICAP Columbia University in Tanzania together with local government authorities. In this project, Her Initiative supported People Living with HIV, Adolescent Girls and Young women (PLHIV AGYW) (15 – 24 years) with economic empowerment sessions tailored at creating demand for HIV testing and ART services in the Mwanza region. Her Initiative provided AGYW with training and mentorship on the use of business model canvas, digital marketing, economic empowerment concepts and entrepreneurial skills to promote livelihood and financial resilience. Fikia+ project intends to create awareness to PLHIV AGYW on digital skills on the use of digital technologies in doing business, so as they can utilize the economic opportunities found within their living areas.` },
-    { image: "stawi.jpg", title: "Stawi LAB in Partnership with TWAA", description: "The 'Stawi Lab' (Flourish Lab in English) project is at the forefront of an ambitious ecosystem...", fullDescription: `The 'Stawi Lab' (Flourish Lab in English) project is at the forefront of an ambitious ecosystem-building initiative, with a singular goal: supporting youth-led organizations dedicated to championing the rights and interests of girls and women. Our approach is multifaceted, weaving together capacity-building, mentorship, and the provision of unrestricted seed grants. In our collective movement, these youth-led organizations ardently advocate for the decolonization of funding, rallying for research, data, and empirical evidence to underpin funding approaches that are not only inclusive but also imbued with deep meaning. To date, Stawi Lab has proudly supported 18 organizations across six regions in Tanzania, marking significant strides toward our commitment to empowering the next generation of change-makers. Stawi Lab’s mission is to empower youth-led organisations and create a supportive ecosystem where they can thrive.` },
-    { image: "panda-movement.jpg", title: "Panda Digital Movement", description: "Panda Digital Movement is a project dedicated to tackling the challenges of unemployment...", fullDescription: `The Panda Digital Movement is committed to addressing the myriad injustices that impede women's bodily autonomy and economic empowerment, thereby hindering young women from realizing their full potential. These challenges include sextortion and sexual harassment.
-    By leveraging technology, the Panda Movement expedites the reporting of sextortion cases and employs a Training of Trainers (TOT) model centered around young women, empowering them to lead the charge against all forms of gender-based violence. Over the past three years since 2021, the Panda Movement has fostered 30 anti-sextortion champions who have directly assisted over 800 young women and indirectly reached 25 million individuals through impactful online campaigns, raising awareness and offering effective strategies to combat sextortion.
-    Within the Panda Digital ecosystem, the ONGEA Hub, a Swahili digital tool, serves as a crucial component of the Panda Movement, providing young female entrepreneurs with a platform to report incidents of sexual corruption and connect with authorities who offer legal, psychological, social, and emotional support. The ONGEA Hub serves as a vital link between young women and institutions like PCCS, facilitating the reporting of cases through its website or AI-powered SMS system. It stands as a beacon of hope for girls affected by sexual corruption, striving to offer a secure and dependable channel for them to provide evidence and access the assistance they require. Notably, this platform is distinguished by its inclusivity, catering to girls from all backgrounds, whether urban or rural, ensuring accessibility for all.` },
-    { image: "youth.jpg", title: "Youth Employability Boot Camp", description: `This program focuses on honing the skills of young graduates, bridging the gap between...`, fullDescription: `This program focuses on honing the skills of young graduates, bridging the gap between theoretical knowledge and practical application. Through training, mentorship, and placements, we equip youth with essential technical and soft skills, increasing their employability in the job market. Central to the program is our commitment to promoting and increasing women's leadership in the corporate space. To date, we have impacted 145 youth graduates, providing them with essential skills and valuable placement opportunities.` },
-]
-function ProgramsData() {
-    const isMobile = useMediaQuery('(max-width:600px)');
+const ProgramsData = () => {
     const [openModal, setOpenModal] = useState(false);
     const [selectedProgram, setSelectedProgram] = useState(null);
-    const navigation = (programs) => {
-        setSelectedProgram(programs);
-        setOpenModal(true);
-    }
-    const handleCloseModal = () => {
-        setOpenModal(false);
-    };
+    const programData = [
+        { image: "panda.jpg", title: "Panda on the Ground", subTitle: "Panda Digital", buttonText: '', description: "This is a project that aims at enabling young women to achieve financial freedom...", 
+            fullDescription: `Panda Digital is a Swahili hybrid e-learning platform using a website and AI SMS to empower young women with skills, business support, and social justice. It tackles unemployment by promoting self-employment and has impacted over 7,000 women, bridging the digital gender gap and addressing sextortion. Panda Digital is a Swahili hybrid e-learning platform using a website and AI SMS to empower young women with skills, opportunities, personalized business support, and social justice. It tackles unemployment by promoting self-employment using digital technologies to generate jobs and achieve financial freedom. It also addresses sextortion challenges by offering legal and psychological aid via its ONGEA HUB. 
+Panda Digital has made significant achievements, including recognition from the Ministry of Health, the Roddenberry Foundation, and Global Citizen. Its impact includes empowering 7,289 women with the skills to start and run smart businesses, 2,806 businesses digitised, and 3,274 sign-ups via AI SMS. Additionally, the platform has reached 31 regions, with 4,015 online sign-ups. Over the next five years, Panda Digital aims to support 50,000 women, expand its reach by 70% in Tanzania and 30% in East Africa, and establish university clubs to foster digital literacy and innovation to 6000 students.
+` },
+        { image: "planB.jpg", title: "Plan B Project", subTitle: "Plan B", buttonText: '', description: "Plan B Project provides education to out-of-school adolescent girls to fight gender...", 
+            fullDescription: 'Plan B project aims to support out of school adolescent girls,unemployed and young mothers aged (15-24) in Tanzania overcoming barriers of gender based violence whilst building their financial resilience through entrepreneurship skills and seed support resources. Since its inception, Plan B has empowered 108 girls in Kisarawe District, helping 40 of them start businesses and join saving groups. The project has increased advocacy and leadership skills, improved confidence, and raised awareness about gender-based violence within the community. Plan B aims to support 1,000 girls over the next five years, providing resources, education, and mentorship to build sustainable livelihoods. It combines gender-based violence prevention with financial literacy, offering holistic support through non-traditional education, business pitching, and seed funding. The project also engages local communities and government officials to foster inclusivity and resilience.The program reduces violence risk by equipping girls with skills, finances, and support, aiding both prevention and recovery.' },
+        { image: "mshiko.jpg", title: "Mshiko Clubs", subTitle: "Mshiko Clubs", buttonText: '', description: "A project that aims at keeping girls in school by using a hybrid model of economic...", 
+            fullDescription: "Mshiko clubs is a project that aims at setting a road map to financial freedom for girls (14-19) in schools by using a hybrid model of economic empowerment that includes the adoption of good financial behaviours, extracurricular income-generating activities, and girls agency empowerment to promote girl’s self-esteem and self-efficacy that help girls stay and enjoy school. Since its launch, the project has established five clubs with around 500 girls in Dar es Salaam, providing training in financial management, rights-based education, and income-generating activities. Over the next five years, Mshiko Clubs plan to reach 2,500 adolescent girls, enhancing their financial and academic skills. The initiative also aims to increase academic excellence using digital resources and foster community support by sensitising teachers, parents, and local leaders to promote positive perceptions of girls' education. Mshiko Clubs keep girls in school by blending economic empowerment with agency-building. Girls learn saving habits, receive financial literacy training, and engage in income-generating activities, boosting self-esteem and financial freedom, all while fostering a positive school experience." },
+        { image: "digimali.jpg", title: "Digimali Clubs", description: "Digimali is a project is a project that focuses on enhancing the adaptation of digital business...", 
+            fullDescription: `DigiMali comes from the two Swahili words “Digitali na Mjasiliamali” translating to “Digital and Entrepreneur” in English, the project aims to transform and uplift communities through the power of digital literacy and technology. The program intends to boost self-employment by training young entrepreneurs to run sustainable businesses, helping them transform traditional businesses into digital enterprises. Since its inception, DigiMali has directly empowered 201 individuals and reached an additional 2,806 through its Training of Trainers (TOT) model. The project's future goals train 500  youth and women business owners to reach 12,000 youth business owners beneficiaries over the next five years transforming their traditional business to digital business.` },
+        { image: "panda1.jpg", title: "Panda Digital", description: "Panda Digital is the first Swahili hybrid e-learning platform that uses a website and...", 
+            fullDescription: `Panda Digital is the first Swahili hybrid e-learning platform that uses a website and AI SMS technology to enable access to skills, opportunities, personalized business support, and social justice for young women so that they can start and run smart businesses. Panda Digital exists to address the challenge of young women’s unemployment by providing an alternative learning curriculum that encourages self-employment using digital technologies to generate jobs and achieve financial freedom. To date, we have reached more than 5000 young women.` },
+        { image: "fika.jpg", title: "Fikia + Project", description: "FIKIA+ is a program that aims at supporting comprehensive implementation of HIV...", 
+            fullDescription: `The FIKIA+ Project targets HIV prevention and economic empowerment for Adolescent Girls and Young Women (AGYW) aged 15-24 living with HIV (PLHIV). So far, the project has supported 103 AGYW in Nyamagana district, Mwanza region by providing economic empowerment, agency empowerment and comprehensive SRH education to create demand for HIV testing services and retention to treatment services among AGYW PLHIV (15-24) in Tanzania. The project formed 6 business groups and established 35 businesses, providing training in digital marketing and business skills to foster economic opportunities and encourage HIV testing and ART uptake. The project utilizes peer-led education, data-driven SRH sessions, and mobile clinics to improve community-centered service delivery and economic resilience. FIKIA+ integrated HIV prevention, care, and economic empowerment for AGYW aged 15-24 in Mwanza. The program trains participants in business and digital skills, supporting health and economic opportunities for young women, enhancing HIV treatment access and retention. ` },
+        { image: "stawi.jpg", title: "Stawi LAB in Partnership with TWAA", description: "The 'Stawi Lab' (Flourish Lab in English) project is at the forefront of an ambitious ecosystem...", 
+            fullDescription: `The 'Stawi Lab' (Flourish Lab in English) project is at the forefront of an ambitious ecosystem-building initiative, with a singular goal: supporting youth-led organizations dedicated to championing the rights and interests of girls and women. Our approach is multifaceted, weaving together capacity-building, mentorship, and the provision of unrestricted seed grants. In our collective movement, these youth-led organizations passionately advocate for the decolonization of funding, rallying for research, data, and empirical evidence to underpin funding approaches that are not only inclusive but also imbued with deep meaning. To date, Stawi Lab has proudly supported 38 organizations across six regions in Tanzania, marking significant strides toward our commitment to empowering the next generation of change-makers. Stawi Lab’s mission is to 100 empower youth-led organizations and create a supportive ecosystem where they can thrive.` },
+        { image: "panda-movement.jpg", title: "Panda on the Ground", description: "Panda Digital Movement is a project dedicated to tackling the challenges of unemployment...", 
+            fullDescription: `Panda on the Ground is a project that aims at planting a seed of financial freedom for women aged 18-35 who have the desire to start businesses through income generation and job creation. The program offers hands-on entrepreneurial training, mentorship, and financial linkages, impacting 210 women who have launched their businesses. Panda on The Ground enables financial freedom for women aged 18-35 through income generation and job creation. The program offers hands-on entrepreneurial training, mentorship, and financial linkages, impacting over 210 women to launch businesses, and fostering financial independence and job creation. Over the next five years, the program aims to support 500 women in starting and formalizing businesses, enhancing digital skills, and promoting job creation, aiming for a 70% success rate in sustaining businesses. This initiative is expected to generate around 1,500 new jobs, significantly impacting the livelihoods of women and fostering economic growth in their communities.` },
+        { image: "youth.jpg", title: "Youth Employability Boot Camp", description: `This program focuses on honing the skills of young graduates, bridging the gap between...`, 
+            fullDescription: `The Youth Employability Boot Camp (YEB) focuses on honing the skills of young graduates, bridging the gap between theoretical knowledge and practical application. Through training, mentorship, and placements, we equip youth with essential technical and soft skills, increasing their employability in the job market. This initiative focuses on providing youth with vocational skills to enhance professional skills and competence through comprehensive training in CV writing, cover letters, digital skills, and business acumen, supported by mentorship and job placements. Having already assisted 145 graduates, YEB plans to support 1000 graduates annually over the next five years, including 50 with disabilities. The program will also engage 250 employers, 30 mentors, 50 trainers, and 2 government agencies to ensure a holistic approach to career development. Employers provide job opportunities and insights into market needs, mentors offer guidance and support, trainers deliver essential skills, and government agencies help align the program with broader employment and inclusion policies. This comprehensive approach aims to enhance employability, promote inclusivity, and foster sustainable career growth.This boot camp bridges the gap between theoretical knowledge and practical skills for young graduates. Through training, mentorship, and placements, it enhances employability and promotes women’s leadership, impacting 145 graduates with essential skills and opportunities.` },
+    ]
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const renderLogos = () => {
-        return <Grid container spacing={4} item xs={12}>
-            {programData.map((programs, index) => (
-                <Grid key={index} item xs={isMobile ? 12 : 4}>
-                    <Card elevation={0} style={{ borderRadius: '20px', cursor: 'pointer', width: isMobile && '100vw' }}>
-                        <CardMedia
-                            component="img"
-                            alt="green iguana"
-                            image={`/photos/${programs.image}`}
-                            onClick={() => { navigation(programs) }}
-                            className='cardImage'
-                        />
-                        <CardContent>
-                            <div style={{ display: 'flex' }}>
-                                <Avatar sx={{ bgcolor: '#f3ec1a', marginRight: '0px', marginLeft: '0px', marginTop: '20px' }}>
-                                    <Add sx={{ color: '#000000' }} />
-                                </Avatar>
-                                <p onClick={() => { navigation(programs) }} className="programParagraph1">
-                                    {programs.title}
-                                </p>
-                            </div>
-                            <p onClick={() => { navigation(programs) }} className="programParagraph2">
-                                {programs.description} <p style={{ color: '#633e98', fontWeight: 'bold' }} variant="contained" onClick={() => { navigation(programs) }}>View More</p>
-                            </p>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            ))};
-        </Grid>
+
+    const handleOpenModal = (program) => {
+        setSelectedProgram(program);
+        setOpenModal(true);
     };
 
     return (
-        <div className="approach">
-            <div className="approachHeader" >
-                <p></p>
-                <p style={{paddingTop: '60px'}}>Our Programs</p>
+        <div className="container-fluid px-0">
+            <div className="text-center py-5 bg-light">
+                <h2 className="display-4 text-purple mt-5">Our Programs</h2>
+                <div className="mx-auto bg-warning" style={{ height: "3px", width: "100px" }}></div>
             </div>
-            <Box sx={{ marginLeft: !isMobile && "150px", marginRight: !isMobile && "150px", marginTop: "50px", marginBottom: '10px' }}>
-                {renderLogos()}
-                <Modal
-                    open={openModal}
-                    onClose={handleCloseModal}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            bgcolor: 'background.paper',
-                            boxShadow: 24,
-                            p: 4,
-                            borderRadius: '10px',
-                            maxWidth: '80vw',
-                            maxHeight: '80vh',
-                            overflowY: 'auto',
-                        }}
-                    >
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {selectedProgram && selectedProgram.title}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            {selectedProgram && selectedProgram.fullDescription}
-                        </Typography>
-                    </Box>
-                </Modal>
-            </Box>
+
+            <div className="container py-5">
+                <div className="row g-4">
+                    {programData.map((program, index) => (
+                        <div key={index} className="col-12 col-md-6 col-lg-4">
+                            <div className="card h-100 border-0 shadow-sm program-card">
+                                <img 
+                                    src={`/photos/${program.image}`} 
+                                    className="card-img-top program-image"
+                                    alt={program.title}
+                                    onClick={() => handleOpenModal(program)}
+                                />
+                                <div className="card-body">
+                                    <div className="d-flex align-items-start mb-3">
+                                        <div className="rounded-circle bg-warning p-2 me-3 mt-2">
+                                            <i className="bi bi-plus text-dark"></i>
+                                        </div>
+                                        <h5 className="card-title mb-0 fw-bold">{program.title}</h5>
+                                    </div>
+                                    <p className="card-text">
+                                        {program.description}
+                                        <button 
+                                            className="btn btn-link text-purple p-0 ms-1 text-decoration-none fw-bold"
+                                            onClick={() => handleOpenModal(program)}
+                                        >
+                                            View More
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* MUI Modal */}
+            <Modal
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                aria-labelledby="modal-title"
+                aria-describedby="modal-description"
+            >
+                <Box sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    bgcolor: 'background.paper',
+                    boxShadow: 24,
+                    p: 4,
+                    borderRadius: '10px',
+                    maxWidth: '80vw',
+                    maxHeight: '80vh',
+                    overflowY: 'auto',
+                }}>
+                    <Typography id="modal-title" variant="h6" component="h2">
+                        {selectedProgram?.title}
+                    </Typography>
+                    <Typography id="modal-description" sx={{ mt: 2 }}>
+                        {selectedProgram?.fullDescription}
+                    </Typography>
+                </Box>
+            </Modal>
+
+            <style>
+                {`
+                .text-purple {
+    color: #633e98;
+}
+
+.program-card {
+    transition: transform 0.3s ease;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+}
+
+.program-image {
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover .program-image {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+}`}
+            </style>
         </div>
     );
-}
+};
 
 export default ProgramsData;
