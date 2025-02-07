@@ -59,7 +59,7 @@ const Objectives = () => {
       {/* Strategic Objectives Section */}
       <div className="container mb-5">
         <div className="text-center mb-5">
-          <h6 className="text-uppercase" style={{ color: '#633e98' }}>Our Vision</h6>
+          <h6 className="text-uppercase" style={{ color: '#633e98' }}>Objectives</h6>
           <h2 className="display-4 mb-4">Strategic Objectives</h2>
           <div className="mx-auto" style={{ width: '50px', height: '4px', backgroundColor: '#f3ec1a' }}></div>
         </div>
