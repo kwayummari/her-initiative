@@ -161,15 +161,66 @@ Presently serving as the Finance Director at Coca-Cola Kwanza Limited, Emmanuel 
 `}
     ];
     const teamData = [
-        { image: "Her-Initiative-Organization-Profile-Design-41.jpg", title: "Lydia Charles Moyo", subTitle: "Founder and Executive Director", buttonText: '', },
-        // { image: "rajabu.jpg", title: "Rajabu Mohamed", subTitle: "Head Of Programs", buttonText: '', },
-        { image: "Her-Initiative-Organization-Profile-Design-42.jpg", title: "Amanda Moses", subTitle: "Finance Officer", buttonText: '', },
-        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communication Officer", buttonText: '', },
-        { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '', },
-        { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring and Evaluation Officer", buttonText: '', },
-        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilzation and Project Officer", buttonText: '', },
-        { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Project Lead and Monitoring and Evaluation Officer", buttonText: '', },
-        { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', },
+        {
+            image: "Her-Initiative-Organization-Profile-Design-41.jpg", title: "Lydia Charles Moyo", subTitle: "Founder and Executive Director", buttonText: '', 
+            fullDescription: `Lydia Charles Moyo, a 31-year-old Tanzanian feminist, is a dedicated leader and 
+            innovator committed to fostering social change and economic empowerment for girls and young women.
+            As the Founder and Executive Director of <a href="www.herinitiative.or.tz" target="_blank"> Her Initiative</a>, she works to
+             break the cycle of poverty by promoting financial resilience and entrepreneurship. She is also
+              the visionary behind <a href="www.pandadigital.co.tz" target="_blank"> Panda Digital</a> , Tanzania’s first Swahili hybrid
+              e-learning platform that leverages AI SMS technology and digital resources to equip young women
+               business owners with skills, financial literacy, and social justice advocacy. <br />
+            With over eight years of experience in local and international development, media, and leadership,
+             Lydia has played a pivotal role in advancing gender equality. Her career spans communication, leadership,
+             and youth advocacy, including serving as Leader of the Girl Power Team at Femina HIP and producing
+             TV and radio programs at EFM, DTV, and Clouds Media Group. She has been a strong voice for adolescent
+              girls’ and young women’s sexual and reproductive health, integrating economic empowerment and
+              technology-driven solutions to tackle gender-based violence through Panda Digital. <br />
+            Lydia's groundbreaking work has been recognized globally, earning her multiple prestigious awards, including:
+            <br />
+            <ul>
+            <li>KBF Africa Prize Laureate (2023-2024)</li>
+            <li>2024 Global Citizen Gender Equality Award</li>
+            <li>+1 Global Fund by the Roddenberry Foundation</li>
+            <li>UNDP Funguo 2022 Innovation Week Prize</li>
+            <ul>
+		She is an alumna of the Community Leadership Institute (CLI) and actively engaged in networks such as Goalkeepers,
+         Gender Equality Community, and the East Africa Young Women Leaders Mentorship Initiative. Through her relentless
+         commitment and transformative leadership, Lydia continues to impact thousands of girls and young women in Tanzania
+          and beyond, serving as a role model and catalyst for social change.
+`
+         },
+        { image: "Her-Initiative-Organization-Profile-Design-42.jpg", title: "Amanda Moses", subTitle: "Finance and Administration Officer", buttonText: '', 
+            fullDescription: `Amanda Mosses is a skilled Finance and Administration Officer, 
+            responsible for ensuring the efficient financial management and operational support of organizational activities. With expertise in budgeting, financial reporting, compliance, and administrative coordination, she plays a crucial role in maintaining transparency and efficiency in financial operations.
+<br />Passionate about organizational effectiveness and financial accountability, Amanda specializes in financial planning, resource management, and internal controls. Her role also extends to office administration, procurement, and logistics coordination, ensuring seamless day-to-day operations. Through her dedication, she contributes to the sustainability and smooth functioning of the organization
+`
+        },
+        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communications Officer", buttonText: '', 
+            fullDescription: `Tariq Salim is a dynamic Senior Communications Officer with extensive experience in digital analysis, communications strategy, branding, and management. With a strong background in impact-driven and results-based communications, he plays a pivotal role in shaping organizational messaging, outreach, and public engagement.
+<br />Specializing in strategic storytelling, digital marketing, and stakeholder engagement, Tariq is committed to enhancing brand visibility and driving meaningful conversations. His expertise in content creation, media relations, and campaign execution ensures that communication efforts are data-informed, compelling, and effective.
+Through his leadership in outreach and digital strategy, Tariq strengthens organizational influence and impact, ensuring that messages resonate with target audiences and drive lasting change.
+`
+        },
+        { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '', 
+            fullDescription: `She is a Partnership and Safeguarding Officer with over years of experience in maintaining donor relations, securing partnerships, and safeguarding organizational interests. She excels in building relationships with private, public, and government stakeholders, ensuring mutual benefits and long-term success. Celine's expertise in partnership building has led to securing funding, expanding collaborative efforts, and implementing safeguarding measures to protect beneficiaries. Her leadership has fostered an environment where both beneficiaries and donors feel supported and confident. Celine's work continues to drive impactful outcomes and strengthen the organization's sustainability.`
+        },
+        { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring & Evaluation Officer", buttonText: '', 
+            fullDescription: `Nemes Umela is a results-driven Monitoring & Evaluation (M&E) Officer, committed to ensuring data-driven decision-making for impactful development programs. With expertise in data collection, analysis, and performance tracking, Nemes plays a key role in assessing project effectiveness and improving implementation strategies.
+Passionate about evidence-based development, he specializes in designing M&E frameworks, conducting impact assessments, and providing insights that enhance program efficiency and accountability. Through his work, Nemes contributes to strengthening project outcomes, ensuring that interventions deliver sustainable and measurable change.
+`
+        },
+        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilization and Project Officer", buttonText: '', 
+            fullDescription: `She is a Resource Mobilization and Project Officer at Her Initiative, bringing over six years of experience in resource mobilization and project management. She possesses technical skills and expertise in building and strengthening partnerships with diverse stakeholders for project implementation and resource mobilization. Her experience includes business development, project management, and managing stakeholders' financial landscapes. She is passionate about youth empowerment and believes in youth involvement for generational growth.`
+        },
+        { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Project Lead & Assistant Monitoring & Evaluation Officer", buttonText: '', 
+            fullDescription: `Nusura Myonga is a dedicated Project Lead and Assistant Monitoring & Evaluation (M&E) Officer, committed to ensuring the effective implementation and impact measurement of development initiatives. With expertise in project management, data analysis, and performance tracking, she plays a key role in both leading projects and supporting M&E functions.
+<br />Passionate about evidence-based decision-making and community empowerment, Nusura specializes in program coordination, stakeholder engagement, and impact assessment. Her work bridges strategic planning and on-the-ground execution, ensuring that projects are efficient, accountable, and aligned with organizational goals.
+`
+        },
+        { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', 
+            fullDescription: `Field and Communications OfficerIs a dedicated Field and Communications Officer with six years of experience in community-based projects, specializing in grassroots engagement and impact storytelling. Passionate about youth empowerment and sustainable development, he has led initiatives promoting digital literacy, entrepreneurship, and community resilience. With expertise in stakeholder engagement and content creation, He bridges the gap between organizations and the communities through meaningful and lasting impact.`
+        },
     ];
     return (
         <div>
