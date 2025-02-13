@@ -61,7 +61,7 @@ const Missions = ({ home }) => {
           background-color: #633e98;
           border-top-left-radius: 50px;
           border-top-right-radius: 50px;
-          margin-top: 50px;
+          margin-top: 100px;
         }
 
         .top-card-text {

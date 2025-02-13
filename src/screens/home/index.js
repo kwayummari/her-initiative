@@ -15,10 +15,10 @@ function Home() {
         <div>
             <Carousel />
             <AboutUs />
-            <Approach />
-            <Impact />
-            <Objectives />
             <Missions home={true} />
+            <Objectives />
+            <Impact />
+            <Approach />
             <Programs />
             <Partners />
             {/* <Donations /> */}

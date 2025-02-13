@@ -31,32 +31,18 @@ function Team() {
         {
             image: "lydia.jpeg", title: "Lydia Charles", subTitle: "Founder & Executive Director, Her Initiative",
             buttonText: '',
-            description: "Lydia Charles Moyo, a 31-year-old Tanzanian feminist, is a dedicated leader and....",
-            fullDescription: `Lydia Charles Moyo, a 31-year-old Tanzanian feminist, is a dedicated leader and 
-            innovator committed to fostering social change and economic empowerment for girls and young women.
-            As the Founder and Executive Director of <a href="www.herinitiative.or.tz" target="_blank"> Her Initiative</a>, she works to
-             break the cycle of poverty by promoting financial resilience and entrepreneurship. She is also
-              the visionary behind <a href="www.pandadigital.co.tz" target="_blank"> Panda Digital</a> , Tanzania’s first Swahili hybrid
-              e-learning platform that leverages AI SMS technology and digital resources to equip young women
-               business owners with skills, financial literacy, and social justice advocacy. <br />
-            With over eight years of experience in local and international development, media, and leadership,
-             Lydia has played a pivotal role in advancing gender equality. Her career spans communication, leadership,
-             and youth advocacy, including serving as Leader of the Girl Power Team at Femina HIP and producing
-             TV and radio programs at EFM, DTV, and Clouds Media Group. She has been a strong voice for adolescent
-              girls’ and young women’s sexual and reproductive health, integrating economic empowerment and
-              technology-driven solutions to tackle gender-based violence through Panda Digital. <br />
-            Lydia's groundbreaking work has been recognized globally, earning her multiple prestigious awards, including:
-            <br />
-            <ul>
-            <li>KBF Africa Prize Laureate (2023-2024)</li>
-            <li>2024 Global Citizen Gender Equality Award</li>
-            <li>+1 Global Fund by the Roddenberry Foundation</li>
-            <li>UNDP Funguo 2022 Innovation Week Prize</li>
-            <ul>
-		She is an alumna of the Community Leadership Institute (CLI) and actively engaged in networks such as Goalkeepers,
-         Gender Equality Community, and the East Africa Young Women Leaders Mentorship Initiative. Through her relentless
-         commitment and transformative leadership, Lydia continues to impact thousands of girls and young women in Tanzania
-          and beyond, serving as a role model and catalyst for social change.
+            description: "Lydia Charles is a visionary feminist and a passionate dreamer....",
+            fullDescription: `Lydia Charles is a visionary feminist and a passionate dreamer who has dedicated her life to supporting young women and girls through economic empowerment and technology. As the founder and Executive Director of Her Initiative, and the innovative mind behind Panda Digital, Lydia has been at the forefront of efforts to break the cycle of poverty and build financial resilience among young women, all while championing women’s and girls’ rights. Her achievements have not gone unnoticed; she is the proud recipient of the 2024 Global Citizen Prize and the KBF Africa Prize, reflecting her impact on the global stage.
+
+Lydia has a rich background in communication, leadership, and management, having worked in international and local organizations and the private sector in various roles such as communications, ASRHR consultancy, and social change-making. She has over 10 years of experience working in international development and media.She is currently working to influence adolescents and young women’s financial freedom and women rights outcomes 
+
+Lydia’s leadership style is deeply rooted in her core values of authenticity, Integrity,  innovation, and nurturing. She remains steadfast in her beliefs, prioritizing the needs of rural girls by customizing the Panda Digital platform in Swahili, ensuring that it remains accessible and free, despite pressures to monetize it for profit. 
+
+Lydia measures success by an ability to turn dreams into reality, as evidenced by the creation of Her Initiative. Her journey is deeply personal, having grown up in a community where many girls were unable to complete their education due to extreme poverty and lack of resources. This experience fueled her passion for empowering girls to overcome these barriers. From launching self-esteem and rights awareness campaigns in secondary schools to a leading organization that promotes financial independence among young women at university, 
+
+Her Motto
+She believes that when girls are financially independent, they have a choice. Her motto is: “Girls should not be limited to dreams, the bigger the dream the bigger the chance.”
+
 ` },
 
 
@@ -163,46 +149,34 @@ Presently serving as the Finance Director at Coca-Cola Kwanza Limited, Emmanuel 
     const teamData = [
         {
             image: "Her-Initiative-Organization-Profile-Design-41.jpg", title: "Lydia Charles Moyo", subTitle: "Founder and Executive Director", buttonText: '', 
-            fullDescription: `Lydia Charles Moyo, a 31-year-old Tanzanian feminist, is a dedicated leader and 
-            innovator committed to fostering social change and economic empowerment for girls and young women.
-            As the Founder and Executive Director of <a href="www.herinitiative.or.tz" target="_blank"> Her Initiative</a>, she works to
-             break the cycle of poverty by promoting financial resilience and entrepreneurship. She is also
-              the visionary behind <a href="www.pandadigital.co.tz" target="_blank"> Panda Digital</a> , Tanzania’s first Swahili hybrid
-              e-learning platform that leverages AI SMS technology and digital resources to equip young women
-               business owners with skills, financial literacy, and social justice advocacy. <br />
-            With over eight years of experience in local and international development, media, and leadership,
-             Lydia has played a pivotal role in advancing gender equality. Her career spans communication, leadership,
-             and youth advocacy, including serving as Leader of the Girl Power Team at Femina HIP and producing
-             TV and radio programs at EFM, DTV, and Clouds Media Group. She has been a strong voice for adolescent
-              girls’ and young women’s sexual and reproductive health, integrating economic empowerment and
-              technology-driven solutions to tackle gender-based violence through Panda Digital. <br />
-            Lydia's groundbreaking work has been recognized globally, earning her multiple prestigious awards, including:
-            <br />
-            <ul>
-            <li>KBF Africa Prize Laureate (2023-2024)</li>
-            <li>2024 Global Citizen Gender Equality Award</li>
-            <li>+1 Global Fund by the Roddenberry Foundation</li>
-            <li>UNDP Funguo 2022 Innovation Week Prize</li>
-            <ul>
-		She is an alumna of the Community Leadership Institute (CLI) and actively engaged in networks such as Goalkeepers,
-         Gender Equality Community, and the East Africa Young Women Leaders Mentorship Initiative. Through her relentless
-         commitment and transformative leadership, Lydia continues to impact thousands of girls and young women in Tanzania
-          and beyond, serving as a role model and catalyst for social change.
+            fullDescription: `Lydia Charles is a visionary feminist and a passionate dreamer who has dedicated her life to supporting young women and girls through economic empowerment and technology. As the founder and Executive Director of Her Initiative, and the innovative mind behind Panda Digital, Lydia has been at the forefront of efforts to break the cycle of poverty and build financial resilience among young women, all while championing women’s and girls’ rights. Her achievements have not gone unnoticed; she is the proud recipient of the 2024 Global Citizen Prize and the KBF Africa Prize, reflecting her impact on the global stage.
+
+Lydia has a rich background in communication, leadership, and management, having worked in international and local organizations and the private sector in various roles such as communications, ASRHR consultancy, and social change-making. She has over 10 years of experience working in international development and media.She is currently working to influence adolescents and young women’s financial freedom and women rights outcomes 
+
+Lydia’s leadership style is deeply rooted in her core values of authenticity, Integrity,  innovation, and nurturing. She remains steadfast in her beliefs, prioritizing the needs of rural girls by customizing the Panda Digital platform in Swahili, ensuring that it remains accessible and free, despite pressures to monetize it for profit. 
+
+Lydia measures success by an ability to turn dreams into reality, as evidenced by the creation of Her Initiative. Her journey is deeply personal, having grown up in a community where many girls were unable to complete their education due to extreme poverty and lack of resources. This experience fueled her passion for empowering girls to overcome these barriers. From launching self-esteem and rights awareness campaigns in secondary schools to a leading organization that promotes financial independence among young women at university, 
+
+Her Motto
+She believes that when girls are financially independent, they have a choice. Her motto is: “Girls should not be limited to dreams, the bigger the dream the bigger the chance.”
+
 `
-         },
+        },
+        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Tariq Salim is a dynamic Senior Officer in Communications and Projects with extensive", buttonText: '', 
+            fullDescription: `Tariq Salim is a dynamic Senior Officer in Communications and Projects with extensive experience in digital analysis, communications strategy, branding, and project management. With a strong background in impact-driven and results-based communications, he plays a pivotal role in shaping organizational messaging, outreach, and public engagement.
+Specializing in strategic storytelling, digital marketing, and stakeholder engagement, Tariq is committed to enhancing brand visibility and fostering meaningful conversations. His expertise in content creation, media relations, campaign execution, and project coordination ensures that both communication and programmatic efforts are data-driven, compelling, and effective.
+As the leader of Strategic Objective One: Enabling Economic and Financial Freedom, Tariq spearheads initiatives that empower women and youth through entrepreneurship, financial literacy, and access to economic opportunities. His role in project design, implementation, and impact assessment ensures that programs are aligned with organizational goals and create tangible change.
+Through his leadership in outreach, digital strategy, and project execution, Tariq strengthens organizational influence and program effectiveness, ensuring that communication efforts and development projects drive sustainable impact.
+`
+        },
         { image: "Her-Initiative-Organization-Profile-Design-42.jpg", title: "Amanda Moses", subTitle: "Finance and Administration Officer", buttonText: '', 
             fullDescription: `Amanda Mosses is a skilled Finance and Administration Officer, 
             responsible for ensuring the efficient financial management and operational support of organizational activities. With expertise in budgeting, financial reporting, compliance, and administrative coordination, she plays a crucial role in maintaining transparency and efficiency in financial operations.
 <br />Passionate about organizational effectiveness and financial accountability, Amanda specializes in financial planning, resource management, and internal controls. Her role also extends to office administration, procurement, and logistics coordination, ensuring seamless day-to-day operations. Through her dedication, she contributes to the sustainability and smooth functioning of the organization
 `
         },
-        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Communications Officer", buttonText: '', 
-            fullDescription: `Tariq Salim is a dynamic Senior Communications Officer with extensive experience in digital analysis, communications strategy, branding, and management. With a strong background in impact-driven and results-based communications, he plays a pivotal role in shaping organizational messaging, outreach, and public engagement.
-<br />Specializing in strategic storytelling, digital marketing, and stakeholder engagement, Tariq is committed to enhancing brand visibility and driving meaningful conversations. His expertise in content creation, media relations, and campaign execution ensures that communication efforts are data-informed, compelling, and effective.
-Through his leadership in outreach and digital strategy, Tariq strengthens organizational influence and impact, ensuring that messages resonate with target audiences and drive lasting change.
-`
-        },
-        { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnerships Officer", buttonText: '', 
+        
+        { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnership and Safeguarding Officer", buttonText: '', 
             fullDescription: `She is a Partnership and Safeguarding Officer with over years of experience in maintaining donor relations, securing partnerships, and safeguarding organizational interests. She excels in building relationships with private, public, and government stakeholders, ensuring mutual benefits and long-term success. Celine's expertise in partnership building has led to securing funding, expanding collaborative efforts, and implementing safeguarding measures to protect beneficiaries. Her leadership has fostered an environment where both beneficiaries and donors feel supported and confident. Celine's work continues to drive impactful outcomes and strengthen the organization's sustainability.`
         },
         { image: "Nemes-Umela.jpg", title: "Nemes Umela", subTitle: "Monitoring & Evaluation Officer", buttonText: '', 
@@ -218,8 +192,8 @@ Passionate about evidence-based development, he specializes in designing M&E fra
 <br />Passionate about evidence-based decision-making and community empowerment, Nusura specializes in program coordination, stakeholder engagement, and impact assessment. Her work bridges strategic planning and on-the-ground execution, ensuring that projects are efficient, accountable, and aligned with organizational goals.
 `
         },
-        { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communication Officer", buttonText: '', 
-            fullDescription: `Field and Communications OfficerIs a dedicated Field and Communications Officer with six years of experience in community-based projects, specializing in grassroots engagement and impact storytelling. Passionate about youth empowerment and sustainable development, he has led initiatives promoting digital literacy, entrepreneurship, and community resilience. With expertise in stakeholder engagement and content creation, He bridges the gap between organizations and the communities through meaningful and lasting impact.`
+        { image: "daniel.jpg", title: "Daniel Robert", subTitle: "Field and Communications Officer", buttonText: '', 
+            fullDescription: `A dedicated Field and Communications Officer with six years of experience in community-based projects, specializing in grassroots engagement and impact storytelling. Passionate about youth empowerment and sustainable development, he has led initiatives promoting digital literacy, entrepreneurship, and community resilience. With expertise in stakeholder engagement and content creation, He bridges the gap between organizations and the communities through meaningful and lasting impact.`
         },
     ];
     return (

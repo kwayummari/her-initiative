@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 const Impact = () => {
   const [counters, setCounters] = useState([
     { count: 0, targetCount: 210, label: "Young women launched new businesses in sectors such as beauty, agriculture, and baking." },
-    { count: 0, targetCount: 7289, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
+    { count: 0, targetCount: 8735, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
     { count: 0, targetCount: 222, label: "Youth business owners trained with digital business skills" },
+    { count: 0, targetCount: 4173, label: "Youth and young women entrepreneurs adopted digital operations" },
     { count: 0, targetCount: 5, label: "Established clubs across public secondary schools in Ubungo Municipal Council" },
     { count: 0, targetCount: 500, label: "Adolescent girls engaged in financial literacy and entrepreneurship training" },
     { count: 0, targetCount: 500, label: "Parents, teachers, and officials engaged to support girl's education" },
@@ -46,6 +47,7 @@ const Impact = () => {
           <div className="col-12">
             <h6 className="text-secondary">MAKING A DIFFERENCE</h6>
             <h2 className="display-4" style={{ color: '#633e98' }}>Our Impact</h2>
+            <p style={{fontSize: "50px", fontWeight: "bolder"}}>Total Reach 31,823 ,Total Media Reach 25,000,000</p>
           </div>
         </div>
 
@@ -55,7 +57,7 @@ const Impact = () => {
             <div key={index} className="col">
               <div className="card h-100 border-0 shadow-sm hover-scale">
                 <div className="card-body p-4">
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-start mb-3">
                     <div className="approach-icon p-3 me-3" style={{ backgroundColor: '#633e98' }}>
                       <div className="text-warning fw-bold fs-7">✓✓</div>
                     </div>
@@ -106,8 +108,8 @@ const Impact = () => {
           height: 60px;
           background-color: #633e98;
           border-radius: 50%;
-          align-items: start;
-          justify-content: start;
+          align-items: center;
+          justify-content: center;
           margin: 0;
           color: white;
         }
