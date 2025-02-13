@@ -162,7 +162,7 @@ She believes that when girls are financially independent, they have a choice. He
 
 `
         },
-        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Tariq Salim is a dynamic Senior Officer in Communications and Projects with extensive", buttonText: '', 
+        { image: "Her-Initiative-Organization-Profile-Design-43.jpg", title: "Tariq Ghusuob", subTitle: "Senior Officer, Communications and Projects", buttonText: '', 
             fullDescription: `Tariq Salim is a dynamic Senior Officer in Communications and Projects with extensive experience in digital analysis, communications strategy, branding, and project management. With a strong background in impact-driven and results-based communications, he plays a pivotal role in shaping organizational messaging, outreach, and public engagement.
 Specializing in strategic storytelling, digital marketing, and stakeholder engagement, Tariq is committed to enhancing brand visibility and fostering meaningful conversations. His expertise in content creation, media relations, campaign execution, and project coordination ensures that both communication and programmatic efforts are data-driven, compelling, and effective.
 As the leader of Strategic Objective One: Enabling Economic and Financial Freedom, Tariq spearheads initiatives that empower women and youth through entrepreneurship, financial literacy, and access to economic opportunities. His role in project design, implementation, and impact assessment ensures that programs are aligned with organizational goals and create tangible change.
@@ -175,6 +175,9 @@ Through his leadership in outreach, digital strategy, and project execution, Tar
 <br />Passionate about organizational effectiveness and financial accountability, Amanda specializes in financial planning, resource management, and internal controls. Her role also extends to office administration, procurement, and logistics coordination, ensuring seamless day-to-day operations. Through her dedication, she contributes to the sustainability and smooth functioning of the organization
 `
         },
+        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilization and Project Officer", buttonText: '', 
+            fullDescription: `She is a Resource Mobilization and Project Officer at Her Initiative, bringing over six years of experience in resource mobilization and project management. She possesses technical skills and expertise in building and strengthening partnerships with diverse stakeholders for project implementation and resource mobilization. Her experience includes business development, project management, and managing stakeholders' financial landscapes. She is passionate about youth empowerment and believes in youth involvement for generational growth.`
+        },
         
         { image: "Her-Initiative-Organization-Profile-Design-44.jpg", title: "Celine Julius", subTitle: "Partnership and Safeguarding Officer", buttonText: '', 
             fullDescription: `She is a Partnership and Safeguarding Officer with over years of experience in maintaining donor relations, securing partnerships, and safeguarding organizational interests. She excels in building relationships with private, public, and government stakeholders, ensuring mutual benefits and long-term success. Celine's expertise in partnership building has led to securing funding, expanding collaborative efforts, and implementing safeguarding measures to protect beneficiaries. Her leadership has fostered an environment where both beneficiaries and donors feel supported and confident. Celine's work continues to drive impactful outcomes and strengthen the organization's sustainability.`
@@ -184,9 +187,7 @@ Through his leadership in outreach, digital strategy, and project execution, Tar
 Passionate about evidence-based development, he specializes in designing M&E frameworks, conducting impact assessments, and providing insights that enhance program efficiency and accountability. Through his work, Nemes contributes to strengthening project outcomes, ensuring that interventions deliver sustainable and measurable change.
 `
         },
-        { image: "wendy.png", title: "Wendy Shewiyo", subTitle: "Resource Mobilization and Project Officer", buttonText: '', 
-            fullDescription: `She is a Resource Mobilization and Project Officer at Her Initiative, bringing over six years of experience in resource mobilization and project management. She possesses technical skills and expertise in building and strengthening partnerships with diverse stakeholders for project implementation and resource mobilization. Her experience includes business development, project management, and managing stakeholders' financial landscapes. She is passionate about youth empowerment and believes in youth involvement for generational growth.`
-        },
+        
         { image: "nusura.jpeg", title: "Nusura Myonga", subTitle: "Project Lead & Assistant Monitoring & Evaluation Officer", buttonText: '', 
             fullDescription: `Nusura Myonga is a dedicated Project Lead and Assistant Monitoring & Evaluation (M&E) Officer, committed to ensuring the effective implementation and impact measurement of development initiatives. With expertise in project management, data analysis, and performance tracking, she plays a key role in both leading projects and supporting M&E functions.
 <br />Passionate about evidence-based decision-making and community empowerment, Nusura specializes in program coordination, stakeholder engagement, and impact assessment. Her work bridges strategic planning and on-the-ground execution, ensuring that projects are efficient, accountable, and aligned with organizational goals.

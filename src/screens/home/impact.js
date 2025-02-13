@@ -47,7 +47,7 @@ const Impact = () => {
           <div className="col-12">
             <h6 className="text-secondary">MAKING A DIFFERENCE</h6>
             <h2 className="display-4" style={{ color: '#633e98' }}>Our Impact</h2>
-            <p style={{fontSize: "50px", fontWeight: "bolder"}}>Total Reach 31,823 ,Total Media Reach 25,000,000</p>
+            <p style={{fontSize: "50px", fontWeight: "bolder"}}>Total Reach 31,823 <br /> Total Media Reach 25,000,000</p>
           </div>
         </div>
 
