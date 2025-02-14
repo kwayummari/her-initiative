@@ -66,12 +66,6 @@ const Approach = () => {
             </div>
           ))}
         </div>
-        <img 
-                src="/photos/where2.png" 
-                alt="Tanzania Map"
-                className="img-fluid"
-                useMap="#tanzania-map"
-              />
 
         {/* Bottom Description */}
         <div className="row justify-content-center mt-5">
