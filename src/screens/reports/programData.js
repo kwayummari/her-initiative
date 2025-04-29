@@ -61,7 +61,7 @@ function ReportsData({ programData }) {
         <div className="approach">
             <div className="approachHeader" >
                 <p></p>
-                <p style={{ paddingTop: '60px' }}>Our Reports</p>
+                <p style={{ paddingTop: '60px' }}>Reports and Publications</p>
             </div>
             <Box sx={{ marginLeft: !isMobile && "150px", marginRight: !isMobile && "150px", marginTop: "50px", marginBottom: '10px' }}>
                 {renderLogos()}

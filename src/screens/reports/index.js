@@ -27,7 +27,7 @@ function ReportsUser() {
     return (
         <div>
             <AboutCarousel />
-            <Part1 heading2={'Our Reports'} heading3={'Home/Reports'} />
+            <Part1 heading2={'Reports and Publications'} heading3={'Home/Reports and Publications'} />
             {programData && <ReportsData programData={programData} />}
         </div >
     );

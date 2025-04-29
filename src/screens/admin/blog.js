@@ -143,7 +143,7 @@ function NewBlogForm() {
                 <Card variant="elevation" elevation={3} className="contactCard">
                     <CardContent>
                         <form onSubmit={handleSubmit}>
-                        <Button onClick={() => handleClick('/AdminReports')} variant="contained"  className="donationButton1">Reports</Button><br />
+                        <Button onClick={() => handleClick('/AdminReports')} variant="contained"  className="donationButton1">Reports and Publications</Button><br />
                             <FormControlLabel
                                 control={
                                     <Checkbox

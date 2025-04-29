@@ -90,7 +90,7 @@ const Footer = () => {
                             <li><span onClick={() => navigate('/about')}>About Us</span></li>
                             <li><span onClick={() => navigate('/news')}>Blog</span></li>
                             <li><span onClick={() => navigate('/what')}>Projects</span></li>
-                            <li><span onClick={() => navigate('/reports')}>Reports</span></li>
+                            <li><span onClick={() => navigate('/reports')}>Reports and Publications</span></li>
                             <li><span onClick={() => navigate('/admins')}>Admin</span></li>
                         </ul>
                     </div>

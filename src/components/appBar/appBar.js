@@ -101,7 +101,7 @@ const TopAppBar = () => {
                 <div className="dropdown-content">
                   <Link className="dropdown-link" to="/news">News</Link>
                   <Link className="dropdown-link" to="/youtube">YouTube</Link>
-                  <Link className="dropdown-link" to="/reports">Reports</Link>
+                  <Link className="dropdown-link" to="/reports">Reports and Publications</Link>
                   <Link className="dropdown-link" to="/recognitions">Recognitions</Link>
                   <Link className="dropdown-link" to="/success-stories">Success Stories</Link>
                 </div>
