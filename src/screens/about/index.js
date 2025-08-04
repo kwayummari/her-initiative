@@ -13,13 +13,13 @@ function OurStory() {
         window.scrollTo(0, 0);
     }, []);
 
-       return (
+    return (
         <div>
             <AboutCarousel />
             <Part1 heading2={'About Us'} heading3={'Home/About Us'} />
             <Story2 />
             <ImageRows />
-            <Missions />
+            <Missions home={true} />
             <Values />
             <Where />
             <Donations />
