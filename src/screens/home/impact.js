@@ -95,10 +95,26 @@ const Impact = () => {
                 <div className="overlay-content">
                   <h3>Real Stories, Real Impact</h3>
                   <p>Every number represents a life changed, a dream realized, and a future transformed through our programs.</p>
+                  <a href="/#/impacts" className="view-impact-btn">
+                    View Impact
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* View Impact Button */}
+        <div className="text-center mt-5">
+          <a href="/#/impacts" className="view-impact-cta">
+            <span>View Full Impact</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
 
@@ -237,6 +253,59 @@ const Impact = () => {
           font-size: 1rem;
           opacity: 0.9;
           margin: 0;
+        }
+
+        .view-impact-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: #633e98;
+          color: white;
+          padding: 0.75rem 1.5rem;
+          border-radius: 10px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          margin-top: 1.5rem;
+        }
+
+        .view-impact-btn:hover {
+          background: #8257b9;
+          transform: translateY(-2px);
+          color: white;
+          text-decoration: none;
+        }
+
+        .view-impact-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          background: #633e98;
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 1.1rem;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(99, 62, 152, 0.3);
+        }
+
+        .view-impact-cta:hover {
+          background: #8257b9;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(99, 62, 152, 0.4);
+          color: white;
+          text-decoration: none;
+        }
+
+        .view-impact-cta svg {
+          transition: transform 0.3s ease;
+        }
+
+        .view-impact-cta:hover svg {
+          transform: translateX(3px);
         }
 
         @media (max-width: 768px) {

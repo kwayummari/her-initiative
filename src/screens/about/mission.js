@@ -15,10 +15,10 @@ const Missions = ({ home }) => {
           </p>
         </div>
 
-      <div className="row g-4">
-        {/* Mission Card */}
+        <div className="row g-4">
+          {/* Mission Card */}
           <div className="col-12 col-lg-6">
-          <div className="mission-card">
+            <div className="mission-card">
               <div className="card-header">
                 <div className="header-content">
                   <div className="mission-icon">
@@ -26,15 +26,15 @@ const Missions = ({ home }) => {
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   </div>
-                  <h3 className="card-title">Our Mission</h3>
+                  <h3 className="card-title text-white">Our Mission</h3>
                 </div>
-            </div>
+              </div>
               <div className="card-body">
                 <p className="card-text">
-                We are committed to economic rights and justice, and digital inclusion,
-                supporting young women and girls to achieve economic resilience,
-                financial autonomy, enabling them to overcome barriers and live with dignity.
-              </p>
+                  We are committed to economic rights and justice, and digital inclusion,
+                  supporting young women and girls to achieve economic resilience,
+                  financial autonomy, enabling them to overcome barriers and live with dignity.
+                </p>
                 <div className="mission-highlight">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
@@ -42,10 +42,10 @@ const Missions = ({ home }) => {
                   <span>Empowering through economic rights and digital inclusion</span>
                 </div>
               </div>
+            </div>
           </div>
-        </div>
 
-        {/* Vision Card */}
+          {/* Vision Card */}
           <div className="col-12 col-lg-6">
             <div className="vision-card">
               <div className="card-header">
@@ -56,16 +56,16 @@ const Missions = ({ home }) => {
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </div>
-                  <h3 className="card-title">Our Vision</h3>
+                  <h3 className="card-title text-white">Our Vision</h3>
                 </div>
-            </div>
+              </div>
               <div className="card-body">
                 <p className="card-text">
-                We envision an inclusive society where adolescent girls
-                and young women have the power to choose and create opportunities
-                for themselves as they achieve economic resilience, overcome barriers,
-                and live with dignity.
-              </p>
+                  We envision an inclusive society where adolescent girls
+                  and young women have the power to choose and create opportunities
+                  for themselves as they achieve economic resilience, overcome barriers,
+                  and live with dignity.
+                </p>
                 <div className="vision-highlight">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
@@ -174,6 +174,7 @@ const Missions = ({ home }) => {
           font-size: 1.5rem;
           font-weight: 600;
           margin: 0;
+          color: white;
         }
 
         .card-body {

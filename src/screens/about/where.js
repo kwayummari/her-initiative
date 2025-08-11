@@ -16,7 +16,8 @@ const Where = () => {
     { name: 'Mwanza', active: true, description: 'Lake zone initiatives' },
     { name: 'Iringa', active: true, description: 'Southern highlands' },
     { name: 'Arusha', active: true, description: 'Northern region programs' },
-    { name: 'Zanzibar', active: true, description: 'Island outreach' }
+    { name: 'Zanzibar', active: true, description: 'Island outreach' },
+    { name: 'Lindi', active: true, description: 'Southern coastal region' }
   ];
 
   return (
@@ -122,7 +123,7 @@ const Where = () => {
 
         .where-content {
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1.2fr 0.8fr;
           gap: 4rem;
           align-items: start;
         }
@@ -142,6 +143,8 @@ const Where = () => {
           width: 100%;
           height: auto;
           display: block;
+          min-height: 500px;
+          object-fit: contain;
         }
 
         .map-overlay {
@@ -314,7 +317,8 @@ const getRegionPosition = (regionName) => {
     'Mwanza': { top: '35%', left: '45%' },
     'Iringa': { top: '55%', left: '50%' },
     'Arusha': { top: '25%', left: '55%' },
-    'Zanzibar': { top: '55%', left: '80%' }
+    'Zanzibar': { top: '55%', left: '80%' },
+    'Lindi': { top: '70%', left: '65%' }
   };
   return positions[regionName] || { top: '50%', left: '50%' };
 };

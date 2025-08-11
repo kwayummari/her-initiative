@@ -9,7 +9,7 @@ function ImageRows() {
 
     const programData = [
         { image: "fika.jpg" },
-        { image: "_YTE2638.jpg"},
+        { image: "_YTE2638.jpg" },
         { image: "_YTE8636.jpg" }
     ];
 
@@ -32,29 +32,39 @@ function ImageRows() {
 
                 <div className="gallery-grid">
                     {programData.map((program, index) => (
-                        <div 
-                            key={index} 
+                        <div
+                            key={index}
                             className={`gallery-item ${isVisible ? 'fade-in' : ''}`}
                             style={{ animationDelay: `${index * 0.2}s` }}
                         >
                             <div className="image-container">
-                                <img 
-                                    src={`/photos/${program.image}`} 
+                                <img
+                                    src={`/photos/${program.image}`}
                                     alt="Her Initiative Impact"
                                     className="gallery-image"
                                 />
                                 <div className="image-overlay">
                                     <div className="overlay-content">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                            <circle cx="12" cy="12" r="3"/>
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
                                         </svg>
-                                        <span>View Impact</span>
+                                        <a href="/#/impacts" className="view-impact-link">View Impact</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     ))}
+                </div>
+
+                {/* View Impact Button */}
+                <div className="text-center mt-5">
+                    <a href="/#/impacts" className="view-impact-cta">
+                        <span>View Full Impact</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -169,6 +179,58 @@ function ImageRows() {
                     font-size: 1.1rem;
                 }
 
+                .view-impact-link {
+                    text-decoration: none;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    transition: all 0.3s ease;
+                    display: inline-block;
+                    padding: 0.5rem 1rem;
+                    border-radius: 8px;
+                    background: rgba(99, 62, 152, 0.8);
+                    border: 2px solid transparent;
+                }
+
+                .view-impact-link:hover {
+                    background: rgba(99, 62, 152, 1);
+                    border-color: #f3ec1a;
+                    transform: translateY(-2px);
+                    color: white;
+                    text-decoration: none;
+                }
+
+                .view-impact-cta {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    background: #633e98;
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 50px;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 15px rgba(99, 62, 152, 0.3);
+                }
+
+                .view-impact-cta:hover {
+                    background: #8257b9;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 25px rgba(99, 62, 152, 0.4);
+                    color: white;
+                    text-decoration: none;
+                }
+
+                .view-impact-cta svg {
+                    transition: transform 0.3s ease;
+                }
+
+                .view-impact-cta:hover svg {
+                    transform: translateX(3px);
+                }
+
                 @media (max-width: 768px) {
                     .section-title {
                         font-size: 2rem;
@@ -176,10 +238,16 @@ function ImageRows() {
 
                     .gallery-grid {
                         grid-template-columns: 1fr;
+                        gap: 1.5rem;
                     }
 
                     .gallery-image {
                         height: 250px;
+                    }
+
+                    .view-impact-cta {
+                        padding: 0.875rem 1.5rem;
+                        font-size: 1rem;
                     }
                 }
             `}</style>
