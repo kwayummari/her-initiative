@@ -217,13 +217,14 @@ function Donations() {
                 }
 
                 .donate-dropdown-content {
-                    position: absolute;
-                    top: 100%;
-                    right: 0;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                     background-color: white;
                     min-width: 320px;
                     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                    z-index: 10000;
+                    z-index: 999999;
                     border-radius: 12px;
                     overflow: hidden;
                     margin-top: 0.5rem;
