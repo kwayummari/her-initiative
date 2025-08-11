@@ -56,7 +56,7 @@ const Missions = ({ home }) => {
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </div>
-                  <h3 className="card-title text-white">Our Vision</h3>
+                  <h3 className="card-title te">Our Vision</h3>
                 </div>
               </div>
               <div className="card-body">

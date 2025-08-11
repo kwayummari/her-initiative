@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import AboutCarousel from '../about/aboutCarousel';
 import Part1 from '../about/part1';
 import ReportsData from './programData';
-
 
 function ReportsUser() {
     const [programData, setProgramData] = useState(null);
@@ -19,10 +18,10 @@ function ReportsUser() {
                 console.error('Error fetching data:', error);
             }
         };
-        
+
         fetchData();
     }, []);
-    
+
 
     return (
         <div>

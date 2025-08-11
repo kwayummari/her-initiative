@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 
+// Set the PDF.js worker source properly
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
 function ReportsData({ programData }) {
     const [openModal, setOpenModal] = useState(false);
     const [selectedProgram, setSelectedProgram] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [displayCount, setDisplayCount] = useState(6);
-    const [loadingStates, setLoadingStates] = useState({});
-
-    pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
-    // Enable PDF.js logging for debugging
-    if (process.env.NODE_ENV === 'development') {
-        pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-    }
+    const [pdfErrors, setPdfErrors] = useState({});
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -22,16 +18,25 @@ function ReportsData({ programData }) {
         setIsLoading(false);
     }, []);
 
-    // Auto-start loading for visible PDFs
+    // Test PDF URL accessibility
     useEffect(() => {
         if (programData && programData.length > 0) {
-            programData.slice(0, displayCount).forEach((_, index) => {
-                if (!loadingStates[index] && !loadingStates[index]?.loading) {
-                    handlePdfLoadStart(index);
-                }
+            console.log('Testing PDF URLs...');
+            programData.slice(0, 3).forEach((report, index) => {
+                const pdfUrl = `https://herinitiative.or.tz/her-api/api/reports/pdf/${report.pdf}`;
+                console.log(`Testing PDF ${index}:`, pdfUrl);
+                
+                // Test if URL is accessible
+                fetch(pdfUrl, { method: 'HEAD' })
+                    .then(response => {
+                        console.log(`PDF ${index} status:`, response.status, response.ok);
+                    })
+                    .catch(error => {
+                        console.error(`PDF ${index} fetch error:`, error);
+                    });
             });
         }
-    }, [programData, displayCount, loadingStates]);
+    }, [programData]);
 
     const handleLoadMore = () => {
         setDisplayCount(prev => prev + 6);
@@ -41,87 +46,16 @@ function ReportsData({ programData }) {
         window.open(`https://herinitiative.or.tz/her-api/api/reports/pdf/${programs.pdf}`, '_blank');
     };
 
-    const handlePdfLoadStart = (index) => {
-        // Prevent multiple starts for the same index
-        if (loadingStates[index]?.loading) return;
-
-        console.log(`PDF ${index} loading started`);
-        setLoadingStates(prev => ({ ...prev, [index]: { loading: true, progress: 0 } }));
-
-        // Simulate progress for better UX
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += Math.random() * 10 + 5; // 5-15% increments
-            if (progress >= 85) {
-                clearInterval(interval);
-                progress = 85;
-            }
-            setLoadingStates(prev => ({
-                ...prev,
-                [index]: { ...prev[index], progress: Math.min(progress, 85) }
-            }));
-        }, 300);
-
-        // Store interval reference for cleanup
-        return () => clearInterval(interval);
+    const handlePdfError = (index, error) => {
+        console.error(`PDF ${index} failed to load:`, error);
+        console.error(`PDF URL was: https://herinitiative.or.tz/her-api/api/reports/pdf/${programData[index]?.pdf}`);
+        setPdfErrors(prev => ({ ...prev, [index]: true }));
     };
 
-    const handlePdfLoadProgress = (index, progress) => {
-        console.log(`PDF ${index} progress:`, progress);
-        setLoadingStates(prev => ({
-            ...prev,
-            [index]: { ...prev[index], progress: Math.min(progress, 90) }
-        }));
-    };
-
-    const handlePdfLoadSuccess = (index) => {
+    const handlePdfSuccess = (index) => {
         console.log(`PDF ${index} loaded successfully`);
-        setLoadingStates(prev => ({
-            ...prev,
-            [index]: { ...prev[index], progress: 90, loaded: true }
-        }));
-
-        // Auto-complete after a short delay if page render doesn't fire
-        setTimeout(() => {
-            setLoadingStates(prev => {
-                if (prev[index]?.loaded && prev[index]?.progress === 90) {
-                    return {
-                        ...prev,
-                        [index]: { loading: false, progress: 100 }
-                    };
-                }
-                return prev;
-            });
-        }, 2000);
-    };
-
-    const handlePageLoadSuccess = (index) => {
-        console.log(`PDF ${index} page rendered successfully`);
-        setLoadingStates(prev => ({
-            ...prev,
-            [index]: { loading: false, progress: 100 }
-        }));
-
-        // Hide progress after a short delay
-        setTimeout(() => {
-            setLoadingStates(prev => ({
-                ...prev,
-                [index]: { loading: false, progress: 0 }
-            }));
-        }, 1000);
-    };
-
-    const handlePdfLoadError = (index) => {
-        console.log(`PDF ${index} failed to load`);
-        setLoadingStates(prev => ({
-            ...prev,
-            [index]: { loading: false, progress: 0, error: true }
-        }));
-    };
-
-    const handleCloseModal = () => {
-        setOpenModal(false);
-        setSelectedProgram(null);
+        console.log(`PDF URL was: https://herinitiative.or.tz/her-api/api/reports/pdf/${programData[index]?.pdf}`);
+        setPdfErrors(prev => ({ ...prev, [index]: false }));
     };
 
     const formatDate = (dateString) => {
@@ -181,28 +115,11 @@ function ReportsData({ programData }) {
                                         >
                                             <div className="pdf-preview" onClick={() => navigation(report)}>
                                                 <div className="pdf-container">
-                                                    {/* Progress Bar */}
-                                                    {(loadingStates[index]?.loading || !loadingStates[index] || !loadingStates[index]?.loaded) && (
-                                                        <div className="pdf-progress">
-                                                            <div className="progress-bar">
-                                                                <div
-                                                                    className="progress-fill"
-                                                                    style={{ width: `${loadingStates[index]?.progress || 0}%` }}
-                                                                ></div>
-                                                            </div>
-                                                            <span className="progress-text">
-                                                                {loadingStates[index]?.loaded ? 'Rendering page...' : 'Loading PDF...'} {Math.round(loadingStates[index]?.progress || 0)}%
-                                                            </span>
-                                                        </div>
-                                                    )}
-
                                                     <Document
                                                         file={`https://herinitiative.or.tz/her-api/api/reports/pdf/${report.pdf}`}
                                                         className="pdf-document"
-                                                        onLoadStart={() => handlePdfLoadStart(index)}
-                                                        onLoadProgress={(progress) => handlePdfLoadProgress(index, progress)}
-                                                        onLoadSuccess={() => handlePdfLoadSuccess(index)}
-                                                        onLoadError={() => handlePdfLoadError(index)}
+                                                        onLoadSuccess={() => handlePdfSuccess(index)}
+                                                        onLoadError={(error) => handlePdfError(index, error)}
                                                         loading={
                                                             <div className="pdf-loading">
                                                                 <div className="loading-spinner"></div>
@@ -219,6 +136,16 @@ function ReportsData({ programData }) {
                                                                     <polyline points="10,9 9,9 8,9"></polyline>
                                                                 </svg>
                                                                 <span>PDF Preview</span>
+                                                                <small>Click to view full report</small>
+                                                                <button 
+                                                                    className="retry-btn"
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        window.location.reload();
+                                                                    }}
+                                                                >
+                                                                    Retry
+                                                                </button>
                                                             </div>
                                                         }
                                                     >
@@ -227,8 +154,8 @@ function ReportsData({ programData }) {
                                                             width={300}
                                                             height={400}
                                                             scale={1}
-                                                            onRenderSuccess={() => handlePageLoadSuccess(index)}
-                                                            onRenderError={() => handlePdfLoadError(index)}
+                                                            renderTextLayer={false}
+                                                            renderAnnotationLayer={false}
                                                         />
                                                     </Document>
                                                 </div>
@@ -265,7 +192,9 @@ function ReportsData({ programData }) {
                                                             </svg>
                                                             Open
                                                         </button>
-                                                        <button className="action-btn" onClick={() => window.open(`https://herinitiative.or.tz/her-api/api/reports/pdf/${report.pdf}`, '_blank')}>
+                                                        <button className="action-btn" onClick={() => {
+                                                            window.open(`https://herinitiative.or.tz/her-api/api/reports/pdf/${report.pdf}`, '_blank');
+                                                        }}>
                                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                                                                 <polyline points="14,2 14,8 20,8"></polyline>
@@ -442,63 +371,6 @@ function ReportsData({ programData }) {
                     animation: spin 1s linear infinite;
                 }
 
-                /* Progress Bar Styles */
-                .pdf-progress {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(255, 255, 255, 0.98);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 10;
-                    padding: 2rem;
-                    backdrop-filter: blur(2px);
-                }
-
-                .progress-bar {
-                    width: 100%;
-                    max-width: 200px;
-                    height: 4px;
-                    background: #e9ecef;
-                    border-radius: 2px;
-                    overflow: hidden;
-                    margin-bottom: 1rem;
-                }
-
-                .progress-fill {
-                    height: 100%;
-                    background: linear-gradient(90deg, #633e98, #f3ec1a);
-                    border-radius: 2px;
-                    transition: width 0.3s ease;
-                    position: relative;
-                }
-
-                .progress-fill::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-                    animation: shimmer 1.5s infinite;
-                }
-
-                @keyframes shimmer {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(100%); }
-                }
-
-                .progress-text {
-                    color: #633e98;
-                    font-size: 0.9rem;
-                    font-weight: 500;
-                }
-
                 .pdf-loading, .pdf-error {
                     display: flex;
                     flex-direction: column;
@@ -511,6 +383,34 @@ function ReportsData({ programData }) {
 
                 .pdf-loading svg, .pdf-error svg {
                     animation: pulse 2s infinite;
+                }
+
+                .pdf-error {
+                    text-align: center;
+                }
+
+                .pdf-error small {
+                    display: block;
+                    margin-top: 0.5rem;
+                    font-size: 0.8rem;
+                    opacity: 0.8;
+                }
+
+                .retry-btn {
+                    margin-top: 1rem;
+                    padding: 0.5rem 1rem;
+                    background: #633e98;
+                    color: white;
+                    border: none;
+                    border-radius: 20px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .retry-btn:hover {
+                    background: #8257b9;
+                    transform: translateY(-2px);
                 }
 
                 @keyframes pulse {
