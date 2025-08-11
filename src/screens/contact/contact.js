@@ -54,18 +54,18 @@ function Contacts() {
                 </svg>
             ),
             title: "Phone",
-            details: ["+255 123 456 789", "+255 987 654 321"],
+            details: ["+255 734 283 347"],
             color: "#633e98"
         },
         {
             icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                 </svg>
             ),
             title: "Email",
-            details: ["info@herinitiative.or.tz", "contact@herinitiative.or.tz"],
+            details: ["contact@herinitiative.or.tz"],
             color: "#f3ec1a"
         },
         {
@@ -76,7 +76,7 @@ function Contacts() {
                 </svg>
             ),
             title: "Address",
-            details: ["Dar es Salaam, Tanzania", "P.O. Box 12345"],
+            details: ["10 Asmara Street | Mikocheni A", "Dar Es Salaam, Tanzania", "PO Box 41815"],
             color: "#633e98"
         },
         {

@@ -160,8 +160,9 @@ const Footer = () => {
                     </svg>
                     <div>
                       <strong>Address:</strong><br />
-                      Asmara Street, Mikocheni,<br />
-                      Dar es Salaam, Tanzania
+                      10 Asmara Street | Mikocheni A<br />
+                      Dar Es Salaam, Tanzania<br />
+                      PO Box 41815
                     </div>
                   </div>
                   <div className="contact-item">
@@ -170,17 +171,17 @@ const Footer = () => {
                     </svg>
                     <div>
                       <strong>Phone:</strong><br />
-                      +255 (0) 734283347
+                      +255 734 283 347
                     </div>
                   </div>
                   <div className="contact-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                       <polyline points="22,6 12,13 2,6" />
                     </svg>
                     <div>
                       <strong>Email:</strong><br />
-                      info@herinitiative.or.tz
+                      contact@herinitiative.or.tz
                     </div>
                   </div>
                 </div>
