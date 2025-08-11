@@ -3,17 +3,17 @@ import React, { useEffect, useState } from 'react';
 const Impact = () => {
   const [counters, setCounters] = useState([
     { count: 0, targetCount: 210, label: "Young women launched new businesses in sectors such as beauty, agriculture, and baking." },
-    { count: 0, targetCount: 8735, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
+    { count: 0, targetCount: 9170, label: "Young women accessed skills and opportunities through the Panda Digital website and SMS services" },
     { count: 0, targetCount: 222, label: "Youth business owners trained with digital business skills" },
     { count: 0, targetCount: 4173, label: "Youth and young women entrepreneurs adopted digital operations" },
     { count: 0, targetCount: 5, label: "Established clubs across public secondary schools in Ubungo Municipal Council" },
-    { count: 0, targetCount: 500, label: "Adolescent girls engaged in financial literacy and entrepreneurship training" },
+    { count: 0, targetCount: 591, label: "Adolescent girls engaged in financial literacy and entrepreneurship training" },
     { count: 0, targetCount: 500, label: "Parents, teachers, and officials engaged to support girl's education" },
     { count: 0, targetCount: 245, label: "Youth graduates improved job search techniques" },
     { count: 0, targetCount: 103, label: "AGYW living with HIV received economic empowerment training" },
     { count: 0, targetCount: 38, label: "Youth-led organizations strengthened" },
     { count: 0, targetCount: 108, label: "School drop-out girls empowered to address gender-based violence" },
-    { count: 0, targetCount: 90, label: "School drop-out girls established new businesses" }
+    { count: 0, targetCount: 80, label: "Young leaders capacitated in leadership and institutional growth" }
   ]);
 
   useEffect(() => {

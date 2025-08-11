@@ -110,7 +110,7 @@ const Objectives = () => {
         </div>
 
         {/* Impact Numbers Section */}
-        <div className="impact-section">
+        {/* <div className="impact-section">
           <div className="text-center mb-5">
             <h3 className="impact-title">Our Impact in Numbers</h3>
             <p className="impact-subtitle">
@@ -132,7 +132,7 @@ const Objectives = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <style jsx>{`

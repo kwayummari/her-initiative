@@ -14,8 +14,8 @@ function AboutUs() {
               </div>
 
               <h2 className="section-title mb-4">
-                Empowering Women Through <br />
-                <span className="highlight">Technology & Innovation</span>
+                A girl who is financially <br />
+                <span className="highlight">independent is confident</span>
               </h2>
 
               <p className="section-description mb-4">
@@ -28,7 +28,7 @@ function AboutUs() {
 
               <div className="stats-grid">
                 <div className="stat-item">
-                  <div className="stat-number">8,000+</div>
+                  <div className="stat-number">30,000+</div>
                   <div className="stat-label">Women Empowered</div>
                 </div>
                 <div className="stat-item">
